@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ASEC — сервис сетевой безопасности</title>
+  <title>КнопкА — сервис сетевой безопасности</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -36,253 +36,99 @@
       color: #0d0d0d;
     }
 
-    header h1 {
-      font-size: 18px;
-      font-weight: 700;
-      color: #fff;
-    }
+    header h1 { font-size: 18px; font-weight: 700; color: #fff; }
 
-    .hero {
-      text-align: center;
-      padding: 64px 24px 48px;
-    }
-
-    .hero h2 {
-      font-size: 36px;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 16px;
-      line-height: 1.2;
-    }
-
-    .hero h2 span {
-      color: #00c853;
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: #999;
-      max-width: 560px;
-      margin: 0 auto;
-    }
+    .hero { text-align: center; padding: 64px 24px 48px; }
+    .hero h2 { font-size: 36px; font-weight: 800; color: #fff; margin-bottom: 16px; line-height: 1.2; }
+    .hero h2 span { color: #00c853; }
+    .hero p { font-size: 18px; color: #999; max-width: 560px; margin: 0 auto; }
 
     .features {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-      padding: 0 24px 64px;
-      max-width: 960px;
-      margin: 0 auto;
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 16px; padding: 0 24px 64px; max-width: 960px; margin: 0 auto;
     }
-
     .feature {
-      background: #161616;
-      border: 1px solid #222;
-      border-radius: 12px;
-      padding: 24px;
-      flex: 1 1 260px;
-      max-width: 300px;
+      background: #161616; border: 1px solid #222; border-radius: 12px;
+      padding: 24px; flex: 1 1 260px; max-width: 300px;
     }
+    .feature .icon { font-size: 28px; margin-bottom: 12px; }
+    .feature h3 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .feature p { font-size: 14px; color: #777; }
 
-    .feature .icon {
-      font-size: 28px;
-      margin-bottom: 12px;
-    }
-
-    .feature h3 {
-      font-size: 16px;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 8px;
-    }
-
-    .feature p {
-      font-size: 14px;
-      color: #777;
-    }
-
-    .pricing {
-      text-align: center;
-      padding: 0 24px 80px;
-    }
-
-    .pricing h2 {
-      font-size: 28px;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 32px;
-    }
+    .pricing { text-align: center; padding: 0 24px 80px; }
+    .pricing h2 { font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 32px; }
 
     .plan {
-      background: #161616;
-      border: 1px solid #00c853;
-      border-radius: 16px;
-      padding: 40px 32px;
-      display: inline-block;
-      min-width: 280px;
+      background: #161616; border: 1px solid #00c853; border-radius: 16px;
+      padding: 40px 32px; display: inline-block; min-width: 280px;
     }
-
     .plan .name {
-      font-size: 14px;
-      font-weight: 600;
-      color: #00c853;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 16px;
+      font-size: 14px; font-weight: 600; color: #00c853;
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;
     }
-
-    .plan .price {
-      font-size: 52px;
-      font-weight: 800;
-      color: #fff;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .plan .price-sub {
-      font-size: 14px;
-      color: #777;
-      margin-bottom: 28px;
-    }
-
-    .plan ul {
-      list-style: none;
-      text-align: left;
-      margin-bottom: 32px;
-    }
-
-    .plan ul li {
-      padding: 6px 0;
-      font-size: 15px;
-      color: #ccc;
-    }
-
-    .plan ul li::before {
-      content: "✓ ";
-      color: #00c853;
-      font-weight: 700;
-    }
+    .plan .price { font-size: 52px; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 4px; }
+    .plan .price-sub { font-size: 14px; color: #777; margin-bottom: 28px; }
+    .plan ul { list-style: none; text-align: left; margin-bottom: 32px; }
+    .plan ul li { padding: 6px 0; font-size: 15px; color: #ccc; }
+    .plan ul li::before { content: "✓ "; color: #00c853; font-weight: 700; }
 
     .btn-pay {
-      display: inline-block;
-      background: #00c853;
-      color: #000;
-      font-size: 16px;
-      font-weight: 700;
-      padding: 14px 40px;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: opacity 0.2s;
-      cursor: pointer;
-      border: none;
+      display: inline-block; background: #00c853; color: #000;
+      font-size: 16px; font-weight: 700; padding: 14px 40px;
+      border-radius: 10px; text-decoration: none; transition: opacity 0.2s;
+      cursor: pointer; border: none; width: 100%; text-align: center;
     }
-
     .btn-pay:hover { opacity: 0.85; }
 
+    /* Блок "нет device_id" */
+    .no-app {
+      text-align: center; padding: 48px 24px 64px; display: none;
+    }
+    .no-app-card {
+      background: #161616; border: 1px solid #222; border-radius: 16px;
+      padding: 40px 32px; display: inline-block; max-width: 400px; width: 100%;
+    }
+    .no-app-card .icon-big { font-size: 48px; margin-bottom: 16px; }
+    .no-app-card h3 { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .no-app-card p { font-size: 15px; color: #888; margin-bottom: 24px; line-height: 1.6; }
+    .btn-tf {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; color: #000; font-size: 15px; font-weight: 700;
+      padding: 14px 32px; border-radius: 10px; text-decoration: none;
+      transition: opacity 0.2s; margin-bottom: 16px;
+    }
+    .btn-tf:hover { opacity: 0.85; }
+    .no-app-hint { font-size: 13px; color: #555; }
+
     .how {
-      background: #111;
-      border-top: 1px solid #1e1e1e;
-      border-bottom: 1px solid #1e1e1e;
-      padding: 64px 24px;
-      text-align: center;
+      background: #111; border-top: 1px solid #1e1e1e; border-bottom: 1px solid #1e1e1e;
+      padding: 64px 24px; text-align: center;
     }
-
-    .how h2 {
-      font-size: 28px;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 40px;
-    }
-
-    .steps {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 32px;
-      max-width: 860px;
-      margin: 0 auto;
-    }
-
-    .step {
-      flex: 1 1 200px;
-      max-width: 220px;
-    }
-
+    .how h2 { font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 40px; }
+    .steps { display: flex; flex-wrap: wrap; justify-content: center; gap: 32px; max-width: 860px; margin: 0 auto; }
+    .step { flex: 1 1 200px; max-width: 220px; }
     .step .num {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #00c853;
-      color: #000;
-      font-weight: 800;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 12px;
+      width: 40px; height: 40px; border-radius: 50%; background: #00c853;
+      color: #000; font-weight: 800; font-size: 18px;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;
     }
+    .step p { font-size: 14px; color: #999; }
 
-    .step p {
-      font-size: 14px;
-      color: #999;
-    }
+    .contacts { padding: 40px 24px; text-align: center; }
+    .contacts p { font-size: 14px; color: #666; }
+    .contacts a { color: #00c853; text-decoration: none; }
 
-    .contacts {
-      padding: 40px 24px;
-      text-align: center;
-    }
-
-    .contacts p {
-      font-size: 14px;
-      color: #666;
-    }
-
-    .contacts a {
-      color: #00c853;
-      text-decoration: none;
-    }
-
-    .legal {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 48px 24px 0px;
-    }
-
-    .legal h2 {
-      font-size: 24px;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 24px;
-      padding-top: 24px;
-      border-top: 1px solid #1e1e1e;
-    }
-
-    .legal h3 {
-      font-size: 16px;
-      font-weight: 700;
-      color: #ccc;
-      margin: 20px 0 8px;
-    }
-
-    .legal p, .legal li {
-      font-size: 14px;
-      color: #777;
-      margin-bottom: 8px;
-    }
-
+    .legal { max-width: 760px; margin: 0 auto; padding: 48px 24px 0; }
+    .legal h2 { font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 24px; padding-top: 24px; border-top: 1px solid #1e1e1e; }
+    .legal h3 { font-size: 16px; font-weight: 700; color: #ccc; margin: 20px 0 8px; }
+    .legal p, .legal li { font-size: 14px; color: #777; margin-bottom: 8px; }
     .legal ul { padding-left: 20px; }
-
     .legal a { color: #00c853; text-decoration: none; }
     .legal a:hover { opacity: 0.8; }
 
     footer {
-      background: #111;
-      border-top: 1px solid #1e1e1e;
-      padding: 20px 24px;
-      text-align: center;
-      font-size: 13px;
-      color: #444;
+      background: #111; border-top: 1px solid #1e1e1e;
+      padding: 20px 24px; text-align: center; font-size: 13px; color: #444;
     }
   </style>
 </head>
@@ -293,13 +139,12 @@
   <h1>КнопкА</h1>
 </header>
 
-<!-- Hero -->
 <section class="hero">
   <h2>Безопасность и <span>конфиденциальность</span> в сети</h2>
   <p>КнопкА — сервис сетевой безопасности для iOS. Защищает соединение, обеспечивает безопасность в интернете.</p>
 </section>
 
-<!-- Тарифы -->
+<!-- Блок оплаты (показывается если есть device_id) -->
 <section class="pricing" id="pricing">
   <h2>Тарифы</h2>
   <div class="plan">
@@ -313,12 +158,25 @@
       <li>Поддержка iOS 16+</li>
       <li>Активация сразу после оплаты</li>
     </ul>
-    <a class="btn-pay" href="#how">Получить доступ</a>
+    <!-- href заполняется через JS -->
+    <a class="btn-pay" id="btn-pay" href="#">Оплатить 300 ₽</a>
   </div>
 </section>
 
+<!-- Блок "скачай приложение" (показывается если нет device_id) -->
+<section class="no-app" id="no-app">
+  <div class="no-app-card">
+    <div class="icon-big">📱</div>
+    <h3>Нужно приложение</h3>
+    <p>Чтобы купить подписку, сначала установи приложение КнопкА. Ссылка для оплаты появится в настройках.</p>
+    <a class="btn-tf" id="btn-tf" href="https://testflight.apple.com/join/XXXXXXXX" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Скачать через TestFlight
+    </a>
+    <p class="no-app-hint">Требуется iOS 16.0 или новее</p>
+  </div>
+</section>
 
-<!-- Фичи -->
 <section class="features">
   <div class="feature">
     <div class="icon">🔒</div>
@@ -343,7 +201,7 @@
   <div class="feature">
     <div class="icon">🔑</div>
     <h3>Без логов</h3>
-    <p>Приложение не хранит историю сетевой активности. Можно не опасаться за конфедициальность.</p>
+    <p>Приложение не хранит историю сетевой активности.</p>
   </div>
   <div class="feature">
     <div class="icon">🎯</div>
@@ -352,111 +210,105 @@
   </div>
 </section>
 
-<!-- Как это работает -->
 <section class="how" id="how">
   <h2>Как начать пользоваться</h2>
   <div class="steps">
-    <div class="step">
-      <div class="num">1</div>
-      <p>Скачай приложение КнопкА из магазина</p>
-    </div>
-    <div class="step">
-      <div class="num">2</div>
-      <p>В приложении перейти на подписку — откроется страница оплаты</p>
-    </div>
-    <div class="step">
-      <div class="num">3</div>
-      <p>Оплати картой или через СБП</p>
-    </div>
-    <div class="step">
-      <div class="num">4</div>
-      <p>Доступ активируется автоматически в приложении</p>
-    </div>
+    <div class="step"><div class="num">1</div><p>Скачай приложение КнопкА через TestFlight</p></div>
+    <div class="step"><div class="num">2</div><p>В приложении открой Настройки → нажми «Продлить»</p></div>
+    <div class="step"><div class="num">3</div><p>Оплати картой или через СБП — 300 ₽ за 30 дней</p></div>
+    <div class="step"><div class="num">4</div><p>Вернись в приложение и нажми «Обновить статус»</p></div>
   </div>
 </section>
 
-<!-- Контакты -->
 <section class="contacts" id="contacts">
   <p>Служба поддержки: <a href="mailto:knopka-supp@mail.ru">knopka-supp@mail.ru</a></p>
   <p style="margin-top:8px;font-size:13px;color:#444;">ИНН Исполнителя указан в публичной оферте</p>
 </section>
 
-<!-- Оферта -->
 <div class="legal" id="oferta">
   <h2>Публичная оферта</h2>
-
   <h3>1. Общие положения</h3>
   <p>Настоящий документ является публичной офертой (ст. 437 ГК РФ) и адресован любому физическому лицу, желающему приобрести доступ к сервису сетевой безопасности КнопкА.</p>
   <p>Исполнитель: физическое лицо, применяющее специальный налоговый режим «Налог на профессиональный доход» (самозанятый), ИНН: 771371177829.</p>
   <p>Акцептом оферты является факт оплаты услуг в соответствии с настоящим документом.</p>
-
   <h3>2. Предмет договора</h3>
   <p>Исполнитель обязуется предоставить Заказчику доступ к сервису сетевой безопасности КнопкА — программному обеспечению для iOS, обеспечивающему шифрование интернет-трафика и защиту сетевого соединения.</p>
-
   <h3>3. Тарифы и оплата</h3>
   <p>Стоимость доступа составляет <strong>300 рублей</strong> за 30 (тридцать) календарных дней.</p>
   <p>Оплата производится единовременно через платёжный сервис ЮKassa. Доступ активируется автоматически после подтверждения платежа.</p>
-
   <h3>4. Порядок предоставления услуг</h3>
-  <p>После успешной оплаты доступ к сервису активируется в течение нескольких минут. Уведомление не требуется — статус отображается в приложении.</p>
-
+  <p>После успешной оплаты доступ активируется в течение нескольких минут. Статус отображается в приложении — нажми «Обновить статус подписки» в настройках.</p>
   <h3>5. Ограничения</h3>
   <ul>
     <li>Доступ предоставляется для личного некоммерческого использования.</li>
     <li>Передача доступа третьим лицам запрещена.</li>
     <li>Запрещено использование сервиса для нарушения действующего законодательства Российской Федерации.</li>
   </ul>
-
   <h3>6. Возврат</h3>
-  <p>В соответствии с Законом РФ «О защите прав потребителей» и особенностями оказания услуг в электронной форме, возврат денежных средств после активации доступа не производится, если услуга была предоставлена надлежащим образом.</p>
+  <p>В соответствии с Законом РФ «О защите прав потребителей», возврат денежных средств после активации доступа не производится, если услуга была предоставлена надлежащим образом.</p>
   <p>В случае технической невозможности оказания услуги по вине Исполнителя срок доступа продлевается на период недоступности сервиса.</p>
-
   <h3>7. Ответственность</h3>
   <p>Исполнитель не несёт ответственности за временную недоступность сервиса, вызванную действиями третьих лиц или форс-мажорными обстоятельствами.</p>
-
   <h3>8. Разрешение споров</h3>
   <p>Все споры разрешаются путём переговоров. При невозможности — в суде по месту жительства Исполнителя.</p>
-
   <h3>9. Контакты</h3>
   <p>Email: <a href="mailto:knopka-supp@mail.ru">knopka-supp@mail.ru</a></p>
-  <p>ФИО: <a>Мартынов Роман Сергеевич</a></p>
-  <p>Телефон: <a>+7 916 358 67 96</a></p>
-  <p>Локация: <a>г. Москва</a></p>
+  <p>ФИО: Мартынов Роман Сергеевич</p>
+  <p>Телефон: +7 916 358 67 96</p>
+  <p>Локация: г. Москва</p>
 </div>
 
-<!-- Политика конфиденциальности -->
 <div class="legal" id="privacy">
   <h2>Политика конфиденциальности</h2>
-
   <h3>1. Какие данные мы собираем</h3>
   <ul>
     <li>Device ID — уникальный идентификатор устройства, генерируется приложением на стороне пользователя.</li>
     <li>Дата и срок действия подписки.</li>
     <li>Данные платёжных транзакций хранятся в ЮKassa; мы получаем только факт успешной оплаты и Device ID.</li>
   </ul>
-
   <h3>2. Как мы используем данные</h3>
   <p>Данные используются исключительно для активации и проверки доступа к сервису. Мы не передаём данные третьим лицам, за исключением случаев, предусмотренных законодательством РФ.</p>
-
   <h3>3. Персональные данные</h3>
   <p>Мы не запрашиваем имя, email, телефон или иные персональные данные. Device ID является псевдонимизированным идентификатором и не позволяет идентифицировать личность пользователя.</p>
-
   <h3>4. Сетевой трафик</h3>
   <p>Мы не ведём логи сетевой активности пользователей.</p>
-
   <h3>5. Хранение данных</h3>
   <p>Данные хранятся на защищённых серверах с использованием современных стандартов информационной безопасности.</p>
-
   <h3>6. Удаление данных</h3>
   <p>По запросу на <a href="mailto:knopka-supp@mail.ru">knopka-supp@mail.ru</a> данные будут удалены в течение 30 дней.</p>
-
   <h3>7. Контакты</h3>
   <p>Email: <a href="mailto:knopka-supp@mail.ru">knopka-supp@mail.ru</a></p>
 </div>
 
 <footer>
-  © 2026 КнопкА · <a href="#oferta" style="color:#555;text-decoration:none;">Оферта</a> · <a href="#privacy" style="color:#555;text-decoration:none;">Конфиденциальность</a> · <a href="#contacts" style="color:#555;text-decoration:none;">Контакты</a>
+  © 2026 КнопкА ·
+  <a href="#oferta" style="color:#555;text-decoration:none;">Оферта</a> ·
+  <a href="#privacy" style="color:#555;text-decoration:none;">Конфиденциальность</a> ·
+  <a href="#contacts" style="color:#555;text-decoration:none;">Контакты</a>
 </footer>
+
+<script>
+  (function() {
+    var WORKER_BUY = "https://avpn-proxy.mrs885.workers.dev/buy";
+    var TF_LINK    = "https://testflight.apple.com/join/XXXXXXXX"; // TODO: заменить на реальную ссылку
+
+    var params   = new URLSearchParams(window.location.search);
+    var deviceId = params.get("device_id");
+    var UUID_RE  = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+    if (deviceId && UUID_RE.test(deviceId)) {
+      // Пришёл из приложения — показываем кнопку оплаты
+      var btn = document.getElementById("btn-pay");
+      btn.href = WORKER_BUY + "?device_id=" + encodeURIComponent(deviceId);
+    } else {
+      // Зашёл напрямую — прячем блок оплаты, показываем блок TestFlight
+      document.getElementById("pricing").style.display = "none";
+      var noApp = document.getElementById("no-app");
+      noApp.style.display = "block";
+      document.getElementById("btn-tf").href = TF_LINK;
+    }
+  })();
+</script>
 
 </body>
 </html>

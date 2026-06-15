@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ошибка — КнопкА</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0d0d0d; color: #e8e8e8;
+      min-height: 100vh; display: flex; flex-direction: column;
+    }
+    header {
+      background: #111; border-bottom: 1px solid #1e1e1e;
+      padding: 16px 24px; display: flex; align-items: center; gap: 12px;
+    }
+    header .logo {
+      width: 36px; height: 36px; background: #00c853; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 18px; color: #0d0d0d;
+    }
+    header h1 { font-size: 18px; font-weight: 700; color: #fff; }
+    .main {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      padding: 48px 24px;
+    }
+    .card {
+      background: #161616; border: 1px solid #1e1e1e; border-radius: 20px;
+      padding: 48px 40px; max-width: 440px; width: 100%; text-align: center;
+    }
+    .icon-err {
+      width: 72px; height: 72px; background: #ff3b3020; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px; font-size: 36px;
+    }
+    h2 { font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .sub { font-size: 16px; color: #888; margin-bottom: 32px; line-height: 1.6; }
+    .btn-retry {
+      display: inline-block; background: #222; color: #fff;
+      font-size: 15px; font-weight: 600; padding: 12px 32px;
+      border-radius: 10px; text-decoration: none; cursor: pointer;
+      border: 1px solid #333; margin-bottom: 20px; transition: background 0.2s;
+    }
+    .btn-retry:hover { background: #2a2a2a; }
+    .support { font-size: 13px; color: #555; }
+    .support a { color: #00c853; text-decoration: none; }
+    footer {
+      background: #111; border-top: 1px solid #1e1e1e;
+      padding: 16px 24px; text-align: center; font-size: 13px; color: #444;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">A</div>
+  <h1>КнопкА</h1>
+</header>
+
+<div class="main">
+  <div class="card">
+    <div class="icon-err">😔</div>
+    <h2>Что-то пошло не так</h2>
+    <p class="sub" id="err-msg">Не удалось создать платёж. Попробуй ещё раз или напиши нам.</p>
+
+    <a class="btn-retry" href="javascript:history.back()">← Попробовать снова</a>
+
+    <p class="support">
+      Поддержка: <a href="mailto:knopka-supp@mail.ru">knopka-supp@mail.ru</a>
+    </p>
+  </div>
+</div>
+
+<footer>© 2026 КнопкА</footer>
+
+<script>
+  // Показываем понятное сообщение в зависимости от reason
+  var reason = new URLSearchParams(window.location.search).get("reason");
+  var messages = {
+    "invalid_device":       "Ссылка недействительна. Открой страницу оплаты из приложения.",
+    "device_not_found":     "Устройство не найдено. Открой приложение и попробуй снова.",
+    "payment_create_failed":"Не удалось создать платёж. Попробуй чуть позже или напиши нам.",
+    "no_confirmation_url":  "Ошибка при обращении к платёжному сервису. Напиши нам.",
+    "network_error":        "Проблема с сетью. Проверь интернет и попробуй снова.",
+  };
+  if (reason && messages[reason]) {
+    document.getElementById("err-msg").textContent = messages[reason];
+  }
+</script>
+
+</body>
+</html>
