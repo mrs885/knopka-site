@@ -135,8 +135,10 @@
 <body>
 
 <header>
-  <div class="logo">A</div>
-  <h1>КнопкА</h1>
+  <a href="https://testflight.apple.com/join/XXXXXXXX" target="_blank" id="hdr-link" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+    <div class="logo">A</div>
+    <h1>КнопкА</h1>
+  </a>
 </header>
 
 <section class="hero">
@@ -295,6 +297,9 @@
     var params   = new URLSearchParams(window.location.search);
     var deviceId = params.get("device_id");
     var UUID_RE  = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+    // Логотип в шапке всегда ведёт на TestFlight
+    document.getElementById("hdr-link").href = TF_LINK;
 
     if (deviceId && UUID_RE.test(deviceId)) {
       // Пришёл из приложения — показываем кнопку оплаты
