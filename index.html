@@ -118,8 +118,22 @@
     .contacts p { font-size: 14px; color: #666; }
     .contacts a { color: #00c853; text-decoration: none; }
 
-    .legal { max-width: 760px; margin: 0 auto; padding: 48px 24px 0; }
-    .legal h2 { font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 24px; padding-top: 24px; border-top: 1px solid #1e1e1e; }
+    .legal { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .legal-toggle {
+      display: flex; align-items: center; justify-content: space-between;
+      cursor: pointer; padding: 24px 0;
+      border-top: 1px solid #1e1e1e;
+      user-select: none;
+    }
+    .legal-toggle h2 {
+      font-size: 24px; font-weight: 800; color: #fff; margin: 0;
+    }
+    .legal-toggle .chevron {
+      font-size: 18px; color: #555; transition: transform 0.25s ease;
+    }
+    .legal-toggle.open .chevron { transform: rotate(180deg); }
+    .legal-body { display: none; padding-bottom: 24px; }
+    .legal-body.open { display: block; }
     .legal h3 { font-size: 16px; font-weight: 700; color: #ccc; margin: 20px 0 8px; }
     .legal p, .legal li { font-size: 14px; color: #777; margin-bottom: 8px; }
     .legal ul { padding-left: 20px; }
@@ -227,7 +241,11 @@
 </section>
 
 <div class="legal" id="oferta">
-  <h2>Публичная оферта</h2>
+  <div class="legal-toggle" onclick="toggleLegal(this)">
+    <h2>Публичная оферта</h2>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="legal-body">
   <h3>1. Общие положения</h3>
   <p>Настоящий документ является публичной офертой (ст. 437 ГК РФ) и адресован любому физическому лицу, желающему приобрести доступ к сервису сетевой безопасности КнопкА.</p>
   <p>Исполнитель: физическое лицо</p>
@@ -255,10 +273,15 @@
   <h3>9. Контакты</h3>
   <p>Email: <a href="mailto:knopka-supp@mail.ru">knopka-supp@mail.ru</a></p>
   <p>Локация: г. Москва</p>
+  </div>
 </div>
 
 <div class="legal" id="privacy">
-  <h2>Политика конфиденциальности</h2>
+  <div class="legal-toggle" onclick="toggleLegal(this)">
+    <h2>Политика конфиденциальности</h2>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="legal-body">
   <h3>1. Какие данные мы собираем</h3>
   <ul>
     <li>Device ID — уникальный идентификатор устройства, генерируется приложением на стороне пользователя.</li>
@@ -277,6 +300,7 @@
   <p>По запросу на <a href="mailto:knopka-supp@mail.ru">knopka-supp@mail.ru</a> данные будут удалены в течение 30 дней.</p>
   <h3>7. Контакты</h3>
   <p>Email: <a href="mailto:knopka-supp@mail.ru">knopka-supp@mail.ru</a></p>
+  </div>
 </div>
 
 <footer>
@@ -310,6 +334,13 @@
       document.getElementById("btn-tf").href = TF_LINK;
     }
   })();
+
+  function toggleLegal(toggle) {
+    var body = toggle.nextElementSibling;
+    var isOpen = body.classList.contains("open");
+    body.classList.toggle("open", !isOpen);
+    toggle.classList.toggle("open", !isOpen);
+  }
 </script>
 
 </body>
