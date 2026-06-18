@@ -66,8 +66,9 @@
 
 <script>
   const WORKER = "https://avpn-proxy.mrs885.workers.dev";
-  const MAX_ATTEMPTS = 3;
-  const INTERVAL_MS = 1000;
+  const MAX_ATTEMPTS = 10;
+  const INTERVAL_MS  = 2000;  // пауза между попытками
+  const FETCH_TIMEOUT = 5000; // таймаут одного запроса
 
   const params = new URLSearchParams(window.location.search);
   const deviceId = params.get("device_id");
@@ -78,9 +79,23 @@
     checkPayment(1);
   }
 
+  async function fetchWithTimeout(url, timeoutMs) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      const resp = await fetch(url, { signal: controller.signal });
+      return resp;
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
   async function checkPayment(attempt) {
     try {
-      const resp = await fetch(`${WORKER}/api/payment/today?device_id=${encodeURIComponent(deviceId)}`);
+      const resp = await fetchWithTimeout(
+        `${WORKER}/api/payment/today?device_id=${encodeURIComponent(deviceId)}`,
+        FETCH_TIMEOUT
+      );
       const data = await resp.json();
 
       if (data.found) {
@@ -88,13 +103,13 @@
         return;
       }
     } catch (e) {
-      // сеть не ответила — попробуем ещё раз
+      // fetch завис или сеть недоступна — AbortController прервал, идём дальше
     }
 
     if (attempt < MAX_ATTEMPTS) {
       setTimeout(() => checkPayment(attempt + 1), INTERVAL_MS);
     } else {
-      // Вебхук не пришёл за ~7.5 секунд — оплата не завершена
+      // 10 попыток × (5с таймаут + 2с пауза) = максимум ~70с
       window.location.href = "/notfound.html?device_id=" + encodeURIComponent(deviceId);
     }
   }
