@@ -66,9 +66,9 @@
 
 <script>
   const WORKER = "https://avpn-proxy.mrs885.workers.dev";
-  const MAX_ATTEMPTS = 10;
-  const INTERVAL_MS  = 2000;  // пауза между попытками
-  const FETCH_TIMEOUT = 5000; // таймаут одного запроса
+  const MAX_ATTEMPTS  = 5;
+  const INTERVAL_MS   = 3000;  // пауза между попытками
+  const FETCH_TIMEOUT = 3000;  // таймаут одного запроса — итого max ~15с
 
   const params = new URLSearchParams(window.location.search);
   const deviceId = params.get("device_id");
