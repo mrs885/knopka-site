@@ -40,6 +40,10 @@
       display: inline-block; background: #00c853; color: #000;
       font-weight: 700; font-size: 16px; padding: 14px 32px;
       border-radius: 12px; text-decoration: none; margin-bottom: 24px;
+      border: none; cursor: pointer; width: 100%;
+    }
+    .btn:disabled {
+      background: #333; color: #666; cursor: not-allowed;
     }
     .support { font-size: 13px; color: #555; }
     .support a { color: #00c853; text-decoration: none; }
@@ -60,14 +64,14 @@
 
 <div class="main">
   <div class="card">
-    <div class="icon">🔍</div>
-    <h2>Платёж не найден</h2>
-    <p class="sub">Похоже, оплата не была завершена. Если вы передумали — всё в порядке, можно попробовать снова в любой момент.</p>
+    <div class="icon" id="status-icon">🔍</div>
+    <h2 id="status-title">Платёж не найден</h2>
+    <p class="sub" id="status-sub">Похоже, оплата ещё не подтверждена. Если вы только что оплатили — нажмите кнопку ниже, мы проверим ещё раз.</p>
 
-    <a class="btn" id="retry-btn" href="/">Попробовать снова</a>
+    <button class="btn" id="retry-btn" onclick="recheck()">Проверить снова</button>
 
-    <p class="support">
-      Оплатили, но страница не обновилась?<br>
+    <p class="support" id="support-msg">
+      Оплатили, но платёж не находится?<br>
       Напишите нам: <a href="mailto:knopka-supp@mail.ru">knopka-supp@mail.ru</a>
     </p>
   </div>
@@ -76,11 +80,40 @@
 <footer>© 2026 КнопкА</footer>
 
 <script>
-  // Подставляем device_id в ссылку "Попробовать снова" если он есть в URL
+  const WORKER = "https://avpn-proxy.mrs885.workers.dev";
   const params = new URLSearchParams(window.location.search);
   const deviceId = params.get("device_id");
-  if (deviceId) {
-    document.getElementById("retry-btn").href = "/?device_id=" + encodeURIComponent(deviceId);
+
+  async function recheck() {
+    if (!deviceId) return;
+
+    const btn = document.getElementById("retry-btn");
+    const icon = document.getElementById("status-icon");
+    const title = document.getElementById("status-title");
+    const sub = document.getElementById("status-sub");
+
+    btn.disabled = true;
+    btn.textContent = "Проверяем…";
+    icon.textContent = "⏳";
+
+    try {
+      const resp = await fetch(`${WORKER}/api/payment/today?device_id=${encodeURIComponent(deviceId)}`);
+      const data = await resp.json();
+
+      if (data.found) {
+        window.location.href = "/found.html?device_id=" + encodeURIComponent(deviceId);
+        return;
+      }
+    } catch (e) {
+      // сеть не ответила
+    }
+
+    // Платёж всё ещё не найден
+    icon.textContent = "🔍";
+    title.textContent = "Платёж пока не найден";
+    sub.textContent = "Платёж ещё не подтверждён банком. Подождите немного и попробуйте ещё раз. Если вы не завершали оплату — можете закрыть эту страницу.";
+    btn.disabled = false;
+    btn.textContent = "Проверить снова";
   }
 </script>
 
