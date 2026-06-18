@@ -64,7 +64,7 @@
   <div class="card">
     <div class="icon-err">😔</div>
     <h2>Что-то пошло не так</h2>
-    <p class="sub" id="err-msg">Не удалось создать платёж. Попробуй ещё раз или напиши нам.</p>
+    <p class="sub" id="err-msg">Не удалось создать платёж. Попробуйте ещё раз или напишите нам.</p>
 
     <a class="btn-retry" href="javascript:history.back()">← Попробовать снова</a>
 
@@ -80,11 +80,11 @@
   // Показываем понятное сообщение в зависимости от reason
   var reason = new URLSearchParams(window.location.search).get("reason");
   var messages = {
-    "invalid_device":       "Ссылка недействительна. Открой страницу оплаты из приложения.",
-    "device_not_found":     "Устройство не найдено. Открой приложение и попробуй снова.",
-    "payment_create_failed":"Не удалось создать платёж. Попробуй чуть позже или напиши нам.",
-    "no_confirmation_url":  "Ошибка при обращении к платёжному сервису. Напиши нам.",
-    "network_error":        "Проблема с сетью. Проверь интернет и попробуй снова.",
+    "invalid_device":       "Ссылка недействительна. Откройте страницу оплаты из приложения.",
+    "device_not_found":     "Устройство не найдено. Откройте приложение и попробуйте снова.",
+    "payment_create_failed":"Не удалось создать платёж. Попробуйте чуть позже или напишите нам.",
+    "no_confirmation_url":  "Ошибка при обращении к платёжному сервису. Напишите нам.",
+    "network_error":        "Проблема с сетью. Проверьте интернет и попробуйте снова.",
   };
   if (reason && messages[reason]) {
     document.getElementById("err-msg").textContent = messages[reason];
