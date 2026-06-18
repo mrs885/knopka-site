@@ -81,23 +81,38 @@
 
 <script>
   const WORKER = "https://avpn-proxy.mrs885.workers.dev";
+  const FETCH_TIMEOUT = 3000;
+
   const params = new URLSearchParams(window.location.search);
   const deviceId = params.get("device_id");
+
+  async function fetchWithTimeout(url, timeoutMs) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      return await fetch(url, { signal: controller.signal });
+    } finally {
+      clearTimeout(timer);
+    }
+  }
 
   async function recheck() {
     if (!deviceId) return;
 
-    const btn = document.getElementById("retry-btn");
-    const icon = document.getElementById("status-icon");
+    const btn   = document.getElementById("retry-btn");
+    const icon  = document.getElementById("status-icon");
     const title = document.getElementById("status-title");
-    const sub = document.getElementById("status-sub");
+    const sub   = document.getElementById("status-sub");
 
     btn.disabled = true;
     btn.textContent = "Проверяем…";
     icon.textContent = "⏳";
 
     try {
-      const resp = await fetch(`${WORKER}/api/payment/today?device_id=${encodeURIComponent(deviceId)}`);
+      const resp = await fetchWithTimeout(
+        `${WORKER}/api/payment/today?device_id=${encodeURIComponent(deviceId)}`,
+        FETCH_TIMEOUT
+      );
       const data = await resp.json();
 
       if (data.found) {
@@ -105,10 +120,9 @@
         return;
       }
     } catch (e) {
-      // сеть не ответила
+      // fetch завис или сеть недоступна
     }
 
-    // Платёж всё ещё не найден
     icon.textContent = "🔍";
     title.textContent = "Платёж пока не найден";
     sub.textContent = "Платёж ещё не подтверждён банком. Подождите немного и попробуйте ещё раз. Если вы не завершали оплату — можете закрыть эту страницу.";
