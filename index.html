@@ -312,11 +312,12 @@
 
 <script>
   (function() {
-    var WORKER_BUY = "https://avpn-prod.mrs885.workers.dev/buy";
     var TF_LINK    = "https://testflight.apple.com/join/66AbtsBG"; // TODO: заменить на реальную ссылку
 
     var params   = new URLSearchParams(window.location.search);
     var deviceId = params.get("device_id");
+    var apiBase  = params.get("api_base") || "https://avpn-prod.mrs885.workers.dev";
+    var WORKER_BUY = apiBase + "/buy";
     var UUID_RE  = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
     // Логотип в шапке всегда ведёт на TestFlight
