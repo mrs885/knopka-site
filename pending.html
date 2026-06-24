@@ -71,7 +71,7 @@
 
   const params   = new URLSearchParams(window.location.search);
   const deviceId = params.get("device_id");
-  const apiBase  = params.get("api_base") ?? "https://avpn-proxy.mrs885.workers.dev";
+  const apiBase  = params.get("api_base") ?? "https://avpn-prod.mrs885.workers.dev";
 
   if (!deviceId) {
     window.location.href = "/notfound.html";
