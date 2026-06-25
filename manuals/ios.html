@@ -109,15 +109,14 @@
     }
     .img-block img { max-width: 100%; border-radius: 8px; display: block; margin: 0 auto; }
 
-    /* TestFlight brand button (blue) */
-    .btn-tf-apple {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: #0071e3; color: #fff; font-size: 18px; font-weight: 700;
-      padding: 12px 24px; border-radius: 14px; text-decoration: none;
-      transition: opacity 0.2s; margin: 4px 0 8px; vertical-align: middle;
+    /* TestFlight inline link */
+    .tf-inline {
+      display: inline-flex; align-items: center; gap: 7px;
+      text-decoration: none; vertical-align: middle;
     }
-    .btn-tf-apple:hover { opacity: 0.85; }
-    .btn-tf-apple img { width: 30px; height: 30px; border-radius: 7px; flex-shrink: 0; }
+    .tf-inline img { width: 24px; height: 24px; border-radius: 6px; flex-shrink: 0; }
+    .tf-inline span { color: #0071e3; font-weight: 700; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+    .tf-inline:hover span { border-bottom-color: #0071e3; }
 
     /* TestFlight invite button (white, like landing) */
     .btn-tf {
@@ -207,10 +206,7 @@
 <section id="install">
   <div class="section-num">Инструкция по установке ВПН на iOS</div>
 
-  <p>Приложение устанавливается через <a class="btn-tf-apple" href="https://testflight.apple.com" target="_blank">
-    <img src="../assets/testflight-icon.jpg" alt="TestFlight">
-    TestFlight
-  </a> — официальный инструмент Apple для установки бета-версий приложений.</p>
+  <p>Приложение устанавливается через <a class="tf-inline" href="https://testflight.apple.com" target="_blank"><img src="../assets/testflight-icon.jpg" alt="TestFlight"><span>TestFlight</span></a> — официальный инструмент Apple для установки бета-версий приложений.</p>
 
   <ol class="steps">
     <li><p>Нажмите кнопку ниже, чтобы открыть ссылку приглашения:<br><br>
