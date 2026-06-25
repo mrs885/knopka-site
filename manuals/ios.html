@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>КнопкА — Инструкция для iPhone и iPad</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0d0d0d;
+      color: #e8e8e8;
+      line-height: 1.7;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 64px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 32px 0 40px;
+      border-bottom: 1px solid #1e1e1e;
+      margin-bottom: 48px;
+    }
+    .logo {
+      width: 40px; height: 40px;
+      background: #00c853; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 20px; color: #0d0d0d; flex-shrink: 0;
+    }
+    header h1 { font-size: 20px; font-weight: 700; color: #fff; }
+    header .subtitle { font-size: 13px; color: #555; margin-top: 2px; }
+
+    /* Sections */
+    section { margin-bottom: 56px; }
+
+    .section-num {
+      font-size: 12px; font-weight: 700; color: #00c853;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-size: 26px; font-weight: 800; color: #fff;
+      margin-bottom: 20px; line-height: 1.25;
+    }
+    h3 {
+      font-size: 16px; font-weight: 700; color: #ccc;
+      margin: 24px 0 10px;
+    }
+    p { font-size: 15px; color: #888; margin-bottom: 14px; }
+    p strong { color: #e0e0e0; }
+
+    /* Warning box */
+    .callout {
+      background: #161616; border-left: 3px solid #00c853;
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px; margin-bottom: 20px;
+    }
+    .callout p { margin: 0; }
+    .callout.warn { border-left-color: #ff9800; }
+    .callout.warn p { color: #999; }
+
+    /* Steps list */
+    ol.steps { list-style: none; counter-reset: step; padding: 0; }
+    ol.steps li {
+      counter-increment: step;
+      display: flex; gap: 16px; align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    ol.steps li::before {
+      content: counter(step);
+      min-width: 28px; height: 28px;
+      background: #00c853; border-radius: 50%;
+      color: #000; font-weight: 800; font-size: 13px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    ol.steps li p { margin: 0; }
+
+    /* Plain list */
+    ul.plain { list-style: none; padding: 0; }
+    ul.plain li {
+      padding: 8px 0;
+      border-bottom: 1px solid #1a1a1a;
+      font-size: 15px; color: #888;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    ul.plain li:last-child { border-bottom: none; }
+    ul.plain li::before { content: "•"; color: #00c853; font-weight: 700; flex-shrink: 0; }
+
+    /* FAQ */
+    .faq-item { margin-bottom: 20px; }
+    .faq-q {
+      font-size: 15px; font-weight: 700; color: #e0e0e0;
+      margin-bottom: 6px;
+    }
+    .faq-a { font-size: 14px; color: #777; }
+
+    /* Image placeholder */
+    .img-block {
+      background: #111; border: 1px dashed #2a2a2a;
+      border-radius: 12px; padding: 32px;
+      text-align: center; margin: 20px 0;
+      color: #444; font-size: 13px;
+    }
+    .img-block img { max-width: 100%; border-radius: 8px; display: block; margin: 0 auto; }
+
+    /* Divider */
+    hr { border: none; border-top: 1px solid #1e1e1e; margin: 48px 0; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid #1e1e1e;
+      padding-top: 24px;
+      font-size: 13px; color: #444; text-align: center;
+    }
+    footer a { color: #00c853; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">A</div>
+  <div>
+    <h1>КнопкА</h1>
+    <div class="subtitle">Инструкция пользователя · iPhone / iPad</div>
+  </div>
+</header>
+
+<!-- 1. Важная информация -->
+<section id="important">
+  <div class="section-num">Раздел 1</div>
+  <h2>Важная информация</h2>
+
+  <div class="callout">
+    <p>КнопкА — это сервис сетевой безопасности для iOS. Приложение шифрует интернет-трафик устройства и обеспечивает защиту соединения в публичных сетях.</p>
+  </div>
+
+  <div class="callout warn">
+    <p><strong>Обратите внимание:</strong> КнопкА распространяется через TestFlight и предназначена для личного некоммерческого использования. Не передавайте доступ третьим лицам.</p>
+  </div>
+
+  <h3>Системные требования</h3>
+  <ul class="plain">
+    <li>iOS 15.0 или новее</li>
+    <li>iPhone или iPad</li>
+    <li>Доступ в интернет для активации подписки</li>
+  </ul>
+
+  <h3>Ваши данные</h3>
+  <p>Приложение не собирает персональные данные. Для работы используется только <strong>Device ID</strong> — уникальный идентификатор, сгенерированный на вашем устройстве. Логи сетевой активности не ведутся.</p>
+</section>
+
+<!-- 2. Как установить -->
+<section id="install">
+  <div class="section-num">Раздел 2</div>
+  <h2>Как установить</h2>
+
+  <p>Приложение устанавливается через <strong>TestFlight</strong> — официальный инструмент Apple для бета-тестирования.</p>
+
+  <ol class="steps">
+    <li><p>Установите приложение <strong>TestFlight</strong> из App Store, если ещё не установлено.</p></li>
+    <li><p>Перейдите по ссылке приглашения: <strong>testflight.apple.com/join/66AbtsBG</strong></p></li>
+    <li><p>Нажмите <strong>«Принять»</strong>, затем <strong>«Установить»</strong> — КнопкА появится на экране.</p></li>
+    <li><p>Откройте КнопкА. При первом запуске приложение попросит разрешение на добавление VPN-конфигурации — нажмите <strong>«Разрешить»</strong>.</p></li>
+    <li><p>В настройках укажите ваш <strong>email</strong>. После этого активируется <strong style="color:#00c853">3 дня бесплатного использования</strong>.</p></li>
+  </ol>
+
+  <div class="img-block">
+    <!-- Место для скриншота установки -->
+    Скриншот: экран приветствия приложения
+  </div>
+</section>
+
+<!-- 3. Основной функционал -->
+<section id="features">
+  <div class="section-num">Раздел 3</div>
+  <h2>Основной функционал</h2>
+
+  <h3>Включение и выключение</h3>
+  <p>Главный экран — одна большая кнопка. Нажмите её, чтобы включить защиту. Нажмите ещё раз, чтобы выключить. Статус соединения отображается прямо на экране.</p>
+
+  <div class="img-block">
+    <!-- Место для скриншота главного экрана -->
+    Скриншот: главный экран с кнопкой включения
+  </div>
+
+  <h3>Умная маршрутизация</h3>
+  <p>КнопкА автоматически определяет, какой трафик нужно защищать, и не мешает работе локальных сервисов. Российские сайты и сервисы, которым не нужен VPN, продолжают работать напрямую.</p>
+
+  <h3>Выбор сервера</h3>
+  <p>В приложении доступно несколько серверов в разных странах. Листайте карусель на главном экране, чтобы выбрать нужный. Активный сервер подсвечивается.</p>
+
+  <div class="img-block">
+    <!-- Место для скриншота карусели серверов -->
+    Скриншот: карусель выбора серверов
+  </div>
+
+  <h3>Настройки</h3>
+  <p>Раздел <strong>Настройки</strong> доступен через иконку шестерёнки. Здесь можно:</p>
+  <ul class="plain">
+    <li>Указать или изменить email</li>
+    <li>Проверить статус подписки</li>
+    <li>Перейти к оплате</li>
+    <li>Обратиться в поддержку</li>
+  </ul>
+</section>
+
+<!-- 4. Оплата и FAQ -->
+<section id="faq">
+  <div class="section-num">Раздел 4</div>
+  <h2>Оплата и часто задаваемые вопросы</h2>
+
+  <h3>Тарифы</h3>
+  <div class="callout">
+    <p><strong>300 ₽</strong> за 30 дней. Оплата через ЮKassa — картой или СБП. Доступ активируется сразу после подтверждения платежа.</p>
+  </div>
+
+  <h3>Как оплатить</h3>
+  <ol class="steps">
+    <li><p>Откройте <strong>Настройки</strong> в приложении.</p></li>
+    <li><p>Нажмите кнопку <strong>«Продлить»</strong> — откроется страница оплаты.</p></li>
+    <li><p>Оплатите картой или через СБП.</p></li>
+    <li><p>Вернитесь в приложение и нажмите <strong>«Обновить статус»</strong>.</p></li>
+  </ol>
+
+  <h3>Частые вопросы</h3>
+
+  <div class="faq-item">
+    <div class="faq-q">Приложение попросило разрешение на VPN — это нормально?</div>
+    <div class="faq-a">Да. iOS требует явного подтверждения при настройке VPN-соединения. КнопкА использует это разрешение только для шифрования вашего трафика.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Как понять, что VPN работает?</div>
+    <div class="faq-a">В строке статуса iPhone появится иконка VPN. На главном экране приложения статус изменится на «Подключено».</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Оплатил, но статус не обновился</div>
+    <div class="faq-a">Нажмите «Обновить статус» в настройках приложения. Если статус не изменился в течение нескольких минут — напишите в поддержку.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Можно ли использовать на нескольких устройствах?</div>
+    <div class="faq-a">Подписка привязана к одному Device ID (одному устройству). Для использования на другом устройстве потребуется отдельная подписка.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Что такое 3 дня бесплатно?</div>
+    <div class="faq-a">При первом запуске после указания email активируется бесплатный пробный период на 3 дня. Никаких оплат не требуется — просто установите приложение и введите email.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Как связаться с поддержкой?</div>
+    <div class="faq-a">Email: <a href="mailto:knopka-supp@mail.ru" style="color:#00c853">knopka-supp@mail.ru</a>. Укажите ваш Device ID из настроек — это ускорит решение вопроса.</div>
+  </div>
+</section>
+
+<footer>
+  © 2026 КнопкА · <a href="mailto:knopka-supp@mail.ru">knopka-supp@mail.ru</a>
+</footer>
+
+</body>
+</html>
