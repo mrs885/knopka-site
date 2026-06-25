@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>КнопкА — Инструкция для Mac</title>
+  <title>КнопкА — Инструкция для iPhone и iPad</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -32,20 +32,20 @@
       display: flex; align-items: center; justify-content: center;
       font-weight: 800; font-size: 20px; color: #0d0d0d; flex-shrink: 0;
     }
-    header h1 { font-size: 20px; font-weight: 700; color: #fff; }
+    header h1 { font-size: 30px; font-weight: 700; color: #fff; }
     header .subtitle { font-size: 13px; color: #555; margin-top: 2px; }
 
     /* Sections */
     section { margin-bottom: 56px; }
 
     .section-num {
-      font-size: 16px; font-weight: 700; color: #00c853;
-      text-transform: uppercase; letter-spacing: 1.5px;
-      margin-bottom: 8px;
+      font-size: 32px; font-weight: 700; color: #00c853;
+      letter-spacing: 1.5px;
+      margin-bottom: 38px;
     }
     h2 {
-      font-size: 34px; font-weight: 800; color: #fff;
-      margin-bottom: 20px; line-height: 1.25;
+      font-size: 30px; font-weight: 800; color: #fff;
+      margin-bottom: 40px; line-height: 1.25;
     }
     h3 {
       font-size: 21px; font-weight: 700; color: #ccc;
@@ -109,6 +109,25 @@
     }
     .img-block img { max-width: 100%; border-radius: 8px; display: block; margin: 0 auto; }
 
+    /* TestFlight brand button (blue) */
+    .btn-tf-apple {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: #fff; font-size: 28px; font-weight: 700;
+      padding: 6px 16px; border-radius: 14px; text-decoration: none;
+      transition: opacity 0.2s; margin: 4px 0 8px; vertical-align: middle;
+    }
+    .btn-tf-apple:hover { opacity: 0.85; }
+    .btn-tf-apple img { width: 30px; height: 30px; border-radius: 7px; flex-shrink: 0; }
+
+    /* TestFlight invite button (white, like landing) */
+    .btn-tf {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; color: #000; font-size: 18px; font-weight: 700;
+      padding: 14px 28px; border-radius: 10px; text-decoration: none;
+      transition: opacity 0.2s; margin: 4px 0 8px;
+    }
+    .btn-tf:hover { opacity: 0.85; }
+
     /* Divider */
     hr { border: none; border-top: 1px solid #1e1e1e; margin: 48px 0; }
 
@@ -125,157 +144,242 @@
 
 <header>
   <div class="logo">A</div>
-  <div>
-    <h1>КнопкА</h1>
-    <div class="subtitle">Инструкция пользователя · Mac</div>
-  </div>
+  <h1>КнопкА</h1>
 </header>
+
 
 <!-- 1. Важная информация -->
 <section id="important">
-  <div class="section-num">Раздел 1</div>
-  <h2>Важная информация</h2>
 
-  <div class="callout">
-    <p>КнопкА для Mac — приложение сетевой безопасности. Оно шифрует интернет-трафик компьютера и защищает соединение в публичных сетях. Управляется из строки меню macOS.</p>
+  <h2>Важная информация</h2>
+  
+  <div class="callout warn">
+    <p>
+      <strong>
+        Усиление блокировок
+      </strong> 
+      <p>
+        РКН постоянно совершенствует системы слежения и ограничения трафика. Стандартная ситуация: вчера работало, сегодня - нет
+      </p>
+    </p>
   </div>
 
   <div class="callout warn">
-    <p><strong>Обратите внимание:</strong> КнопкА распространяется через TestFlight и предназначена для личного некоммерческого использования. Не передавайте доступ третьим лицам.</p>
+    <p>
+      <strong>
+        Переключение ВПН
+      </strong> 
+      <p>
+        Большинство популярных сайтов в РФ не подключаются из за границы. Поиходится включать и выключать ВПН
+      </p>
+    </p>
   </div>
 
-  <h3>Системные требования</h3>
-  <ul class="plain">
-    <li>macOS 13.0 (Ventura) или новее</li>
-    <li>Mac на чипе Apple Silicon или Intel</li>
-    <li>Доступ в интернет для активации подписки</li>
-  </ul>
+  <div class="callout warn">
+    <p>
+      <strong>
+        Удаление приложений 
+      </strong> 
+      <p>
+        Apple по требованиям от РКН регулярно удаляет ВПН приложения из AppStore
+      </p>
+    </p>
+  </div>
 
-  <h3>Работа в условиях российских блокировок</h3>
-  <p>Роскомнадзор постоянно совершенствует системы слежения за трафиком: специальное оборудование на узлах связи анализирует, как именно вы подключаетесь к интернету. Из-за этого один и тот же VPN-сервер может работать у одного пользователя и быть заблокирован у другого — всё зависит от города и интернет-провайдера.</p>
-  <p>Вторая сложность: обычный VPN пропускает через себя весь трафик — в том числе российские сайты и сервисы. Из-за этого многие привычные ресурсы начинают работать хуже или вовсе перестают открываться. Приходится постоянно включать и выключать VPN вручную.</p>
-  <p>В КнопкА обе проблемы решены:</p>
-  <ul class="plain">
-    <li><strong>Умная маршрутизация</strong> — российские сайты и сервисы работают напрямую, без VPN. Защищается только тот трафик, которому это действительно нужно. Переключать ничего не нужно.</li>
-    <li><strong>Промежуточные серверы в РФ</strong> — подключение к зарубежным серверам идёт не напрямую, а через промежуточные узлы внутри России. Для провайдера это выглядит как обычный российский трафик, что существенно снижает риск блокировки.</li>
-  </ul>
+  <div class="callout">
+    <p>
+      <strong>
+          ВПН КнопкА
+      </strong> 
+      <ul class="plain">
+        <li>Имеет разные механизмы поднятия ВПН соединения и использует современные протоколы защиты</li>
+        <li>Поставляется со встроенной умной маршрутизацией, дающей возможность не отключать ВПН при работе с сайтами и приложениями РФ</li>
+        <li>Устанавливается через официальную платформу тестирования TestFlight Apple, к которой у РКН нет доступа</li>
+      </ul>
+    </p>  
+  </div>
 
-  <h3>Ваши данные</h3>
-  <p>Приложение не собирает персональные данные. Для работы используется только <strong>Device ID</strong> — уникальный идентификатор, сгенерированный на вашем устройстве. Логи сетевой активности не ведутся.</p>
+
 </section>
 
 <!-- 2. Как установить -->
 <section id="install">
-  <div class="section-num">Раздел 2</div>
-  <h2>Как установить</h2>
+  <div>&nbsp;</div>
+  <div>&nbsp;</div>
+  <h2>Инструкция по установке ВПН на macOS</h2>
 
-  <p>Приложение устанавливается через <strong>TestFlight для Mac</strong> — официальный инструмент Apple для бета-тестирования.</p>
+  <div>&nbsp;</div>
 
   <ol class="steps">
-    <li><p>Установите приложение <strong>TestFlight</strong> из Mac App Store, если ещё не установлено.</p></li>
-    <li><p>Перейдите по ссылке приглашения: <strong>testflight.apple.com/join/66AbtsBG</strong></p></li>
-    <li><p>Нажмите <strong>«Принять»</strong>, затем <strong>«Установить»</strong> — КнопкА появится в папке Программы.</p></li>
-    <li><p>Откройте КнопкА. При первом запуске macOS попросит разрешение на добавление VPN-конфигурации — нажмите <strong>«Разрешить»</strong> и введите пароль администратора.</p></li>
-    <li><p>В настройках укажите ваш <strong>email</strong>. После этого активируется <strong style="color:#00c853">3 дня бесплатного использования</strong>.</p></li>
+    <li>
+      <div style="margin-top: -20px;">
+        <a class="btn-tf" href="https://disk.yandex.ru/d/lRSJALcRcVW2DA" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Скачать образ
+        </a>
+      </div>
+    </li>
+    <li>
+      <div>
+        <p><strong>Перенесите в Applications</strong></p> 
+        <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;">
+          <img src="../assets/mac-01.jpg" alt="Установка через TestFlight" style="max-width:350px;width:calc(50% - 6px);border-radius:12px;flex:1 1 140px;">
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div>
+        <p><strong>После запуска разрешите установку профиля - Allow</strong></p>
+        
+        <div>&nbsp;</div>
+       
+        <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">
+          <img src="../assets/mac-02.jpg" alt="КнопкА в TestFlight" style="max-width:400px;width:calc(50% - 6px);border-radius:12px;flex:1 1 140px;">
+        </div>
+      </div>
+    </li>
+
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+
+    <li>
+      <div>
+        <p><strong>Нужно пройти регистрацию. Нажмите на текст о неактивной подписке и введите свой email. Приложением можно бесплатно пользоваться <strong style="color:#00c853">3 дня</strong>!</p>
+        <div>&nbsp;</div>
+        <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">
+          <img src="../assets/mac-06.jpg" alt="email" style="max-width:300px;width:calc(50% - 6px);border-radius:12px;flex:1 1 140px;">
+        </div>
+      </div>
+    </li>
+    
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+
+    <li>
+      <div>
+        <p><strong>Установите network extension - Open System Settings</strong></p>
+        <div>&nbsp;</div>
+        <div style="gap:12px;margin-top:12px">
+          <img src="../assets/mac-03.jpg" alt="ВПН Профиль" style="max-width:650px;width:calc(50% - 6px);border-radius:12px;flex:1 1 140px;">
+        </div>
+        <div style="gap:12px;margin-top:12px">
+          <img src="../assets/mac-04.jpg" alt="ВПН Профиль" style="max-width:650px;width:calc(50% - 6px);border-radius:12px;flex:1 1 140px;">
+        </div>
+        <div style="gap:12px;margin-top:12px">
+          <img src="../assets/mac-05.jpg" alt="ВПН Профиль" style="max-width:650px;width:calc(50% - 6px);border-radius:12px;flex:1 1 140px;">
+        </div>
+      </div>
+    </li>
+
   </ol>
 
-  <div class="img-block">
-    <!-- Место для скриншота установки -->
-    Скриншот: запрос разрешения VPN при первом открытии
-  </div>
 </section>
+
+<div>&nbsp;</div>
 
 <!-- 3. Основной функционал -->
 <section id="features">
-  <div class="section-num">Раздел 3</div>
-  <h2>Основной функционал</h2>
+  <h2>Особенности приложения</h2>
 
-  <h3>Иконка в строке меню</h3>
-  <p>После запуска КнопкА появляется в строке меню (menu bar) вверху экрана. Нажмите на иконку, чтобы открыть панель управления.</p>
-
-  <div class="img-block">
-    <!-- Место для скриншота menu bar -->
-    Скриншот: иконка КнопкА в строке меню
-  </div>
-
-  <h3>Включение и выключение</h3>
-  <p>На главном экране приложения — большая кнопка. Нажмите, чтобы включить защиту. Нажмите ещё раз — чтобы выключить. Статус соединения отображается на панели.</p>
-
-  <div class="img-block">
-    <!-- Место для скриншота главного экрана -->
-    Скриншот: главный экран с кнопкой и статусом
-  </div>
-
-  <h3>Умная маршрутизация</h3>
-  <p>КнопкА автоматически определяет, какой трафик нужно защищать. Российские сайты и сервисы, которым не нужен VPN, продолжают работать напрямую.</p>
-
-  <h3>Выбор сервера</h3>
-  <p>В приложении доступно несколько серверов. Выберите нужный прямо в окне приложения — карусель серверов отображается на главном экране.</p>
-
-  <h3>Настройки</h3>
-  <p>Раздел <strong>Настройки</strong> доступен через иконку шестерёнки. Здесь можно:</p>
-  <ul class="plain">
-    <li>Указать или изменить email</li>
-    <li>Проверить статус подписки</li>
-    <li>Перейти к оплате</li>
-    <li>Обратиться в поддержку</li>
-  </ul>
-</section>
-
-<!-- 4. Оплата и FAQ -->
-<section id="faq">
-  <div class="section-num">Раздел 4</div>
-  <h2>Оплата и часто задаваемые вопросы</h2>
-
-  <h3>Тарифы</h3>
-  <div class="callout">
-    <p><strong>300 ₽</strong> за 30 дней. Оплата через ЮKassa — картой или СБП. Доступ активируется сразу после подтверждения платежа.</p>
-  </div>
-
-  <h3>Как оплатить</h3>
   <ol class="steps">
-    <li><p>Откройте <strong>Настройки</strong> в приложении.</p></li>
-    <li><p>Нажмите кнопку <strong>«Продлить»</strong> — откроется страница оплаты в браузере.</p></li>
-    <li><p>Оплатите картой или через СБП.</p></li>
-    <li><p>Вернитесь в приложение и нажмите <strong>«Обновить статус»</strong>.</p></li>
+    <li>
+      <div>
+        <p><strong>Можно менять режимы работы ВПН. Авто для РФ - оптимальный, с ним можно не выключать ВПН и открывать российские популярные ресурсы и приложения</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <p><strong>При потери связи можно настроить автоматическое переподключение ВПН и смену на другой регион при потере связи</p>
+        <div>&nbsp;</div>
+        <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">
+          <img src="../assets/mac-07.jpg" alt="Настройки" style="max-width:300px;width:calc(50% - 6px);border-radius:12px;flex:1 1 140px;">
+        </div>
+      </div>
+    </li>
+
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div> 
+    <div>&nbsp;</div> 
+
+    <li>
+      <div>
+        <p><strong>В разделе Подписка показывается ваш email и срок действия подписки. Всегда можно продлить подписку по ссылке, совершив оплату по карте или переводом СБП. Если прошла оплата но статус не изменился, можно Обновить статус</strong></p>
+      </div>
+    </li>
+
+    <li>
+      <div>
+        <p><strong>Так как в разных регионах и у разных провайдеров какие-то инстранные серверы могут попасть в блокировки, их можно деактивироват и не показывать на основном экране, сняв галочки</strong></p>
+        <div>&nbsp;</div>
+        <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">
+          <img src="../assets/mac-08.jpg" alt="Настройки серверы" style="max-width:300px;width:calc(50% - 6px);border-radius:12px;flex:1 1 140px;">
+          <img src="../assets/mac-09.jpg" alt="ВПН подключен" style="max-width:300px;width:calc(50% - 6px);border-radius:12px;flex:1 1 140px;">
+        </div>
+      </div>
+    </li>
+
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+
+    <li>
+      <div>
+        <p><strong>Помимо прямого подключению к зарубежному серверу есть возможность подключиться через промежуточный прокси на территории РФ. Такой вид соединения может работать медленней. Флаг региона для такого подключения смешанный, как на последнем скриншоте</strong></p>
+      </div>
+    </li>
+
+    <li>
+      <div>
+        <p><strong>По возникающим вопросам можно писать на email поддержки с зарегестрированной почты, указывая при этом уникальный номер вашего устройства <strong style="color:#00c853">device_id</strong>, его можно скопировать из настроек </strong></p>
+      </div>
+    </li>
+
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    
   </ol>
-
-  <h3>Частые вопросы</h3>
-
-  <div class="faq-item">
-    <div class="faq-q">macOS запросил пароль при установке VPN — это нормально?</div>
-    <div class="faq-a">Да. macOS требует пароль администратора при создании VPN-конфигурации. КнопкА использует это разрешение только для шифрования вашего трафика.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q">Как понять, что VPN работает?</div>
-    <div class="faq-a">Иконка КнопкА в menu bar изменит вид. В окне приложения статус изменится на «Подключено».</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q">Оплатил, но статус не обновился</div>
-    <div class="faq-a">Нажмите «Обновить статус» в настройках приложения. Если статус не изменился в течение нескольких минут — напишите в поддержку.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q">Можно ли использовать на нескольких устройствах?</div>
-    <div class="faq-a">Подписка привязана к одному Device ID (одному устройству). Для использования на другом Mac потребуется отдельная подписка.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q">Что такое 3 дня бесплатно?</div>
-    <div class="faq-a">При первом запуске после указания email активируется бесплатный пробный период на 3 дня. Никаких оплат не требуется — просто установите приложение и введите email.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q">Приложение есть в App Store?</div>
-    <div class="faq-a">Пока нет — КнопкА распространяется через TestFlight. Ссылка для установки: testflight.apple.com/join/66AbtsBG</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q">Как связаться с поддержкой?</div>
-    <div class="faq-a">Email: <a href="mailto:knopka-supp@mail.ru" style="color:#00c853">knopka-supp@mail.ru</a>. Укажите ваш Device ID из настроек — это ускорит решение вопроса.</div>
-  </div>
 </section>
 
 <footer>
