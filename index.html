@@ -268,19 +268,19 @@
 
     <!-- Вкладки платформ -->
     <div class="platform-tabs">
-      <button class="tab-btn active" onclick="switchTab('android', this)">
+      <button class="tab-btn active" data-platform="android" onclick="switchTab('android', this)">
         <span class="tab-icon">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="1" width="14" height="22" rx="3"/><line x1="9" y1="4.5" x2="15" y2="4.5"/><circle cx="12" cy="19.5" r="0.8" fill="currentColor"/></svg>
         </span>
         Android
       </button>
-      <button class="tab-btn" onclick="switchTab('ios', this)">
+      <button class="tab-btn" data-platform="ios" onclick="switchTab('ios', this)">
         <span class="tab-icon">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="1" width="14" height="22" rx="3"/><line x1="9" y1="4.5" x2="15" y2="4.5"/><circle cx="12" cy="19.5" r="0.8" fill="currentColor"/></svg>
         </span>
         iPhone
       </button>
-      <button class="tab-btn" onclick="switchTab('mac', this)">
+      <button class="tab-btn" data-platform="mac" onclick="switchTab('mac', this)">
         <span class="tab-icon">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="13" rx="2"/><path d="M0 21h24M8 21l2-5M16 21l-2-5"/></svg>
         </span>
@@ -503,6 +503,13 @@
 
     // Логотип в шапке всегда ведёт на TestFlight
     document.getElementById("hdr-link").href = TF_LINK;
+
+    // Only known platform values can select a download tab.
+    var requestedPlatform = params.get("platform");
+    if (["android", "ios", "mac"].indexOf(requestedPlatform) !== -1) {
+      var requestedButton = document.querySelector('.tab-btn[data-platform="' + requestedPlatform + '"]');
+      if (requestedButton) switchTab(requestedPlatform, requestedButton);
+    }
 
     if (deviceId && UUID_RE.test(deviceId)) {
       // Пришёл из приложения — показываем кнопку оплаты
