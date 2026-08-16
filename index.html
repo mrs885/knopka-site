@@ -250,11 +250,17 @@
 
     <!-- Вкладки платформ -->
     <div class="platform-tabs">
-      <button class="tab-btn active" onclick="switchTab('ios', this)">
+      <button class="tab-btn active" onclick="switchTab('android', this)">
         <span class="tab-icon">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="1" width="14" height="22" rx="3"/><line x1="9" y1="4.5" x2="15" y2="4.5"/><circle cx="12" cy="19.5" r="0.8" fill="currentColor"/></svg>
         </span>
-        iPhone / iPad
+        Android
+      </button>
+      <button class="tab-btn" onclick="switchTab('ios', this)">
+        <span class="tab-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="1" width="14" height="22" rx="3"/><line x1="9" y1="4.5" x2="15" y2="4.5"/><circle cx="12" cy="19.5" r="0.8" fill="currentColor"/></svg>
+        </span>
+        iPhone
       </button>
       <button class="tab-btn" onclick="switchTab('mac', this)">
         <span class="tab-icon">
@@ -264,8 +270,32 @@
       </button>
     </div>
 
+    <!-- Android панель -->
+    <div class="tab-panel active" id="tab-android">
+      <a class="btn-docs" href="manuals/android.pdf" target="_blank">
+        <span class="docs-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </span>
+        Инструкция Android
+      </a>
+      <div style="padding: 5px;"></div>
+      <p> 
+        <a class="btn-tf" id="btn-tf" href="https://testflight.apple.com/join/66AbtsBG" target="_blank" style="margin-left: 10px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Скачать .apk
+        </a>
+      </p>
+      <p> 
+        После установки зайдите в приложение и зарегестрируйтесь с вашим email. Получите <strong style="color:#00c853">7 дней</strong> бесплатного использования!
+      </p>
+      <p> 
+        Если не получилось, читайте инструкцию и все получится!
+      </p>
+      <p class="no-app-hint">Требуется iOS 15.0 или новее</p>
+    </div>
+
     <!-- iOS панель -->
-    <div class="tab-panel active" id="tab-ios">
+    <div class="tab-panel" id="tab-ios">
       <a class="btn-docs" href="manuals/ios.pdf" target="_blank">
         <span class="docs-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
@@ -273,19 +303,19 @@
         Инструкция iOS
       </a>
       <div style="padding: 5px;"></div>
-      <p>Шаг 1 -<a class="btn-tf-apple" href="https://apps.apple.com/app/testflight/id899247664" target="_blank" style="font-size:16px;padding:6px 14px;border-radius:10px;margin:0 2px;vertical-align:middle;"><img src="./assets/testflight-icon.jpg" alt="TestFlight" style="width:42px;height:42px;border-radius:5px;">Скачать TestFlight</a></p>
+      <p><a class="btn-tf-apple" href="https://apps.apple.com/app/testflight/id899247664" target="_blank" style="font-size:16px;padding:6px 14px;border-radius:10px;margin:0 2px;vertical-align:middle;"><img src="./assets/testflight-icon.jpg" alt="TestFlight" style="width:42px;height:42px;border-radius:5px;">Скачать TestFlight</a></p>
       <!-- <p>При первом запуске после указания email вам будет предоставлено <strong style="color:#00c853">3 дня</strong> бесплатного использования для проверки работы ВПН. Ссылка на продление подписки появится в настройках приложения.</p> -->
-      <p> Шаг 2 - 
+      <p>
         <a class="btn-tf" id="btn-tf" href="https://testflight.apple.com/join/66AbtsBG" target="_blank" style="margin-left: 10px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
           Установить
         </a>
       </p>
       <p> 
-        Шаг 3 - После установки зайдите в приложение и зарегестрируйтесь с вашим email. Получите <strong style="color:#00c853">7 дней</strong> бесплатного использования!
+        После установки зайдите в приложение и зарегестрируйтесь с вашим email. Получите <strong style="color:#00c853">7 дней</strong> бесплатного использования!
       </p>
       <p> 
-        Шаг 4 - Если не получилось, читайте инструкцию и все получится!
+        Если не получилось, читайте инструкцию и все получится!
       </p>
       <p class="no-app-hint">Требуется iOS 15.0 или новее</p>
     </div>
@@ -299,17 +329,17 @@
         Инструкция Mac
       </a>
       <div style="padding: 5px;"></div>
-      <p>Шаг 1 -
+      <p>
         <a class="btn-tf" href="https://github.com/mrs885/a_vpn/releases/download/v1.0-build14/KnopkA.dmg" target="_blank" style="margin-left: 10px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
           Скачать .dmg образ
         </a>
         <div style="margin-top: -30px; color: #888;">(разрешите браузеру скачать файл)</div>
       </p>
-      <p>Шаг 2 - Открыть образ и перенести приложение <strong style="color:#00c853">КнопкА</strong> в Applications</p>
-      <p>Шаг 3 - После установки зайдите в приложение и зарегестрируйтесь с вашим email. Получите <strong style="color:#00c853">7 дней</strong> бесплатного использования!</p>
+      <p>Откройте образ и перенесите приложение <strong style="color:#00c853">КнопкА</strong> в Applications. Разрешите запуск системного расширения.</p>
+      <p>После установки зайдите в приложение и зарегестрируйтесь с вашим email. Получите <strong style="color:#00c853">7 дней</strong> бесплатного использования!</p>
       <p> 
-        Шаг 4 - Если не получилось, читайте инструкцию и все получится!
+        Если не получилось, читайте инструкцию и все получится!
       </p>
       <p class="no-app-hint">Требуется macOS 13.0 или новее</p>
     </div>
