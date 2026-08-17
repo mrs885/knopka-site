@@ -228,6 +228,24 @@
     .btn-apk:hover { opacity: 0.85; border-color: #ddd; }
     .btn-apk .play-icon { width: 30px; height: 33px; flex-shrink: 0; }
 
+    /* Telegram channel CTA: informative, but visually secondary to installation. */
+    .telegram-card {
+      display: flex; align-items: center; gap: 12px; width: 100%;
+      margin: 20px 0 22px; padding: 13px 14px; text-align: left;
+      border: 1px solid rgba(42, 171, 238, .38); border-radius: 13px;
+      background: linear-gradient(135deg, rgba(42, 171, 238, .14), rgba(42, 171, 238, .05));
+      color: #fff; text-decoration: none; transition: transform .2s, border-color .2s, background .2s;
+    }
+    .telegram-card:hover { transform: translateY(-1px); border-color: #2aabee; background: rgba(42, 171, 238, .18); }
+    .telegram-icon {
+      display: flex; align-items: center; justify-content: center; flex: 0 0 36px;
+      width: 36px; height: 36px; border-radius: 50%; background: #2aabee; color: #fff;
+    }
+    .telegram-copy { min-width: 0; flex: 1; }
+    .telegram-title { display: block; font-size: 14px; font-weight: 700; line-height: 1.25; }
+    .telegram-subtitle { display: block; margin-top: 2px; color: #aedcf5; font-size: 12px; line-height: 1.3; }
+    .telegram-arrow { color: #82d5ff; font-size: 20px; line-height: 1; }
+
     footer {
       background: #111; border-top: 1px solid #1e1e1e;
       padding: 20px 24px; text-align: center; font-size: 13px; color: #444;
@@ -321,6 +339,11 @@
       <p> 
         Если не получилось, читайте инструкцию и все получится!
       </p>
+      <a class="telegram-card" href="https://t.me/Knopka_VPN" target="_blank" rel="noopener" aria-label="Подписаться на Telegram-канал КнопкА">
+        <span class="telegram-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21.4 3.1 2.8 10.3c-1.3.5-1.3 1.2-.2 1.5l4.8 1.5 1.9 5.9c.2.6.1.9.8.9.5 0 .8-.2 1-.4l2.3-2.2 4.8 3.5c.9.5 1.5.3 1.7-.8l3.2-15c.3-1.3-.5-1.9-1.7-1.3ZM8.3 12.8l10.8-6.8c.5-.3 1-.1.6.3l-8.7 7.8-.3 3.4-2.4-4.7Z"/></svg></span>
+        <span class="telegram-copy"><span class="telegram-title">Новости и обновления КнопкА</span><span class="telegram-subtitle">Инструкции и сообщения о работе сервиса</span></span>
+        <span class="telegram-arrow" aria-hidden="true">→</span>
+      </a>
       <p class="no-app-hint">Требуется Android 8.0 или новее</p>
     </div>
 
@@ -347,6 +370,11 @@
       <p> 
         Если не получилось, читайте инструкцию и все получится!
       </p>
+      <a class="telegram-card" href="https://t.me/Knopka_VPN" target="_blank" rel="noopener" aria-label="Подписаться на Telegram-канал КнопкА">
+        <span class="telegram-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21.4 3.1 2.8 10.3c-1.3.5-1.3 1.2-.2 1.5l4.8 1.5 1.9 5.9c.2.6.1.9.8.9.5 0 .8-.2 1-.4l2.3-2.2 4.8 3.5c.9.5 1.5.3 1.7-.8l3.2-15c.3-1.3-.5-1.9-1.7-1.3ZM8.3 12.8l10.8-6.8c.5-.3 1-.1.6.3l-8.7 7.8-.3 3.4-2.4-4.7Z"/></svg></span>
+        <span class="telegram-copy"><span class="telegram-title">Новости и обновления КнопкА</span><span class="telegram-subtitle">Инструкции и сообщения о работе сервиса</span></span>
+        <span class="telegram-arrow" aria-hidden="true">→</span>
+      </a>
       <p class="no-app-hint">Требуется iOS 15.0 или новее</p>
     </div>
 
@@ -371,6 +399,11 @@
       <p> 
         Если не получилось, читайте инструкцию и все получится!
       </p>
+      <a class="telegram-card" href="https://t.me/Knopka_VPN" target="_blank" rel="noopener" aria-label="Подписаться на Telegram-канал КнопкА">
+        <span class="telegram-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21.4 3.1 2.8 10.3c-1.3.5-1.3 1.2-.2 1.5l4.8 1.5 1.9 5.9c.2.6.1.9.8.9.5 0 .8-.2 1-.4l2.3-2.2 4.8 3.5c.9.5 1.5.3 1.7-.8l3.2-15c.3-1.3-.5-1.9-1.7-1.3ZM8.3 12.8l10.8-6.8c.5-.3 1-.1.6.3l-8.7 7.8-.3 3.4-2.4-4.7Z"/></svg></span>
+        <span class="telegram-copy"><span class="telegram-title">Новости и обновления КнопкА</span><span class="telegram-subtitle">Инструкции и сообщения о работе сервиса</span></span>
+        <span class="telegram-arrow" aria-hidden="true">→</span>
+      </a>
       <p class="no-app-hint">Требуется macOS 13.0 или новее</p>
     </div>
 
