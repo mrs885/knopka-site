@@ -582,7 +582,7 @@
 
     // Only known platform values can select a download tab.
     var requestedPlatform = params.get("platform");
-    if (["android", "ios", "mac"].indexOf(requestedPlatform) !== -1) {
+    if (["android", "ios", "mac", "windows"].indexOf(requestedPlatform) !== -1) {
       var requestedButton = document.querySelector('.tab-btn[data-platform="' + requestedPlatform + '"]');
       if (requestedButton) switchTab(requestedPlatform, requestedButton);
     }
