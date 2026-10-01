@@ -25,17 +25,21 @@ try {
       width: document.documentElement.scrollWidth,
       height: document.documentElement.scrollHeight,
       brokenImages: [...document.images].filter(image => !image.complete || !image.naturalWidth).map(image => image.src),
-      wallBrand: rect('.wall-brand'),
+      wallLogo: rect('.wall-logo'),
       foregroundTitle: rect('.foreground-title'),
       titleText: document.querySelector('.foreground-title').textContent.replace(/\s+/g, ' ').trim(),
-      iconText: document.querySelector('.brand-icon').textContent.trim(),
+      logoNatural: {
+        width: document.querySelector('.wall-logo img').naturalWidth,
+        height: document.querySelector('.wall-logo img').naturalHeight,
+      },
     };
   });
 
   if (
     check.width !== 1254 || check.height !== 1568 || check.brokenImages.length ||
-    check.titleText !== 'КнопкА ВПН' || check.iconText !== 'A' ||
-    check.wallBrand.y < 110 || check.wallBrand.bottom > 390 ||
+    check.titleText !== 'КнопкА ВПН' ||
+    check.logoNatural.width !== 795 || check.logoNatural.height !== 800 ||
+    check.wallLogo.y < 20 || check.wallLogo.bottom > 580 ||
     check.foregroundTitle.y < 1160 || check.foregroundTitle.bottom > 1440 || errors.length
   ) {
     throw new Error(JSON.stringify({ check, errors }));

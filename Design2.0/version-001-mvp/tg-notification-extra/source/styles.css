@@ -31,89 +31,79 @@ body {
   height: 100%;
 }
 
-.wall-brand {
+.wall-logo {
   position: absolute;
-  top: 150px;
+  top: 42px;
   left: 50%;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  color: #37332f;
-  opacity: 0.28;
-  filter: drop-shadow(-7px 12px 15px rgba(91, 70, 52, 0.12));
+  width: 520px;
+  height: 520px;
+  opacity: 0.62;
+  filter:
+    saturate(0.82)
+    brightness(1.12)
+    drop-shadow(0 14px 24px rgba(0, 112, 48, 0.14));
+  mask-image: radial-gradient(circle at center, #000 0 45%, rgba(0, 0, 0, 0.90) 57%, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle at center, #000 0 45%, rgba(0, 0, 0, 0.90) 57%, transparent 72%);
   transform: translateX(-50%);
 }
 
-.brand-icon {
-  display: grid;
-  width: 108px;
-  height: 108px;
-  place-items: center;
-  border-radius: 24px;
-  background: #00c853;
-  color: #0d0d0d;
-  font-size: 55px;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.brand-name {
-  font-size: 72px;
-  font-weight: 700;
-  letter-spacing: -0.035em;
-  white-space: nowrap;
+.wall-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
 }
 
 .foreground-title {
   position: absolute;
-  bottom: 174px;
+  bottom: 176px;
   left: 50%;
   z-index: 3;
-  display: flex;
-  min-width: 650px;
-  min-height: 132px;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  gap: 22px;
-  padding: 24px 52px;
-  border: 1px solid rgba(255, 255, 255, 0.88);
-  border-radius: 34px;
-  background:
-    linear-gradient(112deg, rgba(235, 223, 209, 0.92), rgba(255, 250, 243, 0.96) 64%, #fff 100%);
-  box-shadow:
-    -12px 34px 60px rgba(86, 65, 47, 0.20),
-    inset -3px 1px 0 rgba(255, 255, 255, 0.96),
-    inset 1px -2px 0 rgba(157, 130, 105, 0.12);
-  color: #151515;
-  font-size: 72px;
-  font-weight: 760;
-  letter-spacing: -0.04em;
+  isolation: isolate;
+  width: max-content;
+  color: transparent;
+  font-size: 86px;
+  font-weight: 900;
+  letter-spacing: -0.045em;
   line-height: 1;
+  white-space: nowrap;
+  background:
+    radial-gradient(circle at 18% 22%, #fff 0 5%, transparent 16%),
+    repeating-linear-gradient(
+      118deg,
+      #f8f4ed 0 17px,
+      #d7d0c7 23px,
+      #f4eee6 35px,
+      #a69e95 40px,
+      #e8e1d9 49px,
+      #fbf7f1 66px
+    );
+  background-size: 100% 100%, 210px 150px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 1.5px rgba(89, 82, 75, 0.72);
+  filter: drop-shadow(0 14px 18px rgba(60, 51, 44, 0.30));
+  text-shadow:
+    0 -2px 1px rgba(255, 255, 255, 0.92),
+    0 2px 1px rgba(94, 86, 79, 0.50),
+    0 4px 0 rgba(132, 123, 114, 0.95),
+    0 7px 0 rgba(106, 98, 90, 0.95),
+    0 10px 0 rgba(78, 72, 66, 0.92);
   transform: translateX(-50%);
-  backdrop-filter: blur(15px);
 }
 
-.foreground-title::after {
+.foreground-title::before {
   position: absolute;
-  top: -14%;
-  right: 4%;
-  width: 31%;
-  height: 120%;
-  background: linear-gradient(104deg, transparent, rgba(255, 255, 255, 0.82), transparent);
-  content: "";
-  transform: skewX(-11deg);
-}
-
-.foreground-title span,
-.foreground-title strong {
-  position: relative;
-  z-index: 1;
-}
-
-.foreground-title strong {
-  color: #00a947;
-  font-weight: 800;
-  letter-spacing: 0.01em;
+  inset: 0;
+  z-index: -1;
+  color: #706860;
+  content: attr(data-text);
+  transform: translateY(11px);
+  -webkit-text-stroke: 2px rgba(67, 61, 56, 0.86);
+  text-shadow:
+    0 2px 0 #655e57,
+    0 5px 0 #534d47,
+    0 11px 22px rgba(55, 47, 41, 0.45);
 }
