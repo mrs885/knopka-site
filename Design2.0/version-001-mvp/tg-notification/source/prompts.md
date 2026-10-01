@@ -1,21 +1,11 @@
-# Image generation prompts
+# Image generation prompt
 
-Built-in `imagegen` was used for the three text-free background plates. The
-shared constraints were: square 1254×1254 Telegram artwork, warm milky near-white
-background, soft peach and powder-blue accents, natural daylight, rounded
-paper/glass depth, no text, logos, flags, maps, devices, people or watermarks.
+Built-in `imagegen` was used only for the text-free `row-clean.png` background
+plate. The country cards and flags are deterministic HTML/CSS/SVG overlays.
 
-## 01 — row
+## Row background
 
-Exactly five blank rounded flag-card placeholders in a horizontal progression:
-three equal smaller cards on the left and two equal larger cards on the right.
-
-## 02 — cards
-
-One large softly rounded panel containing exactly three small blank medallions
-as a background group and exactly two much larger blank foreground cards.
-
-## 03 — routes
-
-Exactly three small blank nodes on the left connected by thin curved lines to
-exactly two larger blank destination cards on the right.
+Vertical 4:5 Telegram artwork, warm milky near-white interior, soft peach and
+powder-blue accents, natural morning daylight, blurred plant shadows, subtle
+paper/glass depth, generous empty central space for a five-card semicircle. No
+text, logos, flags, maps, devices, people, card placeholders or watermarks.
