@@ -25,8 +25,13 @@ try {
         y: rect.y,
         width: rect.width,
         height: rect.height,
+        bottom: rect.bottom,
         transform: getComputedStyle(element).transform,
       };
+    });
+    const flags = [...document.querySelectorAll('.flag')].map(element => {
+      const rect = element.getBoundingClientRect();
+      return { width: rect.width, height: rect.height };
     });
     const overlaps = [];
     for (let i = 0; i < cards.length; i += 1) {
@@ -45,6 +50,7 @@ try {
       height: document.documentElement.scrollHeight,
       brokenImages: [...document.images].filter(image => !image.complete || !image.naturalWidth).map(image => image.src),
       cards,
+      flags,
       overlaps,
     };
   });
@@ -52,11 +58,15 @@ try {
   const forbiddenOverlap = check.overlaps.find(item => item.pair === 'PL-GB' && item.ratio !== 0);
   const excessiveOverlap = check.overlaps.find(item => item.ratio > 0.2 + Number.EPSILON);
   const transformedCard = check.cards.find(card => card.transform !== 'none');
+  const mismatchedFlag = check.flags.find(flag => flag.width !== 172 || flag.height !== 120);
+  const expectedBottoms = { FR: 855, DE: 940, PL: 1040, GB: 1040, NL: 940 };
+  const shiftedBottom = check.cards.find(card => card.bottom !== expectedBottoms[card.country]);
   if (
     check.width !== 1254 || check.height !== 1568 || check.brokenImages.length ||
-    check.cards.length !== 5 || forbiddenOverlap || excessiveOverlap || transformedCard || errors.length
+    check.cards.length !== 5 || forbiddenOverlap || excessiveOverlap || transformedCard ||
+    mismatchedFlag || shiftedBottom || errors.length
   ) {
-    throw new Error(JSON.stringify({ check, forbiddenOverlap, excessiveOverlap, transformedCard, errors }));
+    throw new Error(JSON.stringify({ check, forbiddenOverlap, excessiveOverlap, transformedCard, mismatchedFlag, shiftedBottom, errors }));
   }
 
   const path = fileURLToPath(new URL('../tg-notification-01-row.png', root));

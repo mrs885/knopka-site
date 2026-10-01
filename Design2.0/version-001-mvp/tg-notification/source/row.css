@@ -61,20 +61,20 @@ body {
 
 .country {
   position: absolute;
-  width: 230px;
-  height: 320px;
+  width: 207px;
+  height: 288px;
 }
 
 .country-fr {
-  top: 390px;
-  left: 20px;
+  top: 420px;
+  left: 10px;
   z-index: 1;
-  width: 210px;
-  height: 300px;
+  width: 189px;
+  height: 270px;
 }
 
 .country-de {
-  top: 455px;
+  top: 487px;
   left: 185px;
   z-index: 2;
 }
@@ -91,8 +91,8 @@ body {
 .country-gb { left: 660px; }
 
 .country-nl {
-  top: 455px;
-  left: 885px;
+  top: 487px;
+  left: 908px;
   z-index: 2;
 }
 
@@ -104,22 +104,41 @@ body {
   border: 2px solid rgba(124, 136, 151, 0.34);
   border-radius: 38px;
   background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0) 43%),
+    linear-gradient(112deg, rgba(216, 226, 236, 0.94) 0%, rgba(238, 244, 249, 0.97) 59%, #ffffff 100%),
     linear-gradient(155deg, #fffdf9 0%, #edf1f5 58%, #dfe6ed 100%);
   box-shadow:
-    0 30px 52px rgba(78, 91, 108, 0.16),
-    0 9px 18px rgba(78, 91, 108, 0.10),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    -12px 32px 55px rgba(78, 91, 108, 0.17),
+    -4px 10px 20px rgba(78, 91, 108, 0.10),
+    inset -3px 1px 0 rgba(255, 255, 255, 0.96),
+    inset 1px -2px 0 rgba(136, 148, 162, 0.12);
 }
 
 .card::before {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 72%;
-  height: 48%;
-  border-radius: 36px 0 60% 0;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.68), transparent);
+  top: -18%;
+  right: -24%;
+  width: 66%;
+  height: 138%;
+  background: linear-gradient(
+    103deg,
+    transparent 17%,
+    rgba(255, 255, 255, 0.20) 35%,
+    rgba(255, 255, 255, 0.98) 49%,
+    rgba(205, 223, 239, 0.30) 59%,
+    transparent 80%
+  );
+  transform: skewX(-11deg);
+  content: "";
+}
+
+.card::after {
+  position: absolute;
+  top: -11%;
+  right: -18%;
+  width: 70%;
+  height: 72%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 72% 28%, #ffffff 0%, rgba(255, 255, 255, 0.46) 38%, transparent 72%);
   content: "";
 }
 
@@ -127,8 +146,10 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 74%;
-  padding: 6px;
+  z-index: 2;
+  width: 172px;
+  height: 120px;
+  padding: 5px;
   border: 2px solid rgba(91, 101, 115, 0.55);
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.74);
@@ -136,14 +157,12 @@ body {
   transform: translate(-50%, -50%);
 }
 
-.country-pl .flag,
-.country-gb .flag { width: 78%; }
-
 .flag img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   border-radius: 7px;
+  object-fit: fill;
 }
 
 @media print {
