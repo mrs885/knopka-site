@@ -104,13 +104,13 @@ body {
   border: 2px solid rgba(124, 136, 151, 0.34);
   border-radius: 38px;
   background:
-    linear-gradient(112deg, rgba(216, 226, 236, 0.94) 0%, rgba(238, 244, 249, 0.97) 59%, #ffffff 100%),
-    linear-gradient(155deg, #fffdf9 0%, #edf1f5 58%, #dfe6ed 100%);
+    linear-gradient(112deg, rgba(235, 223, 209, 0.96) 0%, rgba(250, 242, 232, 0.98) 59%, #fffaf3 100%),
+    linear-gradient(155deg, #fffaf3 0%, #f3e9dd 58%, #e8dacb 100%);
   box-shadow:
-    -12px 32px 55px rgba(78, 91, 108, 0.17),
-    -4px 10px 20px rgba(78, 91, 108, 0.10),
+    -12px 32px 55px rgba(104, 83, 64, 0.17),
+    -4px 10px 20px rgba(104, 83, 64, 0.10),
     inset -3px 1px 0 rgba(255, 255, 255, 0.96),
-    inset 1px -2px 0 rgba(136, 148, 162, 0.12);
+    inset 1px -2px 0 rgba(157, 130, 105, 0.12);
 }
 
 .card::before {
@@ -124,7 +124,7 @@ body {
     transparent 17%,
     rgba(255, 255, 255, 0.20) 35%,
     rgba(255, 255, 255, 0.98) 49%,
-    rgba(205, 223, 239, 0.30) 59%,
+    rgba(239, 218, 196, 0.30) 59%,
     transparent 80%
   );
   transform: skewX(-11deg);
@@ -163,6 +163,27 @@ body {
   height: 100%;
   border-radius: 7px;
   object-fit: fill;
+}
+
+.country-pl .flag {
+  width: 238px;
+  height: 149px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.country-pl .flag img {
+  border: 2px solid rgba(91, 101, 115, 0.62);
+}
+
+.country-gb .flag {
+  width: 238px;
+  height: 148px;
+}
+
+.country-gb .flag img {
+  object-fit: contain;
 }
 
 @media print {

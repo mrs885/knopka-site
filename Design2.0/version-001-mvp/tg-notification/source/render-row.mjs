@@ -31,7 +31,7 @@ try {
     });
     const flags = [...document.querySelectorAll('.flag')].map(element => {
       const rect = element.getBoundingClientRect();
-      return { width: rect.width, height: rect.height };
+      return { country: element.closest('.country').dataset.country, width: rect.width, height: rect.height };
     });
     const overlaps = [];
     for (let i = 0; i < cards.length; i += 1) {
@@ -58,7 +58,17 @@ try {
   const forbiddenOverlap = check.overlaps.find(item => item.pair === 'PL-GB' && item.ratio !== 0);
   const excessiveOverlap = check.overlaps.find(item => item.ratio > 0.2 + Number.EPSILON);
   const transformedCard = check.cards.find(card => card.transform !== 'none');
-  const mismatchedFlag = check.flags.find(flag => flag.width !== 172 || flag.height !== 120);
+  const expectedFlags = {
+    FR: { width: 172, height: 120 },
+    DE: { width: 172, height: 120 },
+    PL: { width: 238, height: 149 },
+    GB: { width: 238, height: 148 },
+    NL: { width: 172, height: 120 },
+  };
+  const mismatchedFlag = check.flags.find(flag => {
+    const expected = expectedFlags[flag.country];
+    return flag.width !== expected.width || flag.height !== expected.height;
+  });
   const expectedBottoms = { FR: 855, DE: 940, PL: 1040, GB: 1040, NL: 940 };
   const shiftedBottom = check.cards.find(card => card.bottom !== expectedBottoms[card.country]);
   if (
