@@ -3,86 +3,72 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>КнопкА — доступ к привычным сервисам</title>
+  <title>КнопкА — Доступ ко всем приложениям</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="header shell">
-    <a class="wordmark" href="#top" aria-label="КнопкА, на главную">КНОПКА</a>
-    <nav aria-label="Основная навигация">
-      <a href="#benefits">Преимущества</a>
-      <a href="#start">Как начать</a>
-      <a href="#faq">Вопросы</a>
-    </nav>
-    <a class="button button-small" href="#tariff">Попробовать бесплатно</a>
-  </header>
-
-  <main id="top">
-    <section class="hero shell">
-      <img class="hero-photo" src="../assets/hero-workspace.png" alt="Светлое рабочее место с ноутбуком и телефоном">
-      <div class="hero-shade"></div>
+  <a class="skip-link" href="#main">К содержанию</a>
+  <div class="hero-wrap" id="top">
+    <header class="header shell">
+      <a class="wordmark" href="#top">КНОПКА</a>
+      <nav aria-label="Основная навигация"><a href="#benefits">Преимущества</a><a href="#start">Как начать</a><a href="#faq">Вопросы</a><a href="#reviews">Отзывы</a></nav>
+      <a class="button small" href="#tariff">Попробовать бесплатно</a>
+    </header>
+    <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="trial"><strong>7 дней бесплатно</strong><span>Дальше 300 ₽/мес</span></p>
-        <h1>Привычные сервисы.<br>Без лишних переключений.</h1>
-        <p class="lead">Зарубежные платформы и ИИ-инструменты открываются на телефоне и компьютере. Российские сайты продолжают работать.</p>
-        <div class="service-list" aria-label="Примеры сервисов">
-          <span>AI</span><span>Видео</span><span>Соцсети</span><span>Мессенджеры</span>
-        </div>
-        <a class="button" href="#tariff">Попробовать бесплатно <b>→</b></a>
+        <strong class="trial">7 дней бесплатно</strong><p class="after-trial">Дальше 300 ₽/мес</p>
+        <h1 id="hero-title">Доступ ко всем<br>приложениям</h1>
+        <p class="hero-description">Instagram, Telegram, YouTube, ChatGPT<br class="desktop-break"> и другие сервисы на телефоне и компьютере.<br class="desktop-break"> Российские сайты и приложения продолжают работать.</p>
+        <ul class="services" aria-label="Примеры доступных приложений">
+          <li><img src="../assets/instagram.png" alt="" width="62" height="62"><span>Instagram</span></li>
+          <li><img src="../assets/telegram.png" alt="" width="62" height="62"><span>Telegram</span></li>
+          <li><img src="../assets/chatgpt.png" alt="" width="62" height="62"><span>ChatGPT</span></li>
+          <li><img src="../assets/youtube.png" alt="" width="62" height="62"><span>YouTube</span></li>
+        </ul>
+        <a class="button hero-cta" href="#tariff">Попробовать бесплатно <span aria-hidden="true">→</span></a>
+      </div>
+      <img class="hero-image" src="../assets/reference-hero.png" alt="Ноутбук и телефон с приложениями — визуальная концепция" width="434" height="448">
+    </section>
+  </div>
+  <main id="main">
+    <section class="section shell" id="benefits" aria-labelledby="benefits-title">
+      <h2 id="benefits-title">Всё работает вместе</h2><p class="section-intro">Один доступ — и все ваши любимые сервисы открываются<br class="desktop-break"> стабильно, на телефоне и компьютере.</p>
+      <article class="russian-card"><img src="../assets/russian-services.png" alt="Иконки российских сервисов" width="250" height="132"><div><h3>Российские сайты<br class="desktop-break"> и сервисы тоже работают</h3><p>Не нужно постоянно включать и выключать доступ при переходе между приложениями.</p></div></article>
+      <div class="benefits grid-three">
+        <article><img src="../assets/benefit-access.png" alt="" width="140" height="82"><h3>Один доступ</h3><p>Соцсети и ИИ-сервисы в одном удобном решении. Больше не нужно искать обходные пути.</p></article>
+        <article><img src="../assets/benefit-search.png" alt="" width="140" height="82"><h3>Без постоянного поиска</h3><p>Сервисы открываются стабильно и быстро. Вы просто пользуетесь, а не тратите время на настройки.</p></article>
+        <article><img src="../assets/benefit-support.png" alt="" width="140" height="82"><h3>Помощь человека</h3><p>Рома всегда на связи. Поможет подключить и подскажет, если что-то не работает.</p></article>
       </div>
     </section>
-
-    <section class="section shell" id="benefits">
-      <div class="section-heading">
-        <p class="eyebrow">Один доступ</p>
-        <h2>Всё работает вместе</h2>
-        <p>Открывайте нужные сервисы без сложных настроек и постоянного поиска обходных путей.</p>
-      </div>
-      <article class="russia-card">
-        <div class="icon-globe">◎</div>
-        <div><h3>Российские сайты и приложения тоже работают</h3><p>Не нужно включать и выключать доступ при переходе между сервисами.</p></div>
-        <div class="media-swatch" aria-hidden="true"></div>
-      </article>
-      <div class="benefit-grid">
-        <article><span class="soft-icon">◇</span><h3>Один доступ</h3><p>Сервисы на телефоне и компьютере в одном решении.</p></article>
-        <article><span class="soft-icon">⌕</span><h3>Без постоянного поиска</h3><p>Всё уже настроено — просто пользуйтесь.</p></article>
-        <article><span class="soft-icon">○</span><h3>Помощь человека</h3><p>Рома поможет подключиться и подскажет, если что-то не работает.</p></article>
-      </div>
+    <section class="section shell" id="start" aria-labelledby="start-title">
+      <h2 id="start-title">Как начать</h2><p class="section-intro">Подключиться можно за несколько минут. Никаких сложных настроек.</p>
+      <ol class="steps grid-three">
+        <li><img src="../assets/step-register.png" alt="Шаг 1: регистрация" width="218" height="125"><h3>Зарегистрируйся</h3><p>Создай аккаунт — это займёт меньше минуты.</p></li>
+        <li><img src="../assets/step-device.png" alt="Шаг 2: ноутбук и телефон" width="218" height="125"><h3>Подключи устройство</h3><p>Следуй простой инструкции на экране.</p></li>
+        <li><img src="../assets/step-use.png" alt="Шаг 3: любимые сервисы" width="212" height="125"><h3>Пользуйся</h3><p>Открывай любимые сервисы на телефоне и компьютере. Всё уже настроено.</p></li>
+      </ol>
     </section>
-
-    <section class="section shell" id="start">
-      <div class="section-heading"><p class="eyebrow">Три шага</p><h2>Как начать</h2><p>Подключение занимает несколько минут.</p></div>
-      <div class="steps">
-        <article><i>1</i><div class="step-visual account"><span></span><span></span><b></b></div><h3>Зарегистрируйся</h3><p>Создай аккаунт — это займёт меньше минуты.</p></article>
-        <article><i>2</i><div class="step-visual devices"><b></b><span></span><em></em></div><h3>Подключи устройство</h3><p>Следуй простой инструкции на экране.</p></article>
-        <article><i>3</i><div class="step-visual tiles"><span></span><span></span><span></span><span></span></div><h3>Пользуйся</h3><p>Открывай любимые сервисы. Всё уже настроено.</p></article>
-      </div>
+    <section class="support" aria-labelledby="support-title"><div class="shell support-grid">
+      <div class="support-copy"><h2 id="support-title">Рома на связи</h2><p>Рома — наш специалист поддержки. Он поможет с подключением, подскажет по настройкам и всегда будет рядом, если что-то не работает.</p><button type="button" class="button light">Написать Роме <span aria-hidden="true">→</span></button></div>
+      <img class="portrait" src="../assets/support-portrait.png" alt="Концептуальное фото поддержки из референса, не подтверждённый портрет Ромы" width="184" height="184">
+      <p class="speech">Обычно отвечаю<br> в течение нескольких минут.<br> Можешь написать в любое время — я помогу.</p>
+    </div></section>
+    <section class="section shell" id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Частые вопросы</h2><p class="section-intro">Коротко о главном. Если останутся вопросы — напишите Роме.</p>
+      <details><summary>Как подключиться?</summary><p>Зарегистрируйся и следуй инструкции для своего устройства. Если понадобится помощь — напиши Роме.</p></details>
+      <details><summary>Можно ли использовать на двух устройствах?</summary><p>Используй доступ на телефоне и компьютере. С подключением устройств поможет Рома.</p></details>
+      <details><summary>Что делать, если возникла проблема?</summary><p>Напиши Роме: он поможет с подключением и настройками.</p></details>
     </section>
-
-    <section class="support">
-      <div class="shell support-inner">
-        <div class="portrait-placeholder"><span>Р</span><b></b></div>
-        <div><p class="eyebrow">Техническая поддержка</p><h2>Рома на связи</h2><p>Поможет с подключением, подскажет по настройкам и останется рядом, если что-то не работает.</p><a class="button button-light" href="#">Написать Роме →</a></div>
-        <blockquote>Обычно отвечаю в течение нескольких минут. Можно написать в любое время — я помогу.</blockquote>
+    <section class="section shell reviews" id="reviews" aria-labelledby="reviews-title">
+      <h2 id="reviews-title">Отзывы</h2><p class="section-intro">Примеры отзывов для макета — не реальные отзывы.</p>
+      <div class="review-grid grid-three">
+        <article><span class="stars" aria-label="Демонстрационная оценка: пять звёзд">★★★★★</span><strong>Пример отзыва</strong><p>Подключилось быстро. Видео смотрю без постоянных переключений.</p></article>
+        <article><span class="stars" aria-label="Демонстрационная оценка: пять звёзд">★★★★★</span><strong>Пример отзыва</strong><p>На телефоне и ноутбуке удобно. Российские сайты тоже открываются.</p></article>
+        <article><span class="stars" aria-label="Демонстрационная оценка: пять звёзд">★★★★★</span><strong>Пример отзыва</strong><p>Рома помог с настройкой. Всё объяснил простыми словами.</p></article>
       </div>
     </section>
-
-    <section class="section shell" id="faq">
-      <div class="section-heading compact"><p class="eyebrow">Коротко о главном</p><h2>Частые вопросы</h2></div>
-      <div class="faq-list"><div>Как подключиться?<span>⌄</span></div><div>Можно ли использовать на двух устройствах?<span>⌄</span></div><div>Что делать, если возникла проблема?<span>⌄</span></div></div>
-    </section>
-
-    <section class="section shell reviews">
-      <div class="section-heading compact"><p class="eyebrow">Без выдуманных историй</p><h2>Отзывы</h2><p>Здесь появятся реальные отзывы пользователей.</p></div>
-      <div class="review-grid"><article>Место для реального отзыва</article><article>Место для реального отзыва</article><article>Место для реального отзыва</article></div>
-    </section>
-
-    <section class="tariff shell" id="tariff">
-      <div><p class="eyebrow">Один простой тариф</p><h2>7 дней бесплатно</h2><p>Дальше 300 ₽ в месяц. Без скрытых условий.</p></div>
-      <a class="button" href="#">Попробовать бесплатно →</a>
-    </section>
+    <section class="tariff" id="tariff" aria-labelledby="tariff-title"><div class="shell"><h2 id="tariff-title">Один простой тариф</h2><p>Всё включено. Без сложных условий.</p><strong class="tariff-price">7 дней бесплатно · Дальше 300 ₽/мес</strong><br><button type="button" class="button">Попробовать бесплатно <span aria-hidden="true">→</span></button></div></section>
   </main>
-
-  <footer class="footer shell"><span class="wordmark">КНОПКА</span><span>© 2026 КнопкА</span><a href="#">Оферта</a><a href="#">Конфиденциальность</a></footer>
+  <footer class="footer shell"><a class="wordmark" href="#top">КНОПКА</a><nav aria-label="Навигация в подвале"><a href="#benefits">Преимущества</a><a href="#start">Как начать</a><a href="#faq">Вопросы</a><a href="#reviews">Отзывы</a></nav><small>© 2026 КнопкА. Все права защищены.</small></footer>
 </body>
 </html>
