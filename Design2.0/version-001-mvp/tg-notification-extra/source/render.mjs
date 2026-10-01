@@ -26,21 +26,21 @@ try {
       height: document.documentElement.scrollHeight,
       brokenImages: [...document.images].filter(image => !image.complete || !image.naturalWidth).map(image => image.src),
       wallLogo: rect('.wall-logo'),
-      foregroundTitle: rect('.foreground-title'),
-      titleText: document.querySelector('.foreground-title').textContent.replace(/\s+/g, ' ').trim(),
-      logoNatural: {
-        width: document.querySelector('.wall-logo img').naturalWidth,
-        height: document.querySelector('.wall-logo img').naturalHeight,
-      },
+      logoCount: document.querySelectorAll('.wall-logo img').length,
+      logoNatural: [...document.querySelectorAll('.wall-logo img')].map(image => ({
+        width: image.naturalWidth,
+        height: image.naturalHeight,
+      })),
+      foregroundTitleCount: document.querySelectorAll('.foreground-title').length,
     };
   });
 
   if (
     check.width !== 1254 || check.height !== 1568 || check.brokenImages.length ||
-    check.titleText !== 'КнопкА ВПН' ||
-    check.logoNatural.width !== 795 || check.logoNatural.height !== 800 ||
+    check.logoCount !== 2 || check.foregroundTitleCount !== 0 ||
+    check.logoNatural.some(size => size.width !== 795 || size.height !== 800) ||
     check.wallLogo.y < 20 || check.wallLogo.bottom > 580 ||
-    check.foregroundTitle.y < 1160 || check.foregroundTitle.bottom > 1440 || errors.length
+    errors.length
   ) {
     throw new Error(JSON.stringify({ check, errors }));
   }
