@@ -11,6 +11,7 @@ HTML/CSS в `site/source` и `site/template` пока относятся к пр
 
 ## Что входит
 
+- `assets/` — общие брендовые ассеты Design 2.0 и воспроизводимые исходники;
 - `site/` — desktop/mobile макеты рекламного лендинга и отдельный layout-template;
 - `app-site/` — desktop/mobile макеты четырёх платёжных состояний и отдельные layout-templates;
 - `tg-ad/` — квадратный рекламный макет, уменьшенное превью и текст;
