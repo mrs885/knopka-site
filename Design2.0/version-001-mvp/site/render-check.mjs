@@ -30,6 +30,8 @@ try {
         supportOperator:[...document.querySelectorAll('.support .support-operator')].map(i=>({src:i.getAttribute('src'),width:Math.round(i.getBoundingClientRect().width)})),
         supportWidth:Math.round(document.querySelector('.support')?.getBoundingClientRect().width || 0),
         sectionWidth:Math.round(document.querySelector('.section.shell')?.getBoundingClientRect().width || 0),
+        faqQuestions:[...document.querySelectorAll('#faq details summary')].map(el=>el.textContent.trim()),
+        faqAnswers:[...document.querySelectorAll('#faq details p')].map(el=>el.textContent.trim()),
         missingAnchors:[...document.querySelectorAll('a[href^="#"]')].filter(a=>!document.getElementById(a.hash.slice(1))).map(a=>a.hash)
       }));
       if(check.width!==width||check.scroll>width||check.images.length||check.missingAnchors.length||errors.length) throw Error(JSON.stringify({kind,...check,errors}));
@@ -58,6 +60,7 @@ try {
       if(check.brandLogos.length!==2||check.brandLogos.some(logo=>logo.src!=='../../assets/app-button-black-a.png'||logo.width<25)) throw Error(`${kind} header/footer brand logos are incomplete`);
       if(check.supportOperator.length!==1||check.supportOperator[0].src!=='../assets/support-operator-site-v2.png'||check.supportOperator[0].width<110) throw Error(`${kind} support operator artwork is incomplete`);
       if(check.supportWidth!==check.sectionWidth) throw Error(`${kind} support card must match section width`);
+      if(JSON.stringify(check.faqQuestions)!==JSON.stringify(['Как подключиться?','На каких устройствах можно установить ВПН?','Что делать, если возникла проблема?'])||check.faqAnswers.length!==3||check.faqAnswers.some(answer=>!answer)) throw Error(`${kind} FAQ copy is incomplete`);
       const accordions=page.locator('#start details.platform-accordion');
       for(let index=0;index<4;index++) {
         await accordions.nth(index).locator('summary').click();
