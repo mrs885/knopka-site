@@ -19,12 +19,16 @@ try {
         heading:document.querySelector('h1').innerText.replace(/\s+/g,' '),
         nav:[...document.querySelectorAll('header nav a')].map(a=>a.textContent),
         platformAccordions:document.querySelectorAll('#start details.platform-accordion').length,
+        trialCtas:[...document.querySelectorAll('a,button')].filter(el=>el.textContent.includes('Попробовать бесплатно')).map(el=>({tag:el.tagName,href:el.getAttribute('href')})),
+        tariffLayouts:document.querySelectorAll('#tariff .tariff-layout').length,
         missingAnchors:[...document.querySelectorAll('a[href^="#"]')].filter(a=>!document.getElementById(a.hash.slice(1))).map(a=>a.hash)
       }));
       if(check.width!==width||check.scroll>width||check.images.length||check.missingAnchors.length||errors.length) throw Error(JSON.stringify({kind,...check,errors}));
       if(check.heading!=='Доступ ко всем приложениям'||check.nav.length!==4) throw Error('Missing headline/nav');
       if(kind==='template') {
         if(check.platformAccordions!==4) throw Error('Template must have four platform accordions');
+        if(check.trialCtas.length!==3||check.trialCtas.some(cta=>cta.tag!=='A'||cta.href!=='#start')) throw Error('Template trial CTAs must link to #start');
+        if(check.tariffLayouts!==1) throw Error('Template tariff layout missing');
         const accordions=page.locator('#start details.platform-accordion');
         for(let index=0;index<4;index++) {
           await accordions.nth(index).locator('summary').click();
