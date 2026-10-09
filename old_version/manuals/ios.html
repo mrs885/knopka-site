@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>КнопкА — Инструкция для iPhone и iPad</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0d0d0d;
+      color: #e8e8e8;
+      line-height: 1.7;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 64px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 32px 0 40px;
+      border-bottom: 1px solid #1e1e1e;
+      margin-bottom: 48px;
+    }
+    .logo {
+      width: 40px; height: 40px;
+      background: #00c853; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 20px; color: #0d0d0d; flex-shrink: 0;
+    }
+    header h1 { font-size: 30px; font-weight: 700; color: #fff; }
+    header .subtitle { font-size: 13px; color: #555; margin-top: 2px; }
+
+    /* Sections */
+    section { margin-bottom: 56px; }
+
+    .section-num {
+      font-size: 32px; font-weight: 700; color: #00c853;
+      letter-spacing: 1.5px;
+      margin-bottom: 38px;
+    }
+    h2 {
+      font-size: 30px; font-weight: 800; color: #fff;
+      margin-bottom: 40px; line-height: 1.25;
+    }
+    h3 {
+      font-size: 21px; font-weight: 700; color: #ccc;
+      margin: 24px 0 10px;
+    }
+    p { font-size: 20px; color: #888; margin-bottom: 14px; }
+    p strong { color: #e0e0e0; }
+
+    /* Warning box */
+    .callout {
+      background: #161616; border-left: 3px solid #00c853;
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px; margin-bottom: 20px;
+    }
+    .callout p { margin: 0; }
+    .callout.warn { border-left-color: #ff9800; }
+    .callout.warn p { color: #999; }
+
+    /* Steps list */
+    ol.steps { list-style: none; counter-reset: step; padding: 0; }
+    ol.steps li {
+      counter-increment: step;
+      display: flex; gap: 16px; align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    ol.steps li::before {
+      content: counter(step);
+      min-width: 28px; height: 28px;
+      background: #00c853; border-radius: 50%;
+      color: #000; font-weight: 800; font-size: 17px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    ol.steps li p { margin: 0; }
+
+    /* Plain list */
+    ul.plain { list-style: none; padding: 0; }
+    ul.plain li {
+      padding: 8px 0;
+      border-bottom: 1px solid #1a1a1a;
+      font-size: 20px; color: #888;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    ul.plain li:last-child { border-bottom: none; }
+    ul.plain li::before { content: "•"; color: #00c853; font-weight: 700; flex-shrink: 0; }
+
+    /* FAQ */
+    .faq-item { margin-bottom: 20px; }
+    .faq-q {
+      font-size: 20px; font-weight: 700; color: #e0e0e0;
+      margin-bottom: 6px;
+    }
+    .faq-a { font-size: 18px; color: #777; }
+
+    /* Image placeholder */
+    .img-block {
+      background: #111; border: 1px dashed #2a2a2a;
+      border-radius: 12px; padding: 32px;
+      text-align: center; margin: 20px 0;
+      color: #444; font-size: 17px;
+    }
+    .img-block img { max-width: 100%; border-radius: 8px; display: block; margin: 0 auto; }
+
+    /* TestFlight brand button (blue) */
+    .btn-tf-apple {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: #fff; font-size: 28px; font-weight: 700;
+      padding: 6px 16px; border-radius: 14px; text-decoration: none;
+      transition: opacity 0.2s; margin: 4px 0 8px; vertical-align: middle;
+    }
+    .btn-tf-apple:hover { opacity: 0.85; }
+    .btn-tf-apple img { width: 30px; height: 30px; border-radius: 7px; flex-shrink: 0; }
+
+    /* TestFlight invite button (white, like landing) */
+    .btn-tf {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; color: #000; font-size: 18px; font-weight: 700;
+      padding: 14px 28px; border-radius: 10px; text-decoration: none;
+      transition: opacity 0.2s; margin: 4px 0 8px;
+    }
+    .btn-tf:hover { opacity: 0.85; }
+
+    /* Divider */
+    hr { border: none; border-top: 1px solid #1e1e1e; margin: 48px 0; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid #1e1e1e;
+      padding-top: 24px;
+      font-size: 17px; color: #444; text-align: center;
+    }
+    footer a { color: #00c853; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">A</div>
+  <h1>КнопкА</h1>
+</header>
+
+
+<!-- 1. Важная информация -->
+<section id="important">
+
+  <h2>Важная информация</h2>
+  
+  <div class="callout warn">
+    <p>
+      <strong>
+        Усиление блокировок
+      </strong> 
+      <p>
+        РКН постоянно совершенствует системы слежения и ограничения трафика. Стандартная ситуация: вчера работало, сегодня - нет
+      </p>
+    </p>
+  </div>
+
+  <div class="callout warn">
+    <p>
+      <strong>
+        Переключение ВПН
+      </strong> 
+      <p>
+        Большинство популярных сайтов в РФ не подключаются из за границы. Поиходится включать и выключать ВПН
+      </p>
+    </p>
+  </div>
+
+  <div class="callout warn">
+    <p>
+      <strong>
+        Удаление приложений 
+      </strong> 
+      <p>
+        Apple по требованиям от РКН регулярно удаляет ВПН приложения из AppStore
+      </p>
+    </p>
+  </div>
+
+  <div class="callout">
+    <p>
+      <strong>
+          ВПН КнопкА
+      </strong> 
+      <ul class="plain">
+        <li>Имеет разные механизмы поднятия ВПН соединения и использует современные протоколы защиты</li>
+        <li>Поставляется со встроенной умной маршрутизацией, дающей возможность не отключать ВПН при работе с сайтами и приложениями РФ</li>
+        <li>Устанавливается через официальную платформу тестирования TestFlight Apple, к которой у РКН нет доступа</li>
+      </ul>
+    </p>  
+  </div>
+
+
+</section>
+
+<!-- 2. Как установить -->
+<section id="install">
+  <div>&nbsp;</div>
+  <div>&nbsp;</div>
+  <h2>Инструкция по установке ВПН на iOS</h2>
+
+  <div>&nbsp;</div>
+
+  <ol class="steps">
+    <li><div style="margin-top: -20px;">
+      <!-- <p style="margin-bottom:12px;">Перейти на установку:</p> -->
+      <a class="btn-tf" href="https://testflight.apple.com/join/66AbtsBG" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Скачать с TestFlight
+      </a>
+      <div>&nbsp;</div>
+      <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;">
+        <img src="../assets/01.jpg" alt="Установка через TestFlight" style="max-width:300px;width:calc(50% - 6px);border-radius:12px;flex:1 1 140px;">
+        <img src="../assets/02.jpg" alt="TestFlight в App Store" style="max-width:300px;width:calc(50% - 6px);border-radius:12px;flex:1 1 140px;">
+      </div>
+    </div></li>
+
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+
+    <li>
+      <div>
+        <p><strong>Зайти в TestFlight и установить приложение КнопкА</strong></p>
+        
+        <div>&nbsp;</div>
+       
+        <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">
+          <img src="../assets/03.jpg" alt="КнопкА в TestFlight" style="max-width:300px;width:calc(50% - 6px);border-radius:12px;flex:1 1 140px;">
+          <img src="../assets/04.jpg" alt="КнопкА — установка" style="max-width:300px;width:calc(50% - 6px);border-radius:12px;flex:1 1 140px;">
+        </div>
+      </div>
+    </li>
+
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    
+    <li>
+      <div>
+        <p><strong>После установки при первом запуске нужно разрешить добавление VPN-профиля. Если вы заходите в приложение первый раз, подписка будет не активна</strong></p>
+        <div>&nbsp;</div>
+        <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">
+          <img src="../assets/05.jpg" alt="ВПН Профиль" style="max-width:300px;width:calc(50% - 6px);border-radius:12px;flex:1 1 140px;">
+          <img src="../assets/06.jpg" alt="Активация" style="max-width:300px;width:calc(50% - 6px);border-radius:12px;flex:1 1 140px;">
+        </div>
+      </div>
+    </li>
+
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+
+    <li>
+      <div>
+        <p><strong>Нужно пройти реристрацию. Нажмите на текст о неактивной подписке и введите свой email и <strong style="color:#00c853">ПРОМО-код</strong> от друга при наличии. Приложением можно пользоваться базовых <strong style="color:#00c853">7 дней</strong> и еще дополнительно при вводе ПРОМО-кода! 
+          Если друг зарегистрирует ваш ПРОМО, то вы получите дополниельно <strong style="color:#00c853">+30 дней</strong> подписки!</p>
+        <div>&nbsp;</div>
+        <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">
+          <img src="../assets/07.jpg" alt="email" style="max-width:300px;width:calc(50% - 6px);border-radius:12px;flex:1 1 140px;">
+          <img src="../assets/08.jpg" alt="success" style="max-width:300px;width:calc(50% - 6px);border-radius:12px;flex:1 1 140px;">
+        </div>
+      </div>
+    </li>
+
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+
+
+  </ol>
+
+</section>
+
+<!-- 3. Основной функционал -->
+<section id="features">
+  <h2>Особенности приложения</h2>
+
+  <ol class="steps">
+    <li>
+      <div>
+        <p><strong>Можно менять режимы работы ВПН. Прокси РФ - оптимальный, с ним можно не выключать ВПН и открывать российские популярные ресурсы и приложения</p>
+      </div>
+    </li>
+    <li>
+      <div>
+        <p><strong>При потери связи можно настроить автоматический переход на другой регион. В этом случае приложение автоматически выберет наиболее доступный сервер, не отключая ВПН</p>
+        <div>&nbsp;</div>
+        <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">
+          <img src="../assets/09.jpg" alt="Настройки" style="max-width:300px;width:calc(50% - 6px);border-radius:12px;flex:1 1 140px;">
+        </div>
+      </div>
+    </li>
+
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+
+    <li>
+      <div>
+        <p><strong>В разделе Подписка показывается ваш срок действия подписки. Подписку всегда можно продлить, перейдя в магазин по кнопке <strong style="color:#00c853">Продлить на 30 дней</strong> и совершив оплату по карте или переводом СБП.</strong></p>
+      </div>
+    </li>
+
+    <li>
+      <div>
+        <p><strong>Помимо прямого подключению к зарубежному серверу есть возможность подключиться через промежуточный прокси на московской инфраструктуре. Они обычно более устойчивы к блокировкам РКН. Названия таких серверов начинаются с Moscow</strong></p>
+        <div>&nbsp;</div>
+        <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">
+          <img src="../assets/10.jpg" alt="Настройки серверы" style="max-width:300px;width:calc(50% - 6px);border-radius:12px;flex:1 1 140px;">
+          <img src="../assets/11.jpg" alt="ВПН подключен" style="max-width:300px;width:calc(50% - 6px);border-radius:12px;flex:1 1 140px;">
+        </div>
+      </div>
+    </li>
+
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+
+    <li>
+      <div>
+        <p><strong>Особенность работы Test Flight заключается в том, что приложение нужно продлевать раз в <strong style="color:#00c853">90 дней</strong>. При появлении новой версии в настройках приложения выводится ссылка на обновление. Также есть возможность выбора автообновлений в самом TestFlight</strong></p>
+      </div>
+    </li>
+
+    <li>
+      <div>
+        <p><strong>Не забывайте приглашать друзей и просить их проходить реистрацию с вашим <strong style="color:#00c853">ПРОМО-кодом</strong>! Это добавит дни подписки и вам и вашему другу!</strong></p>
+      </div>
+    </li>
+
+    <li>
+      <div>
+        <p><strong>По возникающим вопросам можно писать на email поддержки с зарегестрированной почты, указывая при этом <strong style="color:#00c853">уникальный идентификатор</strong> вашего устройства, его можно скопировать из настроек </strong></p>
+      </div>
+    </li>
+
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    
+  </ol>
+</section>
+
+<footer>
+  © 2026 КнопкА · <a href="mailto:knopka-supp@mail.ru">knopka-supp@mail.ru</a>
+</footer>
+
+</body>
+</html>
