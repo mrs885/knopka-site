@@ -21,7 +21,8 @@ try {
         platformAccordions:document.querySelectorAll('#start details.platform-accordion').length,
         platformImages:[...document.querySelectorAll('#start .platform-mark img')].map(i=>i.getAttribute('src')),
         platformGuides:[...document.querySelectorAll('#start .platform-guide-link')].map(a=>({href:a.getAttribute('href'),target:a.getAttribute('target'),rel:a.getAttribute('rel'),platform:a.closest('details')?.className})),
-        downloadButtons:[...document.querySelectorAll('#start .platform-download')].map(button=>({label:button.querySelector('.download-copy strong')?.textContent,note:button.querySelector('.download-copy small')?.textContent,file:button.querySelector('.download-file')?.textContent,mark:button.querySelector('.download-mark')?.textContent,isolated:!button.classList.contains('button')})),
+        downloadButtons:[...document.querySelectorAll('#start .platform-download')].map(button=>({tag:button.tagName,href:button.getAttribute('href'),target:button.getAttribute('target'),rel:button.getAttribute('rel'),configKey:button.dataset.configKey,label:button.querySelector('.download-copy strong')?.textContent,note:button.querySelector('.download-copy small')?.textContent,file:button.querySelector('.download-file')?.textContent,mark:button.querySelector('.download-mark')?.textContent,isolated:!button.classList.contains('button')})),
+        supportLink:[...document.querySelectorAll('.support-copy a')].map(link=>({href:link.getAttribute('href'),target:link.getAttribute('target'),rel:link.getAttribute('rel')})),
         trialCtas:[...document.querySelectorAll('a,button')].filter(el=>el.textContent.includes('Попробовать бесплатно')).map(el=>({tag:el.tagName,href:el.getAttribute('href')})),
         tariffLayouts:document.querySelectorAll('#tariff .tariff-layout').length,
         heroBackgrounds:document.querySelectorAll('.hero-wrap > .hero-background').length,
@@ -53,11 +54,12 @@ try {
         '../assets/installation-macbook.pdf'
       ])||check.platformGuides.some(link=>link.target!=='_blank'||link.rel!=='noopener'||link.platform.includes('platform-windows'))) throw Error(`${kind} platform PDF guides are incomplete`);
       if(JSON.stringify(check.downloadButtons)!==JSON.stringify([
-        {label:'Скачать для Android',note:'Установочный файл',file:'APK',mark:'A',isolated:true},
-        {label:'Открыть TestFlight',note:'Установка на iPhone',file:'iOS',mark:'i',isolated:true},
-        {label:'Скачать для Windows',note:'Установщик приложения',file:'EXE',mark:'W',isolated:true},
-        {label:'Скачать для MacBook',note:'Образ приложения',file:'DMG',mark:'M',isolated:true}
+        {tag:'A',href:'https://github.com/mrs885/knopka/releases/download/android-2.7/knopka-2.7.apk',target:'_blank',rel:'noopener',configKey:'apk_url',label:'Скачать для Android',note:'Установочный файл',file:'APK',mark:'A',isolated:true},
+        {tag:'A',href:'https://testflight.apple.com/join/66AbtsBG',target:'_blank',rel:'noopener',configKey:'update_url',label:'Открыть TestFlight',note:'Установка на iPhone',file:'iOS',mark:'i',isolated:true},
+        {tag:'A',href:'https://github.com/mrs885/knopka/releases/download/windows-3.1/Knopka-Setup-3.1.2.exe',target:'_blank',rel:'noopener',configKey:'win_url',label:'Скачать для Windows',note:'Установщик приложения',file:'EXE',mark:'W',isolated:true},
+        {tag:'A',href:'https://github.com/mrs885/knopka/releases/download/macOS-1.0/KnopkA.dmg',target:'_blank',rel:'noopener',configKey:'dmg_url',label:'Скачать для MacBook',note:'Образ приложения',file:'DMG',mark:'M',isolated:true}
       ])) throw Error(`${kind} store-style download buttons are incomplete`);
+      if(JSON.stringify(check.supportLink)!==JSON.stringify([{href:'https://t.me/AKnopkaVpnBot?start=support',target:'_blank',rel:'noopener'}])) throw Error(`${kind} PROD support link is incomplete`);
       if(check.trialCtas.length!==3||check.trialCtas.some(cta=>cta.tag!=='A'||cta.href!=='#start')) throw Error(`${kind} trial CTAs must link to #start`);
       if(check.tariffLayouts!==1) throw Error(`${kind} tariff layout missing`);
       if(check.heroBackgrounds!==1||check.heroBackgroundWidth!==width) throw Error(`${kind} hero background must span the viewport`);
