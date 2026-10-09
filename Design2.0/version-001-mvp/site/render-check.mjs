@@ -21,7 +21,7 @@ try {
         platformAccordions:document.querySelectorAll('#start details.platform-accordion').length,
         platformImages:[...document.querySelectorAll('#start .platform-mark img')].map(i=>i.getAttribute('src')),
         platformGuides:[...document.querySelectorAll('#start .platform-guide-link')].map(a=>({href:a.getAttribute('href'),target:a.getAttribute('target'),rel:a.getAttribute('rel'),platform:a.closest('details')?.className})),
-        downloadButtons:[...document.querySelectorAll('#start .platform-download')].map(button=>({label:button.querySelector('.download-copy strong')?.textContent,note:button.querySelector('.download-copy small')?.textContent,file:button.querySelector('.download-file')?.textContent,mark:button.querySelector('.download-mark')?.textContent})),
+        downloadButtons:[...document.querySelectorAll('#start .platform-download')].map(button=>({label:button.querySelector('.download-copy strong')?.textContent,note:button.querySelector('.download-copy small')?.textContent,file:button.querySelector('.download-file')?.textContent,mark:button.querySelector('.download-mark')?.textContent,isolated:!button.classList.contains('button')})),
         trialCtas:[...document.querySelectorAll('a,button')].filter(el=>el.textContent.includes('Попробовать бесплатно')).map(el=>({tag:el.tagName,href:el.getAttribute('href')})),
         tariffLayouts:document.querySelectorAll('#tariff .tariff-layout').length,
         heroBackgrounds:document.querySelectorAll('.hero-wrap > .hero-background').length,
@@ -43,10 +43,10 @@ try {
         '../assets/installation-macbook.pdf'
       ])||check.platformGuides.some(link=>link.target!=='_blank'||link.rel!=='noopener'||link.platform.includes('platform-windows'))) throw Error(`${kind} platform PDF guides are incomplete`);
       if(JSON.stringify(check.downloadButtons)!==JSON.stringify([
-        {label:'Скачать для Android',note:'Установочный файл',file:'APK',mark:'A'},
-        {label:'Открыть TestFlight',note:'Установка на iPhone',file:'iOS',mark:'i'},
-        {label:'Скачать для Windows',note:'Установщик приложения',file:'EXE',mark:'W'},
-        {label:'Скачать для MacBook',note:'Образ приложения',file:'DMG',mark:'M'}
+        {label:'Скачать для Android',note:'Установочный файл',file:'APK',mark:'A',isolated:true},
+        {label:'Открыть TestFlight',note:'Установка на iPhone',file:'iOS',mark:'i',isolated:true},
+        {label:'Скачать для Windows',note:'Установщик приложения',file:'EXE',mark:'W',isolated:true},
+        {label:'Скачать для MacBook',note:'Образ приложения',file:'DMG',mark:'M',isolated:true}
       ])) throw Error(`${kind} store-style download buttons are incomplete`);
       if(check.trialCtas.length!==3||check.trialCtas.some(cta=>cta.tag!=='A'||cta.href!=='#start')) throw Error(`${kind} trial CTAs must link to #start`);
       if(check.tariffLayouts!==1) throw Error(`${kind} tariff layout missing`);
