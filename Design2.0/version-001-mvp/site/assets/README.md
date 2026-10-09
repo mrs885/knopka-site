@@ -82,3 +82,13 @@ cutout'ов, созданный встроенным imagegen и нормали�
 Общий prompt: premium studio product photo of a single platform device,
 three-quarter view, transparent background, entire device visible, restrained
 screen gradient, subtle grounding shadow; no text, labels, props or watermark.
+
+Актуальные телефонные cutout'ы v3 подготовлены из двух изображений, присланных
+Ромой, через background-extraction встроенного imagegen с запретом менять
+модели, композицию, цвета и детали устройств:
+
+- `platform-android-samsung-user-v3.png` — Samsung со стилусом, `600×594`;
+- `platform-iphone-user-v3.png` — бордовый iPhone, `537×600`.
+
+Оба нормализованы ImageMagick, имеют настоящий alpha (`opaque=false`) и не
+содержат фон карточки внутри файла. V2 оставлены рядом для отката.
