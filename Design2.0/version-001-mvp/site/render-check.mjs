@@ -15,6 +15,7 @@ try {
       await page.evaluate(()=>document.fonts.ready);
       const check=await page.evaluate(()=>({
         width:innerWidth, scroll:document.documentElement.scrollWidth,
+        socialMeta:{ogTitle:document.querySelector('meta[property="og:title"]')?.content,ogImage:document.querySelector('meta[property="og:image"]')?.content,twitterCard:document.querySelector('meta[name="twitter:card"]')?.content,twitterImage:document.querySelector('meta[name="twitter:image"]')?.content},
         images:[...document.images].filter(i=>!i.complete||!i.naturalWidth).map(i=>i.src),
         heading:document.querySelector('h1').innerText.replace(/\s+/g,' '),
         nav:[...document.querySelectorAll('header nav a')].map(a=>a.textContent),
@@ -40,6 +41,7 @@ try {
         missingAnchors:[...document.querySelectorAll('a[href^="#"]')].filter(a=>!document.getElementById(a.hash.slice(1))).map(a=>a.hash)
       }));
       if(check.width!==width||check.scroll>width||check.images.length||check.missingAnchors.length||errors.length) throw Error(JSON.stringify({kind,...check,errors}));
+      if(check.socialMeta.ogTitle!=='КнопкА — стабильный ВПН с защитой трафика. Неделя бесплатного использования'||check.socialMeta.ogImage!=='https://knopka.onlinedesk.online/assets/og-image.png'||check.socialMeta.twitterCard!=='summary'||check.socialMeta.twitterImage!==check.socialMeta.ogImage) throw Error(`${kind} social metadata is incomplete`);
       if(check.heading!=='Доступ ко всем приложениям'||check.nav.length!==4) throw Error('Missing headline/nav');
       if(check.platformAccordions!==4) throw Error(`${kind} must have four platform accordions`);
       if(JSON.stringify(check.platformImages)!==JSON.stringify([
@@ -85,5 +87,13 @@ try {
       console.log(JSON.stringify({kind,...check,accordions:'OK',errors}));
       await page.close();
     }
+    const directPage=await browser.newPage({viewport:{width:390,height:900},deviceScaleFactor:1});
+    for(const [parameter,expected] of [['android','platform-android'],['ios','platform-iphone'],['iphone','platform-iphone'],['windows','platform-windows'],['mac','platform-macbook'],['macos','platform-macbook'],['macbook','platform-macbook']]) {
+      await directPage.goto(new URL(`${kind}/index.html?platform=${parameter}`,root).href);
+      await directPage.waitForTimeout(150);
+      const directCheck=await directPage.evaluate(()=>({open:[...document.querySelectorAll('#start details.platform-accordion[open]')].map(el=>el.className),scrollY:window.scrollY}));
+      if(directCheck.open.length!==1||!directCheck.open[0].includes(expected)||directCheck.scrollY===0) throw Error(`${kind} ?platform=${parameter} failed: ${JSON.stringify(directCheck)}`);
+    }
+    await directPage.close();
   }
 } finally {await browser.close();}

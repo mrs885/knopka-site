@@ -4,6 +4,21 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>КнопкА — Доступ ко всем приложениям</title>
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://knopka.onlinedesk.online/">
+  <meta property="og:title" content="КнопкА — стабильный ВПН с защитой трафика. Неделя бесплатного использования">
+  <meta property="og:description" content="Разработано с учётом реалий РФ. Работает одновременно с российскими и иностранными ресурсами. Автоматически меняет локации для бесперебойной связи">
+  <meta property="og:image" content="https://knopka.onlinedesk.online/assets/og-image.png">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+  <link rel="icon" type="image/png" sizes="1024x1024" href="/assets/og-image.png">
+  <link rel="apple-touch-icon" href="/assets/og-image.png">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="КнопкА — стабильный ВПН с защитой трафика. Неделя бесплатного использования">
+  <meta name="twitter:description" content="Разработано с учётом реалий РФ. Работает одновременно с российскими и иностранными ресурсами. Автоматически меняет локации для бесперебойной связи">
+  <meta name="twitter:image" content="https://knopka.onlinedesk.online/assets/og-image.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -168,5 +183,24 @@
     </section>
   </main>
   <footer class="footer shell"><a class="wordmark" href="#top"><img class="brand-logo" src="../../assets/app-button-black-a.png" alt="" width="640" height="640" data-template-keep><span>КНОПКА</span></a><nav aria-label="Навигация в подвале"><a href="#benefits">Преимущества</a><a href="#start">Как начать</a><a href="#faq">Вопросы</a><a href="#reviews">Отзывы</a></nav><small>© 2026 КнопкА. Все права защищены.</small></footer>
+  <script>
+    (() => {
+      const aliases = { android: 'android', ios: 'iphone', iphone: 'iphone', windows: 'windows', mac: 'macbook', macos: 'macbook', macbook: 'macbook' };
+      const requested = new URLSearchParams(window.location.search).get('platform')?.toLowerCase();
+      const platform = aliases[requested];
+      if (!platform) return;
+      const target = document.querySelector(`#start .platform-${platform}`);
+      if (!target) return;
+      document.querySelectorAll('#start details.platform-accordion').forEach(accordion => { accordion.open = accordion === target; });
+      const scrollToPlatform = () => requestAnimationFrame(() => {
+        const previousScrollBehavior = document.documentElement.style.scrollBehavior;
+        document.documentElement.style.scrollBehavior = 'auto';
+        target.scrollIntoView({ block: 'start' });
+        document.documentElement.style.scrollBehavior = previousScrollBehavior;
+      });
+      if (document.readyState === 'complete') scrollToPlatform();
+      else window.addEventListener('load', scrollToPlatform, { once: true });
+    })();
+  </script>
 </body>
 </html>
