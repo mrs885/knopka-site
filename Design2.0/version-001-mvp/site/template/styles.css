@@ -23,8 +23,8 @@
 .platform-content li{padding-left:6px}
 .platform-content li::marker{font-weight:700;color:#7b838d}
 .platform-download{min-width:235px}
-.tariff-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,34%);gap:22px;align-items:stretch;text-align:left}
-.tariff-copy{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:8px 0}
+.tariff-layout{display:grid;grid-template-columns:max-content minmax(300px,360px);justify-content:center;gap:32px;align-items:stretch}
+.tariff-copy{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 0;text-align:center}
 .tariff-copy .tariff-price{margin-top:5px}
 .tariff .tariff-cta{align-self:stretch;min-height:100%;margin-top:0;border-radius:16px;font-size:17px}
 @media(min-width:701px) and (max-width:1000px){.media-slot.hero-image{height:460px}.benefits .media-slot{height:85px}.tariff-layout{grid-template-columns:minmax(0,1fr) 230px;gap:16px}.tariff .tariff-cta{font-size:14px}}
