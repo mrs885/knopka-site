@@ -18,16 +18,27 @@ try {
         images:[...document.images].filter(i=>!i.complete||!i.naturalWidth).map(i=>i.src),
         heading:document.querySelector('h1').innerText.replace(/\s+/g,' '),
         nav:[...document.querySelectorAll('header nav a')].map(a=>a.textContent),
+        platformAccordions:document.querySelectorAll('#start details.platform-accordion').length,
         missingAnchors:[...document.querySelectorAll('a[href^="#"]')].filter(a=>!document.getElementById(a.hash.slice(1))).map(a=>a.hash)
       }));
       if(check.width!==width||check.scroll>width||check.images.length||check.missingAnchors.length||errors.length) throw Error(JSON.stringify({kind,...check,errors}));
       if(check.heading!=='Доступ ко всем приложениям'||check.nav.length!==4) throw Error('Missing headline/nav');
-      await page.locator('summary').first().click();
-      if(!await page.locator('details').first().evaluate(el=>el.open))throw Error('FAQ failed');
-      await page.locator('summary').first().click();
+      if(kind==='template') {
+        if(check.platformAccordions!==4) throw Error('Template must have four platform accordions');
+        const accordions=page.locator('#start details.platform-accordion');
+        for(let index=0;index<4;index++) {
+          await accordions.nth(index).locator('summary').click();
+          if(!await accordions.nth(index).evaluate(el=>el.open)) throw Error(`Platform accordion ${index+1} failed`);
+          if(index>0) await accordions.nth(index).locator('summary').click();
+        }
+      } else {
+        await page.locator('summary').first().click();
+        if(!await page.locator('details').first().evaluate(el=>el.open))throw Error('FAQ failed');
+        await page.locator('summary').first().click();
+      }
       await page.evaluate(()=>scrollTo(0,0));
       await page.screenshot({path:fileURLToPath(new URL(`renders/${kind}-${width}.png`,root)),fullPage:true});
-      console.log(JSON.stringify({kind,...check,faq:'OK',errors}));
+      console.log(JSON.stringify({kind,...check,accordions:'OK',errors}));
       await page.close();
     }
   }
