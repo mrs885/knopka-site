@@ -28,6 +28,8 @@ try {
         heroBackgroundWidth:Math.round(document.querySelector('.hero-wrap > .hero-background')?.getBoundingClientRect().width || 0),
         brandLogos:[...document.querySelectorAll('.wordmark .brand-logo')].map(i=>({src:i.getAttribute('src'),width:Math.round(i.getBoundingClientRect().width)})),
         supportOperator:[...document.querySelectorAll('.support .support-operator')].map(i=>({src:i.getAttribute('src'),width:Math.round(i.getBoundingClientRect().width)})),
+        supportWidth:Math.round(document.querySelector('.support')?.getBoundingClientRect().width || 0),
+        sectionWidth:Math.round(document.querySelector('.section.shell')?.getBoundingClientRect().width || 0),
         missingAnchors:[...document.querySelectorAll('a[href^="#"]')].filter(a=>!document.getElementById(a.hash.slice(1))).map(a=>a.hash)
       }));
       if(check.width!==width||check.scroll>width||check.images.length||check.missingAnchors.length||errors.length) throw Error(JSON.stringify({kind,...check,errors}));
@@ -54,7 +56,8 @@ try {
       if(check.tariffLayouts!==1) throw Error(`${kind} tariff layout missing`);
       if(check.heroBackgrounds!==1||check.heroBackgroundWidth!==width) throw Error(`${kind} hero background must span the viewport`);
       if(check.brandLogos.length!==2||check.brandLogos.some(logo=>logo.src!=='../../assets/app-button-black-a.png'||logo.width<25)) throw Error(`${kind} header/footer brand logos are incomplete`);
-      if(check.supportOperator.length!==1||check.supportOperator[0].src!=='../assets/support-operator-miniapp-v1.png'||check.supportOperator[0].width<110) throw Error(`${kind} support operator artwork is incomplete`);
+      if(check.supportOperator.length!==1||check.supportOperator[0].src!=='../assets/support-operator-site-v2.png'||check.supportOperator[0].width<110) throw Error(`${kind} support operator artwork is incomplete`);
+      if(check.supportWidth!==check.sectionWidth) throw Error(`${kind} support card must match section width`);
       const accordions=page.locator('#start details.platform-accordion');
       for(let index=0;index<4;index++) {
         await accordions.nth(index).locator('summary').click();

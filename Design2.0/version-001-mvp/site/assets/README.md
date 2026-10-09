@@ -104,3 +104,14 @@ accordion «Как начать»:
 
 У Windows в Mini App отдельного PDF нет, поэтому Windows accordion содержит
 только inline-инструкцию. Локальные копии не зависят от доступности Worker URL.
+
+## Support operator
+
+`support-operator-miniapp-v1.png` — побайтовая копия canonical Mini App
+operator cutout (`260×260`, SHA-256 `8829b1359b0b94f9d22d149a4fcfb7db9ffe344a4936cc98ee77e6ade1b80db2`):
+круглый портрет, online-dot и badge наушников на прозрачном фоне.
+
+Для светлой site-card используется `support-operator-site-v2.png`. В нём
+детерминированно ослаблен только alpha полупрозрачной тени ниже badge (`y>220`,
+alpha `<0.65`, множитель `0.35`); RGB-каналы и непрозрачные пиксели исходного
+портрета и badge не изменены. V1 оставлен рядом для отката.

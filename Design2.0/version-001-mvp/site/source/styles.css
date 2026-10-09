@@ -71,3 +71,9 @@
 /* Canonical Mini App operator cutout: portrait, online dot and headphones. */
 .support-operator{width:min(100%,260px);height:auto;object-fit:contain;justify-self:center}
 @media(max-width:700px){.support-operator{grid-column:2;grid-row:2;width:120px}}
+
+/* Support is a shell-width card; its inner grid must not narrow twice. */
+.support{width:88%;max-width:1160px;margin:38px auto 0;padding:26px 34px;border-radius:var(--radius)}
+.support>.shell{width:100%;max-width:none}
+@media(min-width:701px) and (max-width:1000px){.support{margin-top:28px;padding:20px 26px}}
+@media(max-width:700px){.support{width:calc(100% - 32px);margin:28px auto 0;padding:22px 18px}}
