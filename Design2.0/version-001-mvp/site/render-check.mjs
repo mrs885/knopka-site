@@ -25,21 +25,19 @@ try {
       }));
       if(check.width!==width||check.scroll>width||check.images.length||check.missingAnchors.length||errors.length) throw Error(JSON.stringify({kind,...check,errors}));
       if(check.heading!=='Доступ ко всем приложениям'||check.nav.length!==4) throw Error('Missing headline/nav');
-      if(kind==='template') {
-        if(check.platformAccordions!==4) throw Error('Template must have four platform accordions');
-        if(check.trialCtas.length!==3||check.trialCtas.some(cta=>cta.tag!=='A'||cta.href!=='#start')) throw Error('Template trial CTAs must link to #start');
-        if(check.tariffLayouts!==1) throw Error('Template tariff layout missing');
-        const accordions=page.locator('#start details.platform-accordion');
-        for(let index=0;index<4;index++) {
-          await accordions.nth(index).locator('summary').click();
-          if(!await accordions.nth(index).evaluate(el=>el.open)) throw Error(`Platform accordion ${index+1} failed`);
-          if(index>0) await accordions.nth(index).locator('summary').click();
-        }
-      } else {
-        await page.locator('summary').first().click();
-        if(!await page.locator('details').first().evaluate(el=>el.open))throw Error('FAQ failed');
-        await page.locator('summary').first().click();
+      if(check.platformAccordions!==4) throw Error(`${kind} must have four platform accordions`);
+      if(check.trialCtas.length!==3||check.trialCtas.some(cta=>cta.tag!=='A'||cta.href!=='#start')) throw Error(`${kind} trial CTAs must link to #start`);
+      if(check.tariffLayouts!==1) throw Error(`${kind} tariff layout missing`);
+      const accordions=page.locator('#start details.platform-accordion');
+      for(let index=0;index<4;index++) {
+        await accordions.nth(index).locator('summary').click();
+        if(!await accordions.nth(index).evaluate(el=>el.open)) throw Error(`Platform accordion ${index+1} failed`);
+        if(index>0) await accordions.nth(index).locator('summary').click();
       }
+      const faq=page.locator('#faq details').first();
+      await faq.locator('summary').click();
+      if(!await faq.evaluate(el=>el.open))throw Error('FAQ failed');
+      await faq.locator('summary').click();
       await page.evaluate(()=>scrollTo(0,0));
       await page.screenshot({path:fileURLToPath(new URL(`renders/${kind}-${width}.png`,root)),fullPage:true});
       console.log(JSON.stringify({kind,...check,accordions:'OK',errors}));

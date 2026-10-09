@@ -12,7 +12,7 @@
     <header class="header shell">
       <a class="wordmark" href="#top">КНОПКА</a>
       <nav aria-label="Основная навигация"><a href="#benefits">Преимущества</a><a href="#start">Как начать</a><a href="#faq">Вопросы</a><a href="#reviews">Отзывы</a></nav>
-      <a class="button small" href="#tariff">Попробовать бесплатно</a>
+      <a class="button small" href="#start">Попробовать бесплатно</a>
     </header>
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
@@ -20,14 +20,14 @@
         <h1 id="hero-title">Доступ ко всем<br>приложениям</h1>
         <p class="hero-description">Instagram, Telegram, YouTube, ChatGPT<br class="desktop-break"> и другие сервисы на телефоне и компьютере.<br class="desktop-break"> Российские сайты и приложения продолжают работать.</p>
         <ul class="services" aria-label="Примеры доступных приложений">
-          <li><img src="../assets/instagram.png" alt="" width="62" height="62"><span>Instagram</span></li>
-          <li><img src="../assets/telegram.png" alt="" width="62" height="62"><span>Telegram</span></li>
-          <li><img src="../assets/chatgpt.png" alt="" width="62" height="62"><span>ChatGPT</span></li>
-          <li><img src="../assets/youtube.png" alt="" width="62" height="62"><span>YouTube</span></li>
+          <li><img src="../assets/instagram-v2.png" alt="" width="512" height="512"><span>Instagram</span></li>
+          <li><img src="../assets/telegram-v2.png" alt="" width="512" height="512"><span>Telegram</span></li>
+          <li><img src="../assets/chatgpt-v2.png" alt="" width="512" height="512"><span>ChatGPT</span></li>
+          <li><img src="../assets/youtube-v2.png" alt="" width="512" height="512"><span>YouTube</span></li>
         </ul>
-        <a class="button hero-cta" href="#tariff">Попробовать бесплатно <span aria-hidden="true">→</span></a>
+        <a class="button hero-cta" href="#start">Попробовать бесплатно <span aria-hidden="true">→</span></a>
       </div>
-      <img class="hero-image" src="../assets/reference-hero.png" alt="Ноутбук и телефон с приложениями — визуальная концепция" width="434" height="448">
+      <img class="hero-image" src="../assets/reference-hero-v2.png" alt="Ноутбук и телефон с приложениями — визуальная концепция" width="1234" height="1274">
     </section>
   </div>
   <main id="main">
@@ -41,12 +41,82 @@
       </div>
     </section>
     <section class="section shell" id="start" aria-labelledby="start-title">
-      <h2 id="start-title">Как начать</h2><p class="section-intro">Подключиться можно за несколько минут. Никаких сложных настроек.</p>
-      <ol class="steps grid-three">
-        <li><img src="../assets/step-register.png" alt="Шаг 1: регистрация" width="218" height="125"><h3>Зарегистрируйся</h3><p>Создай аккаунт — это займёт меньше минуты.</p></li>
-        <li><img src="../assets/step-device.png" alt="Шаг 2: ноутбук и телефон" width="218" height="125"><h3>Подключи устройство</h3><p>Следуй простой инструкции на экране.</p></li>
-        <li><img src="../assets/step-use.png" alt="Шаг 3: любимые сервисы" width="212" height="125"><h3>Пользуйся</h3><p>Открывай любимые сервисы на телефоне и компьютере. Всё уже настроено.</p></li>
-      </ol>
+      <h2 id="start-title">Как начать</h2>
+      <p class="section-intro">Выберите своё устройство — внутри короткая инструкция по установке.</p>
+      <div class="platform-accordions">
+        <details class="platform-accordion platform-android">
+          <summary>
+            <span class="platform-mark" aria-hidden="true">
+              <svg viewBox="0 0 32 32"><path d="m10 8-2-3m14 3 2-3M8 12h16v11a3 3 0 0 1-3 3H11a3 3 0 0 1-3-3V12Zm-2 2v8m20-8v8M11 26v3m10-3v3"/></svg>
+            </span>
+            <span class="platform-heading"><strong>Android</strong><span>Скачать APK и установить приложение</span></span>
+          </summary>
+          <div class="platform-content">
+            <p>Скачайте дистрибутив, установите приложение и зарегистрируйте почту. После регистрации откроется 7 дней бесплатного доступа.</p>
+            <ol>
+              <li>Скачайте установочный APK-файл.</li>
+              <li>Откройте файл, разрешите установку и дождитесь её завершения.</li>
+              <li>Запустите КнопкА, зарегистрируйте почту и подключитесь.</li>
+            </ol>
+            <button type="button" class="button platform-download">Скачать APK <span aria-hidden="true">→</span></button>
+          </div>
+        </details>
+
+        <details class="platform-accordion platform-iphone">
+          <summary>
+            <span class="platform-mark" aria-hidden="true">
+              <svg viewBox="0 0 32 32"><rect x="9" y="3" width="14" height="26" rx="4"/><path d="M13 7h6M15 25h2"/></svg>
+            </span>
+            <span class="platform-heading"><strong>iPhone</strong><span>Установить приложение через TestFlight</span></span>
+          </summary>
+          <div class="platform-content">
+            <p>Установите КнопкА через TestFlight, зарегистрируйте почту и получите 7 дней бесплатного доступа.</p>
+            <ol>
+              <li>Откройте ссылку на установку. Если TestFlight ещё нет на iPhone, сначала установите его.</li>
+              <li>В TestFlight нажмите «Установить» и дождитесь завершения.</li>
+              <li>Откройте КнопкА, зарегистрируйте почту и подключитесь.</li>
+            </ol>
+            <button type="button" class="button platform-download">Открыть TestFlight <span aria-hidden="true">→</span></button>
+          </div>
+        </details>
+
+        <details class="platform-accordion platform-windows">
+          <summary>
+            <span class="platform-mark filled" aria-hidden="true">
+              <svg viewBox="0 0 32 32"><path d="M3 5.5 14 4v10H3V5.5ZM16 3.7 29 2v12H16V3.7ZM3 16h11v10L3 24.5V16Zm13 0h13v12l-13-1.7V16Z"/></svg>
+            </span>
+            <span class="platform-heading"><strong>Windows</strong><span>Скачать и запустить установщик</span></span>
+          </summary>
+          <div class="platform-content">
+            <p>Скачайте установщик, завершите установку и зарегистрируйтесь в приложении. Первые 7 дней — бесплатно.</p>
+            <ol>
+              <li>Скачайте и запустите установочный EXE-файл. Разрешите Windows его выполнение.</li>
+              <li>Завершите установку и откройте ярлык КнопкА на рабочем столе.</li>
+              <li>Зарегистрируйте почту и подключитесь.</li>
+            </ol>
+            <button type="button" class="button platform-download">Скачать для Windows <span aria-hidden="true">→</span></button>
+          </div>
+        </details>
+
+        <details class="platform-accordion platform-macbook">
+          <summary>
+            <span class="platform-mark" aria-hidden="true">
+              <svg viewBox="0 0 32 32"><rect x="5" y="5" width="22" height="16" rx="2"/><path d="M2 25h28M11 25h10"/></svg>
+            </span>
+            <span class="platform-heading"><strong>MacBook</strong><span>Установить приложение из DMG-файла</span></span>
+          </summary>
+          <div class="platform-content">
+            <p>Скачайте DMG-файл, перенесите КнопкА в «Программы» и зарегистрируйте почту, чтобы получить 7 дней бесплатного доступа.</p>
+            <ol>
+              <li>Скачайте и откройте установочный DMG-файл.</li>
+              <li>Перетащите КнопкА в папку «Программы».</li>
+              <li>Откройте приложение и разрешите macOS установку профиля и запуск расширения.</li>
+              <li>Зарегистрируйте почту и подключитесь.</li>
+            </ol>
+            <button type="button" class="button platform-download">Скачать для MacBook <span aria-hidden="true">→</span></button>
+          </div>
+        </details>
+      </div>
     </section>
     <section class="support" aria-labelledby="support-title"><div class="shell support-grid">
       <div class="support-copy"><h2 id="support-title">Рома на связи</h2><p>Рома — наш специалист поддержки. Он поможет с подключением, подскажет по настройкам и всегда будет рядом, если что-то не работает.</p><button type="button" class="button light">Написать Роме <span aria-hidden="true">→</span></button></div>
@@ -67,7 +137,16 @@
         <article><span class="stars" aria-label="Демонстрационная оценка: пять звёзд">★★★★★</span><strong>Пример отзыва</strong><p>Рома помог с настройкой. Всё объяснил простыми словами.</p></article>
       </div>
     </section>
-    <section class="tariff" id="tariff" aria-labelledby="tariff-title"><div class="shell"><h2 id="tariff-title">Один простой тариф</h2><p>Всё включено. Без сложных условий.</p><strong class="tariff-price">7 дней бесплатно · Дальше 300 ₽/мес</strong><br><button type="button" class="button">Попробовать бесплатно <span aria-hidden="true">→</span></button></div></section>
+    <section class="tariff" id="tariff" aria-labelledby="tariff-title">
+      <div class="shell tariff-layout">
+        <div class="tariff-copy">
+          <h2 id="tariff-title">Один простой тариф</h2>
+          <p>Всё включено. Без сложных условий.</p>
+          <strong class="tariff-price">7 дней бесплатно · Дальше 300 ₽/мес</strong>
+        </div>
+        <a class="button tariff-cta" href="#start">Попробовать бесплатно <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
   </main>
   <footer class="footer shell"><a class="wordmark" href="#top">КНОПКА</a><nav aria-label="Навигация в подвале"><a href="#benefits">Преимущества</a><a href="#start">Как начать</a><a href="#faq">Вопросы</a><a href="#reviews">Отзывы</a></nav><small>© 2026 КнопкА. Все права защищены.</small></footer>
 </body>
