@@ -20,6 +20,7 @@ try {
         nav:[...document.querySelectorAll('header nav a')].map(a=>a.textContent),
         platformAccordions:document.querySelectorAll('#start details.platform-accordion').length,
         platformImages:[...document.querySelectorAll('#start .platform-mark img')].map(i=>i.getAttribute('src')),
+        platformGuides:[...document.querySelectorAll('#start .platform-guide-link')].map(a=>({href:a.getAttribute('href'),target:a.getAttribute('target'),rel:a.getAttribute('rel'),platform:a.closest('details')?.className})),
         trialCtas:[...document.querySelectorAll('a,button')].filter(el=>el.textContent.includes('Попробовать бесплатно')).map(el=>({tag:el.tagName,href:el.getAttribute('href')})),
         tariffLayouts:document.querySelectorAll('#tariff .tariff-layout').length,
         heroBackgrounds:document.querySelectorAll('.hero-wrap > .hero-background').length,
@@ -35,6 +36,11 @@ try {
         '../assets/platform-windows-desktop-v2.png',
         '../assets/platform-macbook-photo-v1.png'
       ])) throw Error(`${kind} platform imagery is incomplete`);
+      if(JSON.stringify(check.platformGuides.map(link=>link.href))!==JSON.stringify([
+        '../assets/installation-android.pdf',
+        '../assets/installation-iphone.pdf',
+        '../assets/installation-macbook.pdf'
+      ])||check.platformGuides.some(link=>link.target!=='_blank'||link.rel!=='noopener'||link.platform.includes('platform-windows'))) throw Error(`${kind} platform PDF guides are incomplete`);
       if(check.trialCtas.length!==3||check.trialCtas.some(cta=>cta.tag!=='A'||cta.href!=='#start')) throw Error(`${kind} trial CTAs must link to #start`);
       if(check.tariffLayouts!==1) throw Error(`${kind} tariff layout missing`);
       if(check.heroBackgrounds!==1||check.heroBackgroundWidth!==width) throw Error(`${kind} hero background must span the viewport`);

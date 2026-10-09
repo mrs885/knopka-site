@@ -22,6 +22,9 @@
 .platform-content ol{display:grid;gap:10px;margin:17px 0 20px;padding-left:22px;max-width:720px;color:#343940}
 .platform-content li{padding-left:6px}
 .platform-content li::marker{font-weight:700;color:#7b838d}
+.platform-guide-link{display:inline-flex;align-items:center;gap:6px;color:#1f596f;font-weight:800;text-decoration:underline;text-decoration-color:rgb(31 89 111 / 32%);text-underline-offset:3px}
+.platform-guide-link:hover{text-decoration-color:currentColor}
+.platform-guide-link:focus-visible{border-radius:4px;outline:3px solid rgb(68 139 171 / 28%);outline-offset:3px}
 .platform-download{min-width:235px}
 .tariff-layout{display:grid;grid-template-columns:max-content minmax(300px,360px);justify-content:center;gap:32px;align-items:stretch}
 .tariff-copy{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 0;text-align:center}

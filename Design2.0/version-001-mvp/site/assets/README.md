@@ -92,3 +92,15 @@ screen gradient, subtle grounding shadow; no text, labels, props or watermark.
 
 Оба нормализованы ImageMagick, имеют настоящий alpha (`opaque=false`) и не
 содержат фон карточки внутри файла. V2 оставлены рядом для отката.
+
+## Platform installation PDFs
+
+Локальные побайтовые копии production-инструкций Mini App используются в
+accordion «Как начать»:
+
+- `installation-android.pdf`;
+- `installation-iphone.pdf`;
+- `installation-macbook.pdf`.
+
+У Windows в Mini App отдельного PDF нет, поэтому Windows accordion содержит
+только inline-инструкцию. Локальные копии не зависят от доступности Worker URL.
