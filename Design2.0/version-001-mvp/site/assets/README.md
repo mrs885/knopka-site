@@ -65,17 +65,20 @@ background; без прямоугольной подложки, текста и 
 
 ## Platform icons
 
-Для accordion «Как начать» Android и iPhone используют побайтовые копии
-production Mini App SVG:
+Для accordion «Как начать» используется единый набор фотореалистичных device
+cutout'ов, созданный встроенным imagegen и нормализованный ImageMagick:
 
-- `platform-android-miniapp.svg` — Google Play mark;
-- `platform-apple-miniapp.svg` — Apple mark.
+- `platform-android-phone-v2.png` — graphite Samsung flagship, `621×900`;
+- `platform-iphone-orange-v2.png` — orange iPhone, `598×900`;
+- `platform-windows-desktop-v2.png` — monitor, compact tower и keyboard,
+  `900×633`;
+- `platform-macbook-photo-v1.png` — silver MacBook, `900×600`.
 
-`platform-macbook-photo-v1.png` создан встроенным imagegen как
-фотореалистичный серебристый ноутбук в трёхчетвертном ракурсе (`900×600`,
-RGBA, `opaque=false`). Он имеет прозрачный фон и мягкую контактную тень;
-экран содержит только нейтральный градиент, без текста и UI.
+Все четыре PNG имеют настоящий alpha (`opaque=false`), полностью видимый
+корпус, мягкую контактную тень и не содержат текста, UI labels или watermark.
+Исходные Mini App SVG сохранены рядом как предыдущая версия для простого
+отката.
 
-Краткий prompt: premium studio product photo of an open silver MacBook-style
-laptop, transparent background, entire device visible, subtle warm-to-blue
-screen gradient; no logo, text, props or watermark.
+Общий prompt: premium studio product photo of a single platform device,
+three-quarter view, transparent background, entire device visible, restrained
+screen gradient, subtle grounding shadow; no text, labels, props or watermark.

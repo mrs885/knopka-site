@@ -30,8 +30,9 @@ try {
       if(check.heading!=='Доступ ко всем приложениям'||check.nav.length!==4) throw Error('Missing headline/nav');
       if(check.platformAccordions!==4) throw Error(`${kind} must have four platform accordions`);
       if(JSON.stringify(check.platformImages)!==JSON.stringify([
-        '../assets/platform-android-miniapp.svg',
-        '../assets/platform-apple-miniapp.svg',
+        '../assets/platform-android-phone-v2.png',
+        '../assets/platform-iphone-orange-v2.png',
+        '../assets/platform-windows-desktop-v2.png',
         '../assets/platform-macbook-photo-v1.png'
       ])) throw Error(`${kind} platform imagery is incomplete`);
       if(check.trialCtas.length!==3||check.trialCtas.some(cta=>cta.tag!=='A'||cta.href!=='#start')) throw Error(`${kind} trial CTAs must link to #start`);

@@ -10,15 +10,10 @@
 .platform-accordion summary::after{content:"";width:11px;height:11px;margin-left:auto;border-right:2px solid #68717e;border-bottom:2px solid #68717e;transform:rotate(45deg) translateY(-3px);transition:transform .18s ease}
 .platform-accordion[open] summary::after{content:"";transform:rotate(225deg) translate(-2px,-2px)}
 .platform-accordion[open] summary{border-bottom:1px solid #e1dcda;background:#f8f5f3}
-.platform-mark{display:grid;place-items:center;flex:0 0 54px;width:54px;height:54px;border-radius:15px;background:#fff;color:#171a1d;box-shadow:0 5px 14px rgb(50 43 39 / 7%)}
+.platform-mark{display:grid;place-items:center;flex:0 0 76px;width:76px;height:54px;background:transparent;color:#171a1d}
 .platform-mark svg{width:31px;height:31px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.platform-mark img{width:34px;height:34px;object-fit:contain}
+.platform-mark img{display:block;width:76px;height:52px;object-fit:contain;object-position:center}
 .platform-mark.filled svg{fill:currentColor;stroke:none}
-.platform-android .platform-mark{color:#208455;background:#fff}
-.platform-iphone .platform-mark,.platform-macbook .platform-mark{background:#fff}
-.platform-windows .platform-mark{color:#2878ff;background:#e8f0ff}
-.platform-macbook .platform-mark{flex-basis:76px;width:76px;background:transparent;box-shadow:none}
-.platform-macbook .platform-mark img{width:76px;height:51px}
 .platform-heading{display:grid;gap:3px;min-width:0}
 .platform-heading strong{font-size:19px;line-height:1.2}
 .platform-heading span{color:var(--muted);font-size:15px}
@@ -33,7 +28,7 @@
 .tariff-copy .tariff-price{margin-top:5px}
 .tariff .tariff-cta{align-self:stretch;min-height:100%;margin-top:0;border-radius:16px;font-size:17px}
 @media(min-width:701px) and (max-width:1000px){.tariff-layout{grid-template-columns:minmax(0,1fr) 230px;gap:16px}.tariff .tariff-cta{font-size:14px}}
-@media(max-width:700px){.platform-accordions{gap:10px}.platform-accordion summary{min-height:76px;padding:11px 14px;gap:12px}.platform-mark{flex-basis:48px;width:48px;height:48px;border-radius:13px}.platform-mark svg{width:28px;height:28px}.platform-mark img{width:31px;height:31px}.platform-macbook .platform-mark{flex-basis:64px;width:64px}.platform-macbook .platform-mark img{width:64px;height:43px}.platform-heading strong{font-size:17px}.platform-heading span{font-size:13px;line-height:1.3}.platform-content{padding:17px 16px 19px}.platform-content>p{padding:0;font-size:15px}.platform-content ol{gap:9px;margin:15px 0 18px;padding-left:21px;font-size:15px}.platform-download{width:100%;min-width:0}.tariff-layout{grid-template-columns:1fr;gap:14px}.tariff-copy{align-items:center;padding:0;text-align:center}.tariff .tariff-cta{width:100%;min-height:62px;font-size:16px}}
+@media(max-width:700px){.platform-accordions{gap:10px}.platform-accordion summary{min-height:76px;padding:11px 14px;gap:12px}.platform-mark{flex-basis:64px;width:64px;height:48px}.platform-mark svg{width:28px;height:28px}.platform-mark img{width:64px;height:46px}.platform-heading strong{font-size:17px}.platform-heading span{font-size:13px;line-height:1.3}.platform-content{padding:17px 16px 19px}.platform-content>p{padding:0;font-size:15px}.platform-content ol{gap:9px;margin:15px 0 18px;padding-left:21px;font-size:15px}.platform-download{width:100%;min-width:0}.tariff-layout{grid-template-columns:1fr;gap:14px}.tariff-copy{align-items:center;padding:0;text-align:center}.tariff .tariff-cta{width:100%;min-height:62px;font-size:16px}}
 @media(prefers-reduced-motion:reduce){.platform-accordion summary::after{transition:none}}
 
 /* Hero v3: one full-width photographic surface beneath header and copy. */
