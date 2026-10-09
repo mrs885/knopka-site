@@ -42,4 +42,7 @@
 .hero-copy{width:48%;padding:30px 0 70px}
 @media(min-width:701px) and (max-width:1000px){.hero-wrap{min-height:512px}.hero{min-height:460px}.hero-copy{width:49%;padding:14px 0 30px}}
 @media(max-width:700px){.hero-wrap{min-height:0;padding-bottom:310px}.hero-wrap::after{background:linear-gradient(180deg,#f8f3ef 0,#f8f3ef 62%,rgb(248 243 239 / 90%) 70%,transparent 84%)}.hero-background{inset:auto 0 0;height:330px;object-position:64% center}.hero{width:100%;min-height:0;display:block}.hero-copy{width:100%;padding:20px 22px 25px}}
+
+/* Benefit art v2 uses real alpha; card backgrounds remain visible around it. */
+.russian-card img,.benefits img{border-radius:0}
 @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
