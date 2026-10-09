@@ -21,6 +21,8 @@ try {
         platformAccordions:document.querySelectorAll('#start details.platform-accordion').length,
         trialCtas:[...document.querySelectorAll('a,button')].filter(el=>el.textContent.includes('Попробовать бесплатно')).map(el=>({tag:el.tagName,href:el.getAttribute('href')})),
         tariffLayouts:document.querySelectorAll('#tariff .tariff-layout').length,
+        heroBackgrounds:document.querySelectorAll('.hero-wrap > .hero-background').length,
+        heroBackgroundWidth:Math.round(document.querySelector('.hero-wrap > .hero-background')?.getBoundingClientRect().width || 0),
         missingAnchors:[...document.querySelectorAll('a[href^="#"]')].filter(a=>!document.getElementById(a.hash.slice(1))).map(a=>a.hash)
       }));
       if(check.width!==width||check.scroll>width||check.images.length||check.missingAnchors.length||errors.length) throw Error(JSON.stringify({kind,...check,errors}));
@@ -28,6 +30,7 @@ try {
       if(check.platformAccordions!==4) throw Error(`${kind} must have four platform accordions`);
       if(check.trialCtas.length!==3||check.trialCtas.some(cta=>cta.tag!=='A'||cta.href!=='#start')) throw Error(`${kind} trial CTAs must link to #start`);
       if(check.tariffLayouts!==1) throw Error(`${kind} tariff layout missing`);
+      if(check.heroBackgrounds!==1||check.heroBackgroundWidth!==width) throw Error(`${kind} hero background must span the viewport`);
       const accordions=page.locator('#start details.platform-accordion');
       for(let index=0;index<4;index++) {
         await accordions.nth(index).locator('summary').click();

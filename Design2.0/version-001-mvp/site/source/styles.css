@@ -32,4 +32,14 @@
 @media(min-width:701px) and (max-width:1000px){.tariff-layout{grid-template-columns:minmax(0,1fr) 230px;gap:16px}.tariff .tariff-cta{font-size:14px}}
 @media(max-width:700px){.platform-accordions{gap:10px}.platform-accordion summary{min-height:76px;padding:11px 14px;gap:12px}.platform-mark{flex-basis:48px;width:48px;height:48px;border-radius:13px}.platform-mark svg{width:28px;height:28px}.platform-heading strong{font-size:17px}.platform-heading span{font-size:13px;line-height:1.3}.platform-content{padding:17px 16px 19px}.platform-content>p{padding:0;font-size:15px}.platform-content ol{gap:9px;margin:15px 0 18px;padding-left:21px;font-size:15px}.platform-download{width:100%;min-width:0}.tariff-layout{grid-template-columns:1fr;gap:14px}.tariff-copy{align-items:center;padding:0;text-align:center}.tariff .tariff-cta{width:100%;min-height:62px;font-size:16px}}
 @media(prefers-reduced-motion:reduce){.platform-accordion summary::after{transition:none}}
+
+/* Hero v3: one full-width photographic surface beneath header and copy. */
+.hero-wrap{isolation:isolate;min-height:700px;background:#f6efe9}
+.hero-wrap::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgb(248 244 240 / 96%) 0%,rgb(248 244 240 / 86%) 28%,rgb(248 244 240 / 44%) 45%,rgb(248 244 240 / 8%) 61%,transparent 74%)}
+.hero-background{position:absolute;inset:0;z-index:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center}
+.header,.hero{position:relative;z-index:2}
+.hero{width:88%;max-width:1160px;min-height:624px;display:block;overflow:visible}
+.hero-copy{width:48%;padding:30px 0 70px}
+@media(min-width:701px) and (max-width:1000px){.hero-wrap{min-height:512px}.hero{min-height:460px}.hero-copy{width:49%;padding:14px 0 30px}}
+@media(max-width:700px){.hero-wrap{min-height:0;padding-bottom:310px}.hero-wrap::after{background:linear-gradient(180deg,#f8f3ef 0,#f8f3ef 62%,rgb(248 243 239 / 90%) 70%,transparent 84%)}.hero-background{inset:auto 0 0;height:330px;object-position:64% center}.hero{width:100%;min-height:0;display:block}.hero-copy{width:100%;padding:20px 22px 25px}}
 @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}

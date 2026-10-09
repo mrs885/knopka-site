@@ -1,6 +1,6 @@
 /* Same layout and typography as source; only media slots differ. */
 @import url('../source/styles.css');
 .media-slot{display:grid;place-items:center;aspect-ratio:var(--slot-ratio);max-width:100%;border:1px dashed #9da5b0;border-radius:14px;color:#59616c;background:#f0efed;font:11px/1.3 Arial,sans-serif;text-align:center;overflow-wrap:anywhere}
-.services .media-slot{width:100%}.russian-card>.media-slot{width:92%}.benefits .media-slot{width:80%;height:128px;margin:0 auto 9px}.steps .media-slot{width:100%}.media-slot.portrait{width:100%}.media-slot.hero-image{height:700px}
-@media(min-width:701px) and (max-width:1000px){.media-slot.hero-image{height:460px}.benefits .media-slot{height:85px}}
-@media(max-width:700px){.media-slot.hero-image{height:auto;max-height:450px;width:100%}.russian-card>.media-slot{width:250px;margin:auto}.benefits .media-slot{width:140px;height:82px;margin:0 0 14px}.steps .media-slot{max-height:205px}}
+.services .media-slot{width:100%}.russian-card>.media-slot{width:92%}.benefits .media-slot{width:80%;height:128px;margin:0 auto 9px}.steps .media-slot{width:100%}.media-slot.portrait{width:100%}.media-slot.hero-background{max-width:none}
+@media(min-width:701px) and (max-width:1000px){.benefits .media-slot{height:85px}}
+@media(max-width:700px){.russian-card>.media-slot{width:250px;margin:auto}.benefits .media-slot{width:140px;height:82px;margin:0 0 14px}.steps .media-slot{max-height:205px}}
