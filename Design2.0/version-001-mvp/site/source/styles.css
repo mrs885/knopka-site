@@ -25,13 +25,22 @@
 .platform-guide-link{display:inline-flex;align-items:center;gap:6px;color:#1f596f;font-weight:800;text-decoration:underline;text-decoration-color:rgb(31 89 111 / 32%);text-underline-offset:3px}
 .platform-guide-link:hover{text-decoration-color:currentColor}
 .platform-guide-link:focus-visible{border-radius:4px;outline:3px solid rgb(68 139 171 / 28%);outline-offset:3px}
-.platform-download{min-width:235px}
+.platform-download{display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:center;justify-content:normal;gap:13px;width:min(100%,460px);min-width:0;min-height:76px;padding:12px 14px;border-radius:18px;text-align:left;box-shadow:0 8px 18px rgb(22 26 29 / 12%)}
+.platform-download .download-mark{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:rgb(255 255 255 / 14%);font-size:16px;font-weight:900;line-height:1}
+.platform-download-android .download-mark{background:#7967bd}
+.platform-download-iphone .download-mark{background:#a2554e}
+.platform-download-windows .download-mark{background:#4182b4}
+.platform-download-macbook .download-mark{background:#8a817b}
+.platform-download .download-copy{display:grid;gap:3px;min-width:0;font-size:inherit;line-height:1.15;text-align:left}
+.platform-download .download-copy strong{font-size:16px;overflow-wrap:anywhere}
+.platform-download .download-copy small{color:rgb(255 255 255 / 68%);font-size:12px;font-weight:400;line-height:1.2}
+.platform-download .download-file{margin-left:auto;padding:7px 9px;border-radius:8px;background:#3b4248;color:#fff;font-size:11px;font-weight:900;letter-spacing:.06em;line-height:1}
 .tariff-layout{display:grid;grid-template-columns:max-content minmax(300px,360px);justify-content:center;gap:32px;align-items:stretch}
 .tariff-copy{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 0;text-align:center}
 .tariff-copy .tariff-price{margin-top:5px}
 .tariff .tariff-cta{align-self:stretch;min-height:100%;margin-top:0;border-radius:16px;font-size:17px}
 @media(min-width:701px) and (max-width:1000px){.tariff-layout{grid-template-columns:minmax(0,1fr) 230px;gap:16px}.tariff .tariff-cta{font-size:14px}}
-@media(max-width:700px){.platform-accordions{gap:10px}.platform-accordion summary{min-height:76px;padding:11px 14px;gap:12px}.platform-mark{flex-basis:64px;width:64px;height:48px}.platform-mark svg{width:28px;height:28px}.platform-mark img{width:64px;height:46px}.platform-heading strong{font-size:17px}.platform-heading span{font-size:13px;line-height:1.3}.platform-content{padding:17px 16px 19px}.platform-content>p{padding:0;font-size:15px}.platform-content ol{gap:9px;margin:15px 0 18px;padding-left:21px;font-size:15px}.platform-download{width:100%;min-width:0}.tariff-layout{grid-template-columns:1fr;gap:14px}.tariff-copy{align-items:center;padding:0;text-align:center}.tariff .tariff-cta{width:100%;min-height:62px;font-size:16px}}
+@media(max-width:700px){.platform-accordions{gap:10px}.platform-accordion summary{min-height:76px;padding:11px 14px;gap:12px}.platform-mark{flex-basis:64px;width:64px;height:48px}.platform-mark svg{width:28px;height:28px}.platform-mark img{width:64px;height:46px}.platform-heading strong{font-size:17px}.platform-heading span{font-size:13px;line-height:1.3}.platform-content{padding:17px 16px 19px}.platform-content>p{padding:0;font-size:15px}.platform-content ol{gap:9px;margin:15px 0 18px;padding-left:21px;font-size:15px}.platform-download{grid-template-columns:38px minmax(0,1fr) auto;width:100%;min-width:0;min-height:72px;padding:10px 11px;gap:10px}.platform-download .download-mark{width:38px;height:38px}.platform-download .download-copy strong{font-size:14px}.platform-download .download-copy small{font-size:11px}.platform-download .download-file{padding:6px 7px;font-size:10px}.tariff-layout{grid-template-columns:1fr;gap:14px}.tariff-copy{align-items:center;padding:0;text-align:center}.tariff .tariff-cta{width:100%;min-height:62px;font-size:16px}}
 @media(prefers-reduced-motion:reduce){.platform-accordion summary::after{transition:none}}
 
 /* Hero v3: one full-width photographic surface beneath header and copy. */
