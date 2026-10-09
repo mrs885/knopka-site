@@ -19,6 +19,7 @@ try {
         heading:document.querySelector('h1').innerText.replace(/\s+/g,' '),
         nav:[...document.querySelectorAll('header nav a')].map(a=>a.textContent),
         platformAccordions:document.querySelectorAll('#start details.platform-accordion').length,
+        platformImages:[...document.querySelectorAll('#start .platform-mark img')].map(i=>i.getAttribute('src')),
         trialCtas:[...document.querySelectorAll('a,button')].filter(el=>el.textContent.includes('Попробовать бесплатно')).map(el=>({tag:el.tagName,href:el.getAttribute('href')})),
         tariffLayouts:document.querySelectorAll('#tariff .tariff-layout').length,
         heroBackgrounds:document.querySelectorAll('.hero-wrap > .hero-background').length,
@@ -28,6 +29,11 @@ try {
       if(check.width!==width||check.scroll>width||check.images.length||check.missingAnchors.length||errors.length) throw Error(JSON.stringify({kind,...check,errors}));
       if(check.heading!=='Доступ ко всем приложениям'||check.nav.length!==4) throw Error('Missing headline/nav');
       if(check.platformAccordions!==4) throw Error(`${kind} must have four platform accordions`);
+      if(JSON.stringify(check.platformImages)!==JSON.stringify([
+        '../assets/platform-android-miniapp.svg',
+        '../assets/platform-apple-miniapp.svg',
+        '../assets/platform-macbook-photo-v1.png'
+      ])) throw Error(`${kind} platform imagery is incomplete`);
       if(check.trialCtas.length!==3||check.trialCtas.some(cta=>cta.tag!=='A'||cta.href!=='#start')) throw Error(`${kind} trial CTAs must link to #start`);
       if(check.tariffLayouts!==1) throw Error(`${kind} tariff layout missing`);
       if(check.heroBackgrounds!==1||check.heroBackgroundWidth!==width) throw Error(`${kind} hero background must span the viewport`);

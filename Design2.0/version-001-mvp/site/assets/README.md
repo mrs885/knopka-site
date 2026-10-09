@@ -62,3 +62,20 @@ CSS и остаётся виден за объектом и его мягкой 
 Краткие prompts: сохранить исходные формы и мягкую сине-персиковую 3D-палитру,
 повысить детализацию, изолировать объект вместе с тенью на genuine transparent
 background; без прямоугольной подложки, текста и водяных знаков.
+
+## Platform icons
+
+Для accordion «Как начать» Android и iPhone используют побайтовые копии
+production Mini App SVG:
+
+- `platform-android-miniapp.svg` — Google Play mark;
+- `platform-apple-miniapp.svg` — Apple mark.
+
+`platform-macbook-photo-v1.png` создан встроенным imagegen как
+фотореалистичный серебристый ноутбук в трёхчетвертном ракурсе (`900×600`,
+RGBA, `opaque=false`). Он имеет прозрачный фон и мягкую контактную тень;
+экран содержит только нейтральный градиент, без текста и UI.
+
+Краткий prompt: premium studio product photo of an open silver MacBook-style
+laptop, transparent background, entire device visible, subtle warm-to-blue
+screen gradient; no logo, text, props or watermark.
