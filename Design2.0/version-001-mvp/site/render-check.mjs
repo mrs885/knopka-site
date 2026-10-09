@@ -7,7 +7,7 @@ mkdirSync(new URL('renders/',root), {recursive:true});
 const browser = await chromium.launch({executablePath:process.env.CHROME_PATH || '/usr/bin/google-chrome-stable',headless:true,args:['--no-sandbox']});
 try {
   for (const kind of ['source','template']) {
-    for (const width of [390,772,1440]) {
+    for (const width of [390,772,1000,1200,1440]) {
       const page = await browser.newPage({viewport:{width,height:900},deviceScaleFactor:1});
       const errors=[];
       page.on('pageerror', e=>errors.push(e.message));
@@ -32,6 +32,10 @@ try {
         sectionWidth:Math.round(document.querySelector('.section.shell')?.getBoundingClientRect().width || 0),
         faqQuestions:[...document.querySelectorAll('#faq details summary')].map(el=>el.textContent.trim()),
         faqAnswers:[...document.querySelectorAll('#faq details p')].map(el=>el.textContent.trim()),
+        reviewAvatars:[...document.querySelectorAll('#reviews .review-avatar')].map(i=>i.getAttribute('src')),
+        reviewText:document.querySelector('#reviews')?.innerText || '',
+        tariffPadding:[getComputedStyle(document.querySelector('#tariff')).paddingTop,getComputedStyle(document.querySelector('#tariff')).paddingBottom],
+        tariffCtaRightGap:Math.round(innerWidth-document.querySelector('#tariff .tariff-cta').getBoundingClientRect().right),
         missingAnchors:[...document.querySelectorAll('a[href^="#"]')].filter(a=>!document.getElementById(a.hash.slice(1))).map(a=>a.hash)
       }));
       if(check.width!==width||check.scroll>width||check.images.length||check.missingAnchors.length||errors.length) throw Error(JSON.stringify({kind,...check,errors}));
@@ -61,6 +65,9 @@ try {
       if(check.supportOperator.length!==1||check.supportOperator[0].src!=='../assets/support-operator-site-v2.png'||check.supportOperator[0].width<110) throw Error(`${kind} support operator artwork is incomplete`);
       if(check.supportWidth!==check.sectionWidth) throw Error(`${kind} support card must match section width`);
       if(JSON.stringify(check.faqQuestions)!==JSON.stringify(['Как подключиться?','На каких устройствах можно установить ВПН?','Что делать, если возникла проблема?'])||check.faqAnswers.length!==3||check.faqAnswers.some(answer=>!answer)) throw Error(`${kind} FAQ copy is incomplete`);
+      if(JSON.stringify(check.reviewAvatars)!==JSON.stringify(['../assets/review-woman-1-v1.png','../assets/review-man-v1.png','../assets/review-woman-2-v1.png'])||check.reviewText.includes('Пример')) throw Error(`${kind} review portraits or copy are incomplete`);
+      const minimumTariffCtaGap=width<=700?16:24;
+      if(JSON.stringify(check.tariffPadding)!==JSON.stringify(['24px','24px'])||check.tariffCtaRightGap<minimumTariffCtaGap) throw Error(`${kind} tariff spacing is unsafe at ${width}px`);
       const accordions=page.locator('#start details.platform-accordion');
       for(let index=0;index<4;index++) {
         await accordions.nth(index).locator('summary').click();
@@ -72,7 +79,7 @@ try {
       if(!await faq.evaluate(el=>el.open))throw Error('FAQ failed');
       await faq.locator('summary').click();
       await page.evaluate(()=>scrollTo(0,0));
-      await page.screenshot({path:fileURLToPath(new URL(`renders/${kind}-${width}.png`,root)),fullPage:true});
+      if([390,772,1440].includes(width)) await page.screenshot({path:fileURLToPath(new URL(`renders/${kind}-${width}.png`,root)),fullPage:true});
       console.log(JSON.stringify({kind,...check,accordions:'OK',errors}));
       await page.close();
     }

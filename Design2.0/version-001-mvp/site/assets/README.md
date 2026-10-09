@@ -115,3 +115,14 @@ operator cutout (`260×260`, SHA-256 `8829b1359b0b94f9d22d149a4fcfb7db9ffe344a49
 детерминированно ослаблен только alpha полупрозрачной тени ниже badge (`y>220`,
 alpha `<0.65`, множитель `0.35`); RGB-каналы и непрозрачные пиксели исходного
 портрета и badge не изменены. V1 оставлен рядом для отката.
+
+## Review portraits
+
+Для визуального прототипа карточек отзывов встроенным imagegen созданы три
+портрета вымышленных людей: `review-woman-1-v1.png`, `review-man-v1.png` и
+`review-woman-2-v1.png`. Это синтетические персонажи, а не реальные клиенты
+или авторы отзывов. Файлы нормализованы до `512×512` для круглой CSS-обрезки.
+
+Общий prompt: natural editorial head-and-shoulders portrait of one fictional
+adult, soft window daylight, warm neutral blurred interior, realistic skin,
+centered square framing; no text, logos, watermark or celebrity likeness.
