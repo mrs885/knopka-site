@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = new URL('./', import.meta.url);
 const expectedDownloads = [
-  'https://github.com/mrs885/knopka/releases/download/android-2.7/knopka-2.7.apk',
+  'https://github.com/mrs885/knopka/releases/download/android-2.8/knopka-2.8.apk',
   'https://testflight.apple.com/join/66AbtsBG',
   'https://github.com/mrs885/knopka/releases/download/windows-3.1/Knopka-Setup-3.1.2.exe',
   'https://github.com/mrs885/knopka/releases/download/macOS-1.0/KnopkA.dmg',
