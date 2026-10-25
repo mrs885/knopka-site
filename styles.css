@@ -79,11 +79,11 @@
 .faq-family-gallery a{display:block;border-radius:12px}
 .faq-family-gallery img{width:100%;aspect-ratio:3/2;object-fit:contain;background:#080815;border:1px solid rgb(17 19 21 / 10%);border-radius:12px}
 .faq-family-gallery figcaption{color:var(--muted);font-size:13px;line-height:1.3}
-.faq-promo-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,340px);align-items:start;gap:24px}
+.faq-promo-layout{display:grid;grid-template-columns:minmax(0,1fr) 170px;align-items:start;gap:24px}
 .faq-promo-layout .faq-steps{margin-bottom:0}
-.faq-promo-figure{display:grid;gap:7px;margin:0}
-.faq-promo-figure a{display:block;border-radius:12px}
-.faq-promo-figure img{width:100%;border:1px solid rgb(17 19 21 / 10%);border-radius:12px}
+.faq-promo-figure{display:grid;justify-self:center;gap:7px;width:170px;margin:0}
+.faq-promo-figure a{display:block;overflow:hidden;border-radius:18px}
+.faq-promo-figure img{width:100%;border:1px solid rgb(17 19 21 / 10%);border-radius:18px}
 .faq-promo-figure figcaption{color:var(--muted);font-size:13px;line-height:1.3}
 @media(max-width:700px){.faq-answer{padding:0 16px 17px}.faq-answer>p{padding:0}.faq-family-gallery{grid-template-columns:1fr;gap:16px}.faq-family-gallery figcaption,.faq-promo-figure figcaption{font-size:12px}.faq-promo-layout{grid-template-columns:1fr;gap:16px}}
 
