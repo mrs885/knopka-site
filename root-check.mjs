@@ -5,10 +5,10 @@ import { fileURLToPath } from 'node:url';
 
 const root = new URL('./', import.meta.url);
 const expectedDownloads = [
-  'https://github.com/mrs885/knopka/releases/download/android-2.8/knopka-2.8.apk',
+  'https://storage.yandexcloud.net/knopka/knopka-2.9.apk',
   'https://testflight.apple.com/join/66AbtsBG',
-  'https://github.com/mrs885/knopka/releases/download/windows-3.1/Knopka-Setup-3.1.2.exe',
-  'https://github.com/mrs885/knopka/releases/download/macOS-1.0/KnopkA.dmg',
+  'https://storage.yandexcloud.net/knopka/Knopka-Setup-3.1.3.exe',
+  'https://storage.yandexcloud.net/knopka/KnopkA-31.dmg',
 ];
 
 for (const path of ['old_version/index.html', 'old_version/assets/og-image.png', 'old_version/manuals/android.pdf']) {
@@ -36,7 +36,7 @@ try {
     }));
     const minimumGap = width <= 700 ? 16 : 24;
     if (result.width !== width || result.scrollWidth > width || result.brokenImages.length || result.missingAnchors.length || errors.length ||
-        result.socialMeta.ogTitle !== 'КнопкА — стабильный ВПН с защитой трафика. Неделя бесплатного использования' || result.socialMeta.ogImage !== 'https://knopka.onlinedesk.online/assets/og-image.png' || result.socialMeta.twitterCard !== 'summary' || result.socialMeta.twitterImage !== result.socialMeta.ogImage ||
+        result.socialMeta.ogTitle !== 'КнопкА — стабильный ВПН' || result.socialMeta.ogImage !== 'https://knopka.onlinedesk.online/assets/app-button-black-a.png' || result.socialMeta.twitterCard !== 'summary' || result.socialMeta.twitterImage !== result.socialMeta.ogImage ||
         JSON.stringify(result.downloads) !== JSON.stringify(expectedDownloads) ||
         result.support !== 'https://t.me/AKnopkaVpnBot?start=support' ||
         JSON.stringify(result.tariffPadding) !== JSON.stringify(['24px', '24px']) || result.tariffRightGap < minimumGap) {
@@ -45,6 +45,51 @@ try {
     console.log(JSON.stringify({ width, scrollWidth: result.scrollWidth, tariffRightGap: result.tariffRightGap, status: 'OK' }));
     await page.close();
   }
+
+  const accordionPage = await browser.newPage({ viewport: { width: 1000, height: 900 }, deviceScaleFactor: 1 });
+  await accordionPage.goto(new URL('index.html', root).href);
+  const faqSummary = accordionPage.locator('#faq details').first().locator('summary');
+  const closedState = await faqSummary.evaluate(summary => {
+    const icon = getComputedStyle(summary, '::after');
+    return {
+      userSelect: getComputedStyle(summary).userSelect,
+      content: icon.content,
+      transform: icon.transform,
+      borderRight: icon.borderRightWidth,
+      borderBottom: icon.borderBottomWidth,
+    };
+  });
+  await faqSummary.click();
+  await accordionPage.waitForTimeout(250);
+  const openState = await faqSummary.evaluate(summary => ({
+    open: summary.parentElement.open,
+    transform: getComputedStyle(summary, '::after').transform,
+  }));
+  const selectableAnswer = await accordionPage.evaluate(() => {
+    const answer = document.querySelector('#faq details[open] p');
+    const range = document.createRange();
+    range.selectNodeContents(answer);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    return { selected: selection.toString(), userSelect: getComputedStyle(answer).userSelect };
+  });
+  await faqSummary.click();
+  const closedAfterSelection = await accordionPage.evaluate(() => ({
+    open: document.querySelector('#faq details').open,
+    selection: window.getSelection()?.toString() ?? '',
+  }));
+  if (closedState.userSelect !== 'none' || closedState.content !== '""' || closedState.transform === 'none' ||
+      closedState.borderRight === '0px' || closedState.borderBottom === '0px' || !openState.open ||
+      openState.transform === closedState.transform || selectableAnswer.userSelect === 'none' ||
+      !selectableAnswer.selected || closedAfterSelection.open || closedAfterSelection.selection) {
+    throw new Error(`Accordion interaction failed: ${JSON.stringify({ closedState, openState, selectableAnswer, closedAfterSelection })}`);
+  }
+  await faqSummary.focus();
+  await accordionPage.keyboard.press('Enter');
+  if (!await faqSummary.evaluate(summary => summary.parentElement.open)) throw new Error('FAQ keyboard toggle failed');
+  await accordionPage.close();
+
   const directPage = await browser.newPage({ viewport: { width: 390, height: 900 }, deviceScaleFactor: 1 });
   for (const [parameter, expected] of [['android', 'platform-android'], ['ios', 'platform-iphone'], ['iphone', 'platform-iphone'], ['windows', 'platform-windows'], ['mac', 'platform-macbook'], ['macos', 'platform-macbook'], ['macbook', 'platform-macbook']]) {
     await directPage.goto(new URL(`index.html?platform=${parameter}`, root).href);

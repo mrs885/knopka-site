@@ -185,6 +185,12 @@
   <footer class="footer shell"><a class="wordmark" href="#top"><img class="brand-logo" src="assets/app-button-black-a.png" alt="" width="640" height="640" data-template-keep><span>КНОПКА</span></a><nav aria-label="Навигация в подвале"><a href="#benefits">Преимущества</a><a href="#start">Как начать</a><a href="#faq">Вопросы</a><a href="#reviews">Отзывы</a></nav><small>© 2026 КнопкА. Все права защищены.</small></footer>
   <script>
     (() => {
+      const clearSelection = () => window.getSelection()?.removeAllRanges();
+      document.querySelectorAll('details').forEach(details => {
+        details.querySelector(':scope > summary')?.addEventListener('pointerdown', clearSelection);
+        details.addEventListener('toggle', clearSelection);
+      });
+
       const aliases = { android: 'android', ios: 'iphone', iphone: 'iphone', windows: 'windows', mac: 'macbook', macos: 'macbook', macbook: 'macbook' };
       const requested = new URLSearchParams(window.location.search).get('platform')?.toLowerCase();
       const platform = aliases[requested];
