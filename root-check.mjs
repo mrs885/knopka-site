@@ -32,6 +32,7 @@ try {
       downloads: [...document.querySelectorAll('#start .platform-download')].map(link => link.href),
       faqQuestions: [...document.querySelectorAll('#faq details > summary')].map(summary => summary.textContent.trim()),
       familyImages: [...document.querySelectorAll('#faq .faq-family-gallery img')].map(image => ({ src: image.getAttribute('src'), alt: image.alt })),
+      promoImage: (() => { const image = document.querySelector('#faq .faq-promo-figure img'); return image ? { src: image.getAttribute('src'), alt: image.alt } : null; })(),
       support: document.querySelector('.support-copy a')?.href,
       tariffPadding: [getComputedStyle(document.querySelector('#tariff')).paddingTop, getComputedStyle(document.querySelector('#tariff')).paddingBottom],
       tariffRightGap: Math.round(innerWidth - document.querySelector('#tariff .tariff-cta').getBoundingClientRect().right),
@@ -40,8 +41,9 @@ try {
     if (result.width !== width || result.scrollWidth > width || result.brokenImages.length || result.missingAnchors.length || errors.length ||
         result.socialMeta.ogTitle !== 'КнопкА — стабильный ВПН' || result.socialMeta.ogImage !== 'https://knopka.onlinedesk.online/assets/app-button-black-a.png' || result.socialMeta.twitterCard !== 'summary' || result.socialMeta.twitterImage !== result.socialMeta.ogImage ||
         JSON.stringify(result.downloads) !== JSON.stringify(expectedDownloads) ||
-        JSON.stringify(result.faqQuestions) !== JSON.stringify(['Как подключиться?', 'На каких устройствах можно установить ВПН?', 'Есть ли семейный тариф?', 'Что делать, если возникла проблема?']) ||
+        JSON.stringify(result.faqQuestions) !== JSON.stringify(['Как подключиться?', 'На каких устройствах можно установить ВПН?', 'Есть ли семейный тариф?', 'Как использовать промо-код и получить скидку?', 'Что делать, если возникла проблема?']) ||
         result.familyImages.length !== 3 || result.familyImages.some(image => !image.src || !image.alt) ||
+        !result.promoImage?.src || !result.promoImage.alt ||
         result.support !== 'https://t.me/AKnopkaVpnBot?start=support' ||
         JSON.stringify(result.tariffPadding) !== JSON.stringify(['24px', '24px']) || result.tariffRightGap < minimumGap) {
       throw new Error(JSON.stringify({ width, ...result, errors }));
