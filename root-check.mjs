@@ -40,7 +40,7 @@ try {
     }));
     const minimumGap = width <= 700 ? 16 : 24;
     if (result.width !== width || result.scrollWidth > width || result.brokenImages.length || result.missingAnchors.length || errors.length ||
-        result.socialMeta.ogTitle !== 'КнопкА — стабильный ВПН' || result.socialMeta.ogImage !== 'https://knopka.onlinedesk.online/assets/app-button-black-a.png' || result.socialMeta.twitterCard !== 'summary' || result.socialMeta.twitterImage !== result.socialMeta.ogImage || result.stylesheet !== 'styles.css?v=20261025-1' ||
+        result.socialMeta.ogTitle !== 'КнопкА — стабильный ВПН' || result.socialMeta.ogImage !== 'https://knopka.onlinedesk.online/assets/app-button-black-a.png' || result.socialMeta.twitterCard !== 'summary' || result.socialMeta.twitterImage !== result.socialMeta.ogImage || result.stylesheet !== 'styles.css?v=20261025-2' ||
         JSON.stringify(result.downloads) !== JSON.stringify(expectedDownloads) ||
         JSON.stringify(result.faqQuestions) !== JSON.stringify(['Как подключиться?', 'На каких устройствах можно установить ВПН?', 'Есть ли семейный тариф?', 'Как использовать промо-код и получить скидку?', 'Что делать, если возникла проблема?']) ||
         result.familyImages.length !== 3 || result.familyImages.some(image => !image.src || !image.alt) ||
@@ -95,6 +95,21 @@ try {
   await faqSummary.focus();
   await accordionPage.keyboard.press('Enter');
   if (!await faqSummary.evaluate(summary => summary.parentElement.open)) throw new Error('FAQ keyboard toggle failed');
+  const promoDetails = accordionPage.locator('#faq .faq-promo');
+  await promoDetails.locator('summary').click();
+  const promoVisual = await promoDetails.evaluate(details => {
+    const image = details.querySelector('img');
+    const steps = details.querySelector('.faq-steps');
+    return {
+      width: Math.round(image.getBoundingClientRect().width),
+      borderRadius: getComputedStyle(image).borderRadius,
+      imageTop: Math.round(image.getBoundingClientRect().top),
+      stepsBottom: Math.round(steps.getBoundingClientRect().bottom),
+    };
+  });
+  if (promoVisual.width !== 213 || promoVisual.borderRadius !== '12px' || promoVisual.imageTop < promoVisual.stepsBottom) {
+    throw new Error(`Promo FAQ visual contract failed: ${JSON.stringify(promoVisual)}`);
+  }
   await accordionPage.close();
 
   const directPage = await browser.newPage({ viewport: { width: 390, height: 900 }, deviceScaleFactor: 1 });
