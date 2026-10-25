@@ -40,7 +40,7 @@ try {
     }));
     const minimumGap = width <= 700 ? 16 : 24;
     if (result.width !== width || result.scrollWidth > width || result.brokenImages.length || result.missingAnchors.length || errors.length ||
-        result.socialMeta.ogTitle !== 'КнопкА — стабильный ВПН' || result.socialMeta.ogImage !== 'https://knopka.onlinedesk.online/assets/app-button-black-a.png' || result.socialMeta.twitterCard !== 'summary' || result.socialMeta.twitterImage !== result.socialMeta.ogImage || result.stylesheet !== 'styles.css?v=20261025-3' ||
+        result.socialMeta.ogTitle !== 'КнопкА — стабильный ВПН' || result.socialMeta.ogImage !== 'https://knopka.onlinedesk.online/assets/app-button-black-a.png' || result.socialMeta.twitterCard !== 'summary' || result.socialMeta.twitterImage !== result.socialMeta.ogImage || result.stylesheet !== 'styles.css?v=20261025-4' ||
         JSON.stringify(result.downloads) !== JSON.stringify(expectedDownloads) ||
         JSON.stringify(result.faqQuestions) !== JSON.stringify(['Как подключиться?', 'На каких устройствах можно установить ВПН?', 'Есть ли семейный тариф?', 'Как использовать промо-код и получить скидку?', 'Что делать, если возникла проблема?']) ||
         result.familyImages.length !== 3 || result.familyImages.some(image => !image.src || !image.alt) ||
@@ -107,7 +107,7 @@ try {
       stepsBottom: Math.round(steps.getBoundingClientRect().bottom),
     };
   });
-  if (promoVisual.width !== 266 || promoVisual.borderRadius !== '12px' || promoVisual.imageTop < promoVisual.stepsBottom) {
+  if (promoVisual.width !== 293 || promoVisual.borderRadius !== '12px' || promoVisual.imageTop < promoVisual.stepsBottom) {
     throw new Error(`Promo FAQ visual contract failed: ${JSON.stringify(promoVisual)}`);
   }
   await accordionPage.close();
