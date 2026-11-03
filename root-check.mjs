@@ -44,12 +44,15 @@ try {
       support: document.querySelector('.support-copy a')?.href,
       tariffPadding: [getComputedStyle(document.querySelector('#tariff')).paddingTop, getComputedStyle(document.querySelector('#tariff')).paddingBottom],
       tariffRightGap: Math.round(innerWidth - document.querySelector('#tariff .tariff-cta').getBoundingClientRect().right),
+      breadcrumb: [...document.querySelectorAll('.breadcrumbs li')].map(item => item.textContent.trim()),
+      breadcrumbCurrent: document.querySelector('.breadcrumbs [aria-current="page"]')?.textContent.trim(),
       platformLinks: [...document.querySelectorAll('.header .platform-nav-menu a')].map(link => link.getAttribute('href')),
     }));
     const minimumGap = width <= 700 ? 16 : 24;
     if (result.width !== width || result.scrollWidth > width || result.brokenImages.length || result.missingAnchors.length || errors.length ||
-        result.socialMeta.ogTitle !== 'КнопкА — стабильный ВПН' || result.socialMeta.ogImage !== 'https://knopka.onlinedesk.online/assets/app-button-black-a.png' || result.socialMeta.twitterCard !== 'summary' || result.socialMeta.twitterImage !== result.socialMeta.ogImage || result.stylesheet !== 'styles.css?v=20261103-1' ||
+        result.socialMeta.ogTitle !== 'КнопкА — стабильный ВПН' || result.socialMeta.ogImage !== 'https://knopka.onlinedesk.online/assets/app-button-black-a.png' || result.socialMeta.twitterCard !== 'summary' || result.socialMeta.twitterImage !== result.socialMeta.ogImage || result.stylesheet !== 'styles.css?v=20261103-2' ||
         JSON.stringify(result.downloads) !== JSON.stringify(expectedDownloads) ||
+        JSON.stringify(result.breadcrumb) !== JSON.stringify(['Главная']) || result.breadcrumbCurrent !== 'Главная' ||
         JSON.stringify(result.platformLinks) !== JSON.stringify(['macos/', 'ios/', 'android/', 'windows/']) ||
         JSON.stringify(result.faqQuestions) !== JSON.stringify(['Как подключиться?', 'На каких устройствах можно установить ВПН?', 'Есть ли семейный тариф?', 'Как использовать промо-код и получить скидку?', 'Что делать, если возникла проблема?']) ||
         result.familyImages.length !== 3 || result.familyImages.some(image => !image.src || !image.alt) ||
@@ -147,13 +150,14 @@ try {
         download: document.querySelector('#start .platform-download')?.href,
         breadcrumb: [...document.querySelectorAll('.breadcrumbs li')].map(item => item.textContent.trim()),
         current: document.querySelector('.breadcrumbs [aria-current="page"]')?.textContent.trim(),
+        stylesheet: document.querySelector('link[rel="stylesheet"]')?.getAttribute('href'),
         platformLinks: [...document.querySelectorAll('.header .platform-nav-menu a')].map(link => link.getAttribute('href')),
         missingAnchors: [...document.querySelectorAll('a[href^="#"]')].filter(link => !document.getElementById(link.hash.slice(1))).map(link => link.hash),
       }));
       if (result.width !== width || result.scrollWidth > width || result.brokenImages.length || errors.length ||
           result.benefits !== 0 || result.platforms.length !== 1 || !result.platforms[0].className.includes(platform.className) || !result.platforms[0].open ||
-          result.platformHeading !== platform.label || result.download !== platform.download || JSON.stringify(result.breadcrumb) !== JSON.stringify(['КнопкА', 'Платформы', platform.label]) ||
-          result.current !== platform.label || JSON.stringify(result.platformLinks) !== JSON.stringify(['../macos/', '../ios/', '../android/', '../windows/']) ||
+          result.platformHeading !== platform.label || result.download !== platform.download || JSON.stringify(result.breadcrumb) !== JSON.stringify(['Главная', platform.label]) ||
+          result.current !== platform.label || result.stylesheet !== '../styles.css?v=20261103-2' || JSON.stringify(result.platformLinks) !== JSON.stringify(['../macos/', '../ios/', '../android/', '../windows/']) ||
           result.missingAnchors.length) {
         throw new Error(`Platform page failed: ${JSON.stringify({ platform, width, ...result, errors })}`);
       }

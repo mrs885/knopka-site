@@ -92,7 +92,7 @@ def replace_meta(html: str, platform: Platform) -> str:
     )
     html, count = re.subn(
         r'<link rel="stylesheet" href="styles\.css\?v=[^"]+">',
-        '<link rel="canonical" href="' + url + '">\n  <link rel="stylesheet" href="../styles.css?v=20261103-1">',
+        '<link rel="canonical" href="' + url + '">\n  <link rel="stylesheet" href="../styles.css?v=20261103-2">',
         html,
         count=1,
     )
@@ -117,18 +117,19 @@ def child_navigation(html: str) -> str:
 
 
 def add_breadcrumbs(html: str, platform: Platform) -> str:
-    marker = "    </header>\n    <section class=\"hero\""
-    breadcrumbs = f'''    </header>
-    <nav class="breadcrumbs shell" aria-label="Хлебные крошки">
+    marker = '''    <nav class="breadcrumbs shell" aria-label="Хлебные крошки">
       <ol>
-        <li><a href="../">КнопкА</a></li>
-        <li><span>Платформы</span></li>
+        <li><span aria-current="page">Главная</span></li>
+      </ol>
+    </nav>'''
+    breadcrumbs = f'''    <nav class="breadcrumbs shell" aria-label="Хлебные крошки">
+      <ol>
+        <li><a href="../">Главная</a></li>
         <li><span aria-current="page">{platform.label}</span></li>
       </ol>
-    </nav>
-    <section class="hero"'''
+    </nav>'''
     if marker not in html:
-        raise RuntimeError("Header marker not found")
+        raise RuntimeError("Root breadcrumbs marker not found")
     return html.replace(marker, breadcrumbs, 1)
 
 
