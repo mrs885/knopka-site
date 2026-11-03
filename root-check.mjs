@@ -8,7 +8,14 @@ const expectedDownloads = [
   'https://storage.yandexcloud.net/knopka/knopka-2.9.apk',
   'https://testflight.apple.com/join/66AbtsBG',
   'https://storage.yandexcloud.net/knopka/Knopka-Setup-3.1.3.exe',
-  'https://storage.yandexcloud.net/knopka/KnopkA-31.dmg',
+  'https://storage.yandexcloud.net/knopka/KnopkA-101.dmg',
+];
+
+const platformPages = [
+  { path: 'macos/index.html', label: 'macOS', className: 'platform-macbook', download: expectedDownloads[3] },
+  { path: 'ios/index.html', label: 'iOS', className: 'platform-iphone', download: expectedDownloads[1] },
+  { path: 'android/index.html', label: 'Android', className: 'platform-android', download: expectedDownloads[0] },
+  { path: 'windows/index.html', label: 'Windows', className: 'platform-windows', download: expectedDownloads[2] },
 ];
 
 for (const path of ['old_version/index.html', 'old_version/assets/og-image.png', 'old_version/manuals/android.pdf']) {
@@ -37,11 +44,13 @@ try {
       support: document.querySelector('.support-copy a')?.href,
       tariffPadding: [getComputedStyle(document.querySelector('#tariff')).paddingTop, getComputedStyle(document.querySelector('#tariff')).paddingBottom],
       tariffRightGap: Math.round(innerWidth - document.querySelector('#tariff .tariff-cta').getBoundingClientRect().right),
+      platformLinks: [...document.querySelectorAll('.header .platform-nav-menu a')].map(link => link.getAttribute('href')),
     }));
     const minimumGap = width <= 700 ? 16 : 24;
     if (result.width !== width || result.scrollWidth > width || result.brokenImages.length || result.missingAnchors.length || errors.length ||
-        result.socialMeta.ogTitle !== 'КнопкА — стабильный ВПН' || result.socialMeta.ogImage !== 'https://knopka.onlinedesk.online/assets/app-button-black-a.png' || result.socialMeta.twitterCard !== 'summary' || result.socialMeta.twitterImage !== result.socialMeta.ogImage || result.stylesheet !== 'styles.css?v=20261025-4' ||
+        result.socialMeta.ogTitle !== 'КнопкА — стабильный ВПН' || result.socialMeta.ogImage !== 'https://knopka.onlinedesk.online/assets/app-button-black-a.png' || result.socialMeta.twitterCard !== 'summary' || result.socialMeta.twitterImage !== result.socialMeta.ogImage || result.stylesheet !== 'styles.css?v=20261103-1' ||
         JSON.stringify(result.downloads) !== JSON.stringify(expectedDownloads) ||
+        JSON.stringify(result.platformLinks) !== JSON.stringify(['macos/', 'ios/', 'android/', 'windows/']) ||
         JSON.stringify(result.faqQuestions) !== JSON.stringify(['Как подключиться?', 'На каких устройствах можно установить ВПН?', 'Есть ли семейный тариф?', 'Как использовать промо-код и получить скидку?', 'Что делать, если возникла проблема?']) ||
         result.familyImages.length !== 3 || result.familyImages.some(image => !image.src || !image.alt) ||
         !result.promoImage?.src || !result.promoImage.alt ||
@@ -120,6 +129,38 @@ try {
     if (result.open.length !== 1 || !result.open[0].includes(expected) || result.scrollY === 0) throw new Error(`?platform=${parameter} failed: ${JSON.stringify(result)}`);
   }
   await directPage.close();
+
+  for (const platform of platformPages) {
+    for (const width of [390, 1000, 1440]) {
+      const page = await browser.newPage({ viewport: { width, height: 900 }, deviceScaleFactor: 1 });
+      const errors = [];
+      page.on('pageerror', error => errors.push(error.message));
+      await page.goto(new URL(platform.path, root).href);
+      await page.evaluate(() => document.fonts.ready);
+      const result = await page.evaluate(() => ({
+        width: innerWidth,
+        scrollWidth: document.documentElement.scrollWidth,
+        brokenImages: [...document.images].filter(image => !image.complete || !image.naturalWidth).map(image => image.src),
+        benefits: document.querySelectorAll('#benefits').length,
+        platforms: [...document.querySelectorAll('#start .platform-accordion')].map(element => ({ className: element.className, open: element.open })),
+        platformHeading: document.querySelector('#start .platform-heading strong')?.textContent.trim(),
+        download: document.querySelector('#start .platform-download')?.href,
+        breadcrumb: [...document.querySelectorAll('.breadcrumbs li')].map(item => item.textContent.trim()),
+        current: document.querySelector('.breadcrumbs [aria-current="page"]')?.textContent.trim(),
+        platformLinks: [...document.querySelectorAll('.header .platform-nav-menu a')].map(link => link.getAttribute('href')),
+        missingAnchors: [...document.querySelectorAll('a[href^="#"]')].filter(link => !document.getElementById(link.hash.slice(1))).map(link => link.hash),
+      }));
+      if (result.width !== width || result.scrollWidth > width || result.brokenImages.length || errors.length ||
+          result.benefits !== 0 || result.platforms.length !== 1 || !result.platforms[0].className.includes(platform.className) || !result.platforms[0].open ||
+          result.platformHeading !== platform.label || result.download !== platform.download || JSON.stringify(result.breadcrumb) !== JSON.stringify(['КнопкА', 'Платформы', platform.label]) ||
+          result.current !== platform.label || JSON.stringify(result.platformLinks) !== JSON.stringify(['../macos/', '../ios/', '../android/', '../windows/']) ||
+          result.missingAnchors.length) {
+        throw new Error(`Platform page failed: ${JSON.stringify({ platform, width, ...result, errors })}`);
+      }
+      console.log(JSON.stringify({ platform: platform.label, width, scrollWidth: result.scrollWidth, status: 'OK' }));
+      await page.close();
+    }
+  }
 } finally {
   await browser.close();
 }
