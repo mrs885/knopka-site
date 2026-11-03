@@ -92,7 +92,7 @@ def replace_meta(html: str, platform: Platform) -> str:
     )
     html, count = re.subn(
         r'<link rel="stylesheet" href="styles\.css\?v=[^"]+">',
-        '<link rel="canonical" href="' + url + '">\n  <link rel="stylesheet" href="../styles.css?v=20261103-2">',
+        '<link rel="canonical" href="' + url + '">\n  <link rel="stylesheet" href="../styles.css?v=20261103-3">',
         html,
         count=1,
     )
@@ -117,11 +117,7 @@ def child_navigation(html: str) -> str:
 
 
 def add_breadcrumbs(html: str, platform: Platform) -> str:
-    marker = '''    <nav class="breadcrumbs shell" aria-label="Хлебные крошки">
-      <ol>
-        <li><span aria-current="page">Главная</span></li>
-      </ol>
-    </nav>'''
+    marker = '    <div class="breadcrumb-slot shell" aria-hidden="true"></div>'
     breadcrumbs = f'''    <nav class="breadcrumbs shell" aria-label="Хлебные крошки">
       <ol>
         <li><a href="../">Главная</a></li>
@@ -131,6 +127,45 @@ def add_breadcrumbs(html: str, platform: Platform) -> str:
     if marker not in html:
         raise RuntimeError("Root breadcrumbs marker not found")
     return html.replace(marker, breadcrumbs, 1)
+
+
+def make_macos_compact(html: str) -> str:
+    html = html.replace('<body>', '<body class="platform-page platform-page-macos platform-page-compact">', 1)
+    html, background_count = re.subn(
+        r'\n    <img class="hero-background".*?aria-hidden="true">',
+        "",
+        html,
+        count=1,
+    )
+    header_match = re.search(r'    <header class="header shell">.*?</header>', html, flags=re.DOTALL)
+    if not header_match:
+        raise RuntimeError("macOS header not found")
+    header = header_match.group(0).replace('header shell', 'header shell compact-header', 1)
+    header, nav_count = re.subn(r'\n      <nav .*?</nav>', "", header, count=1, flags=re.DOTALL)
+    header, cta_count = re.subn(r'\n      <a class="button small".*?</a>', "", header, count=1)
+    html = html[:header_match.start()] + header + html[header_match.end():]
+    html, hero_count = re.subn(
+        r'\n    <section class="hero".*?</section>',
+        "",
+        html,
+        count=1,
+        flags=re.DOTALL,
+    )
+    html, reviews_count = re.subn(
+        r'\n    <section class="section shell reviews".*?</section>',
+        "",
+        html,
+        count=1,
+        flags=re.DOTALL,
+    )
+    html = html.replace('<a href="#reviews">Отзывы</a>', "")
+    if (background_count, nav_count, cta_count, hero_count, reviews_count) != (1, 1, 1, 1, 1):
+        raise RuntimeError(
+            "macOS compact transform mismatch: "
+            f"background={background_count}, nav={nav_count}, cta={cta_count}, "
+            f"hero={hero_count}, reviews={reviews_count}"
+        )
+    return html
 
 
 def remove_benefits(html: str) -> str:
@@ -187,6 +222,8 @@ def generate(platform: Platform, source: str) -> str:
     html = add_breadcrumbs(html, platform)
     html = remove_benefits(html)
     html = keep_platform(html, platform)
+    if platform.slug == "macos":
+        html = make_macos_compact(html)
     return html
 
 
