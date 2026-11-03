@@ -116,6 +116,8 @@
 .platform-page-compact .hero-wrap::after{display:none}
 .platform-page-compact .compact-header{height:76px;min-height:76px;padding:0;flex-wrap:nowrap}
 .platform-page-macos #start{padding-top:12px}
+.footer.footer-compact{justify-content:flex-end}
+.footer.footer-compact small{width:auto;order:initial;margin-left:auto;text-align:right}
 @media(min-width:701px) and (max-width:1000px){.platform-page-compact .compact-header{height:52px;min-height:52px}}
 @media(max-width:700px){.platform-page-compact .compact-header{height:64px;min-height:64px}}
 

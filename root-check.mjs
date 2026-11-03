@@ -51,7 +51,7 @@ try {
     }));
     const minimumGap = width <= 700 ? 16 : 24;
     if (result.width !== width || result.scrollWidth > width || result.brokenImages.length || result.missingAnchors.length || errors.length ||
-        result.socialMeta.ogTitle !== 'КнопкА — стабильный ВПН' || result.socialMeta.ogImage !== 'https://knopka.onlinedesk.online/assets/app-button-black-a.png' || result.socialMeta.twitterCard !== 'summary' || result.socialMeta.twitterImage !== result.socialMeta.ogImage || result.stylesheet !== 'styles.css?v=20261103-4' ||
+        result.socialMeta.ogTitle !== 'КнопкА — стабильный ВПН' || result.socialMeta.ogImage !== 'https://knopka.onlinedesk.online/assets/app-button-black-a.png' || result.socialMeta.twitterCard !== 'summary' || result.socialMeta.twitterImage !== result.socialMeta.ogImage || result.stylesheet !== 'styles.css?v=20261103-5' ||
         JSON.stringify(result.downloads) !== JSON.stringify(expectedDownloads) ||
         result.breadcrumb.length !== 0 || result.breadcrumbCurrent || result.breadcrumbSlots !== 0 ||
         JSON.stringify(result.platformLinks) !== JSON.stringify(['macos/', 'ios/', 'android/', 'windows/']) ||
@@ -159,6 +159,10 @@ try {
         reviews: document.querySelectorAll('#reviews').length,
         tariffs: document.querySelectorAll('#tariff').length,
         startPaddingTop: getComputedStyle(document.querySelector('#start')).paddingTop,
+        footerWordmarks: document.querySelectorAll('.footer .wordmark').length,
+        footerNavs: document.querySelectorAll('.footer nav').length,
+        footerCopyright: document.querySelector('.footer small')?.textContent.trim(),
+        footerCopyrightAlign: document.querySelector('.footer small') ? getComputedStyle(document.querySelector('.footer small')).textAlign : null,
         firstMainSection: document.querySelector('main > section')?.id,
         missingAnchors: [...document.querySelectorAll('a[href^="#"]')].filter(link => !document.getElementById(link.hash.slice(1))).map(link => link.hash),
       }));
@@ -167,9 +171,10 @@ try {
       if (result.width !== width || result.scrollWidth > width || result.brokenImages.length || errors.length ||
           result.benefits !== 0 || result.platforms.length !== 1 || !result.platforms[0].className.includes(platform.className) || !result.platforms[0].open ||
           result.platformHeading !== platform.label || result.download !== platform.download || JSON.stringify(result.breadcrumb) !== JSON.stringify(['Главная', platform.label]) ||
-          result.current !== platform.label || result.stylesheet !== '../styles.css?v=20261103-4' || JSON.stringify(result.platformLinks) !== JSON.stringify(expectedPlatformLinks) ||
-          (isMacos && (result.headerNavs !== 0 || result.headerCtas !== 0 || result.heroSections !== 0 || result.reviews !== 0 || result.tariffs !== 0 || result.startPaddingTop !== '12px' || result.firstMainSection !== 'start')) ||
-          (!isMacos && (result.headerNavs !== 1 || result.headerCtas !== 1 || result.heroSections !== 1 || result.reviews !== 1 || result.tariffs !== 1)) ||
+          result.current !== platform.label || result.stylesheet !== '../styles.css?v=20261103-5' || JSON.stringify(result.platformLinks) !== JSON.stringify(expectedPlatformLinks) ||
+          result.footerCopyright !== '© 2026 КнопкА. Все права защищены.' ||
+          (isMacos && (result.headerNavs !== 0 || result.headerCtas !== 0 || result.heroSections !== 0 || result.reviews !== 0 || result.tariffs !== 0 || result.startPaddingTop !== '12px' || result.footerWordmarks !== 0 || result.footerNavs !== 0 || result.footerCopyrightAlign !== 'right' || result.firstMainSection !== 'start')) ||
+          (!isMacos && (result.headerNavs !== 1 || result.headerCtas !== 1 || result.heroSections !== 1 || result.reviews !== 1 || result.tariffs !== 1 || result.footerWordmarks !== 1 || result.footerNavs !== 1)) ||
           result.missingAnchors.length) {
         throw new Error(`Platform page failed: ${JSON.stringify({ platform, width, ...result, errors })}`);
       }

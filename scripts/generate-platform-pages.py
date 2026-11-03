@@ -92,7 +92,7 @@ def replace_meta(html: str, platform: Platform) -> str:
     )
     html, count = re.subn(
         r'<link rel="stylesheet" href="styles\.css\?v=[^"]+">',
-        '<link rel="canonical" href="' + url + '">\n  <link rel="stylesheet" href="../styles.css?v=20261103-4">',
+        '<link rel="canonical" href="' + url + '">\n  <link rel="stylesheet" href="../styles.css?v=20261103-5">',
         html,
         count=1,
     )
@@ -168,11 +168,18 @@ def make_macos_compact(html: str) -> str:
         flags=re.DOTALL,
     )
     html = html.replace('<a href="#reviews">Отзывы</a>', "")
-    if (background_count, nav_count, cta_count, hero_count, reviews_count, tariff_count) != (1, 1, 1, 1, 1, 1):
+    html, footer_count = re.subn(
+        r'<footer class="footer shell">.*?<small>(.*?)</small></footer>',
+        r'<footer class="footer footer-compact shell"><small>\1</small></footer>',
+        html,
+        count=1,
+        flags=re.DOTALL,
+    )
+    if (background_count, nav_count, cta_count, hero_count, reviews_count, tariff_count, footer_count) != (1, 1, 1, 1, 1, 1, 1):
         raise RuntimeError(
             "macOS compact transform mismatch: "
             f"background={background_count}, nav={nav_count}, cta={cta_count}, "
-            f"hero={hero_count}, reviews={reviews_count}, tariff={tariff_count}"
+            f"hero={hero_count}, reviews={reviews_count}, tariff={tariff_count}, footer={footer_count}"
         )
     return html
 
