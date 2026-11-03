@@ -104,17 +104,18 @@
 .platform-nav-menu::before{content:"";position:absolute;inset:-12px 0 auto;height:12px}
 .platform-nav-menu a{padding:10px 12px;border-radius:9px;font-size:13px;white-space:nowrap}
 .platform-nav-menu a:hover,.platform-nav-menu a:focus-visible{background:#f1edeb}
-.breadcrumbs,.breadcrumb-slot{position:relative;z-index:2;min-height:21px;padding:0 0 5px;font-size:12px;color:#64696f}
+.breadcrumbs{position:relative;z-index:2;min-height:21px;padding:0 0 5px;font-size:12px;color:#64696f}
 .breadcrumbs ol{display:flex;align-items:center;gap:8px;margin:0;padding:0;list-style:none}
 .breadcrumbs li{display:flex;align-items:center;gap:8px}
 .breadcrumbs li+li::before{content:"/";color:#9b9da0}
 .breadcrumbs a{text-decoration:underline;text-decoration-color:rgb(100 105 111 / 28%);text-underline-offset:3px}
 .breadcrumbs [aria-current="page"]{color:#24272b;font-weight:700}
-@media(min-width:701px) and (max-width:1000px){.platform-nav>summary,.platform-nav-menu a{font-size:10px}.platform-nav-menu{min-width:150px}.breadcrumbs,.breadcrumb-slot{min-height:19px;font-size:10px}}
-@media(max-width:700px){.header nav{flex-wrap:wrap}.platform-nav>summary{font-size:11px}.platform-nav-menu{left:0;min-width:150px;transform:none}.breadcrumbs,.breadcrumb-slot{min-height:17px;padding-bottom:2px;font-size:11px}}
+@media(min-width:701px) and (max-width:1000px){.platform-nav>summary,.platform-nav-menu a{font-size:10px}.platform-nav-menu{min-width:150px}.breadcrumbs{min-height:19px;font-size:10px}}
+@media(max-width:700px){.header nav{flex-wrap:wrap}.platform-nav>summary{font-size:11px}.platform-nav-menu{left:0;min-width:150px;transform:none}.breadcrumbs{min-height:17px;padding-bottom:2px;font-size:11px}}
 .platform-page-compact .hero-wrap{min-height:0;padding-bottom:0;background:var(--paper)}
 .platform-page-compact .hero-wrap::after{display:none}
 .platform-page-compact .compact-header{height:76px;min-height:76px;padding:0;flex-wrap:nowrap}
+.platform-page-macos #start{padding-top:12px}
 @media(min-width:701px) and (max-width:1000px){.platform-page-compact .compact-header{height:52px;min-height:52px}}
 @media(max-width:700px){.platform-page-compact .compact-header{height:64px;min-height:64px}}
 

@@ -92,7 +92,7 @@ def replace_meta(html: str, platform: Platform) -> str:
     )
     html, count = re.subn(
         r'<link rel="stylesheet" href="styles\.css\?v=[^"]+">',
-        '<link rel="canonical" href="' + url + '">\n  <link rel="stylesheet" href="../styles.css?v=20261103-3">',
+        '<link rel="canonical" href="' + url + '">\n  <link rel="stylesheet" href="../styles.css?v=20261103-4">',
         html,
         count=1,
     )
@@ -117,15 +117,17 @@ def child_navigation(html: str) -> str:
 
 
 def add_breadcrumbs(html: str, platform: Platform) -> str:
-    marker = '    <div class="breadcrumb-slot shell" aria-hidden="true"></div>'
-    breadcrumbs = f'''    <nav class="breadcrumbs shell" aria-label="Хлебные крошки">
+    marker = '    </header>\n    <section class="hero"'
+    breadcrumbs = f'''    </header>
+    <nav class="breadcrumbs shell" aria-label="Хлебные крошки">
       <ol>
         <li><a href="../">Главная</a></li>
         <li><span aria-current="page">{platform.label}</span></li>
       </ol>
-    </nav>'''
+    </nav>
+    <section class="hero"'''
     if marker not in html:
-        raise RuntimeError("Root breadcrumbs marker not found")
+        raise RuntimeError("Header/hero marker not found")
     return html.replace(marker, breadcrumbs, 1)
 
 
@@ -158,12 +160,19 @@ def make_macos_compact(html: str) -> str:
         count=1,
         flags=re.DOTALL,
     )
+    html, tariff_count = re.subn(
+        r'\n    <section class="tariff".*?</section>',
+        "",
+        html,
+        count=1,
+        flags=re.DOTALL,
+    )
     html = html.replace('<a href="#reviews">Отзывы</a>', "")
-    if (background_count, nav_count, cta_count, hero_count, reviews_count) != (1, 1, 1, 1, 1):
+    if (background_count, nav_count, cta_count, hero_count, reviews_count, tariff_count) != (1, 1, 1, 1, 1, 1):
         raise RuntimeError(
             "macOS compact transform mismatch: "
             f"background={background_count}, nav={nav_count}, cta={cta_count}, "
-            f"hero={hero_count}, reviews={reviews_count}"
+            f"hero={hero_count}, reviews={reviews_count}, tariff={tariff_count}"
         )
     return html
 
