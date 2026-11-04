@@ -48,13 +48,16 @@ try {
       breadcrumbCurrent: document.querySelector('.breadcrumbs [aria-current="page"]')?.textContent.trim(),
       breadcrumbSlots: document.querySelectorAll('.breadcrumb-slot').length,
       platformLinks: [...document.querySelectorAll('.header .platform-nav-menu a')].map(link => link.getAttribute('href')),
+      platformNavs: document.querySelectorAll('.header .platform-nav').length,
+      obsoleteRegistrationCopy: /зарегистрируйте|зарегистрируйтесь|зарегистрировать почту/i.test(document.querySelector('#start')?.textContent ?? ''),
+      unrestrictedTrialCopy: (document.querySelector('#start')?.textContent.match(/7 дней без ограничений/g) ?? []).length,
     }));
     const minimumGap = width <= 700 ? 16 : 24;
     if (result.width !== width || result.scrollWidth > width || result.brokenImages.length || result.missingAnchors.length || errors.length ||
         result.socialMeta.ogTitle !== 'КнопкА — стабильный ВПН' || result.socialMeta.ogImage !== 'https://knopka.onlinedesk.online/assets/app-button-black-a.png' || result.socialMeta.twitterCard !== 'summary' || result.socialMeta.twitterImage !== result.socialMeta.ogImage || result.stylesheet !== 'styles.css?v=20261103-5' ||
         JSON.stringify(result.downloads) !== JSON.stringify(expectedDownloads) ||
         result.breadcrumb.length !== 0 || result.breadcrumbCurrent || result.breadcrumbSlots !== 0 ||
-        JSON.stringify(result.platformLinks) !== JSON.stringify(['macos/', 'ios/', 'android/', 'windows/']) ||
+        result.platformLinks.length !== 0 || result.platformNavs !== 0 || result.obsoleteRegistrationCopy || result.unrestrictedTrialCopy !== 4 ||
         JSON.stringify(result.faqQuestions) !== JSON.stringify(['Как подключиться?', 'На каких устройствах можно установить ВПН?', 'Есть ли семейный тариф?', 'Как использовать промо-код и получить скидку?', 'Что делать, если возникла проблема?']) ||
         result.familyImages.length !== 3 || result.familyImages.some(image => !image.src || !image.alt) ||
         !result.promoImage?.src || !result.promoImage.alt ||
@@ -153,6 +156,9 @@ try {
         current: document.querySelector('.breadcrumbs [aria-current="page"]')?.textContent.trim(),
         stylesheet: document.querySelector('link[rel="stylesheet"]')?.getAttribute('href'),
         platformLinks: [...document.querySelectorAll('.header .platform-nav-menu a')].map(link => link.getAttribute('href')),
+        platformNavs: document.querySelectorAll('.header .platform-nav').length,
+        obsoleteRegistrationCopy: /зарегистрируйте|зарегистрируйтесь|зарегистрировать почту/i.test(document.querySelector('#start')?.textContent ?? ''),
+        unrestrictedTrialCopy: (document.querySelector('#start')?.textContent.match(/7 дней без ограничений/g) ?? []).length,
         headerNavs: document.querySelectorAll('.header nav').length,
         headerCtas: document.querySelectorAll('.header .button.small').length,
         heroSections: document.querySelectorAll('.hero').length,
@@ -167,11 +173,10 @@ try {
         missingAnchors: [...document.querySelectorAll('a[href^="#"]')].filter(link => !document.getElementById(link.hash.slice(1))).map(link => link.hash),
       }));
       const isMacos = platform.path.startsWith('macos/');
-      const expectedPlatformLinks = isMacos ? [] : ['../macos/', '../ios/', '../android/', '../windows/'];
       if (result.width !== width || result.scrollWidth > width || result.brokenImages.length || errors.length ||
           result.benefits !== 0 || result.platforms.length !== 1 || !result.platforms[0].className.includes(platform.className) || !result.platforms[0].open ||
           result.platformHeading !== platform.label || result.download !== platform.download || JSON.stringify(result.breadcrumb) !== JSON.stringify(['Главная', platform.label]) ||
-          result.current !== platform.label || result.stylesheet !== '../styles.css?v=20261103-5' || JSON.stringify(result.platformLinks) !== JSON.stringify(expectedPlatformLinks) ||
+          result.current !== platform.label || result.stylesheet !== '../styles.css?v=20261103-5' || result.platformLinks.length !== 0 || result.platformNavs !== 0 || result.obsoleteRegistrationCopy || result.unrestrictedTrialCopy !== 1 ||
           result.footerCopyright !== '© 2026 КнопкА. Все права защищены.' ||
           (isMacos && (result.headerNavs !== 0 || result.headerCtas !== 0 || result.heroSections !== 0 || result.reviews !== 0 || result.tariffs !== 0 || result.startPaddingTop !== '12px' || result.footerWordmarks !== 0 || result.footerNavs !== 0 || result.footerCopyrightAlign !== 'right' || result.firstMainSection !== 'start')) ||
           (!isMacos && (result.headerNavs !== 1 || result.headerCtas !== 1 || result.heroSections !== 1 || result.reviews !== 1 || result.tariffs !== 1 || result.footerWordmarks !== 1 || result.footerNavs !== 1)) ||
